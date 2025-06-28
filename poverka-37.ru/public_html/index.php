@@ -7,6 +7,10 @@ $APPLICATION->SetPageProperty("description", "Компания &quot;Метак�
 $APPLICATION->SetPageProperty("title", "Поверка счётчиков воды | Компания Метаком Иваново");
 $APPLICATION->SetTitle("Поверка приборов учета водоснабжения");?>
 
-
+    <div class="container">
+        <div class="section">
+            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php')?>
+        </div>
+    </div>
 
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

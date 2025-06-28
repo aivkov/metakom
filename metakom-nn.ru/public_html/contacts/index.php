@@ -8,6 +8,6 @@ $APPLICATION->SetPageProperty("keywords", "Метаком Сервис, обсл
 $APPLICATION->SetPageProperty("title", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Нижний Новгород");
 $APPLICATION->SetTitle("Контакты «Метаком сервис» Нижний Новгород");?>
 
-Контвкты
+Контакты
 
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

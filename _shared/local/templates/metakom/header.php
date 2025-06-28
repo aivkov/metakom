@@ -28,26 +28,8 @@ $assets->addCss('/local/css/main.css');
 </head>
 <body>
 <div class="bx-panel"><?php $APPLICATION->ShowPanel() ?></div>
-<header class="header">
-    <div class="header__container container">
-        <div class="header__left">
-            <a href="/" class="header__logo">
-                <img src="/local/img/logo.png" alt="Метаком-сервис">
-            </a>
-            <?php $APPLICATION->IncludeFile('/includes/menu/top.php')?>
-        </div>
-        <div class="header__right">
-            <?php if($GLOBALS['MS']['UF_PHONES'])?>
-            <div class="header__phones">
-                <a href="tel=" class="header__phone"><?=$GLOBALS['MS']['DOMAIN_INFO']['UF_PHONES'][0]?></a>
-            </div>
-            <div class="header__feedback">
-                <a href="#" data-modal-open="feedback" class="header__feedback-link">Оставить заявку</a>
-            </div>
-        </div>
+<?php $APPLICATION->IncludeFile('/includes/metakom/header.php')?>
 
-    </div>
-</header>
 
 
 
