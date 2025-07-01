@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("Поверка приборов учета водосн�
 
     <div class="container">
         <div class="section">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php')?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 8])?>
         </div>
     </div>
 
