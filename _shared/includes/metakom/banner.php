@@ -2,8 +2,6 @@
 /** @var \CMain $APPLICATION */
 /** @var array $arParams */
 
-printr($arParams, 1);
-printr($GLOBALS['MS']);
 $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "banner",
