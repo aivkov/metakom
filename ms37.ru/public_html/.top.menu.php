@@ -1,8 +1,8 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Каталог",
-		"/catalog/",
+		"Новости",
+		"/news/",
 		Array(), 
 		Array(), 
 		"" 
@@ -15,15 +15,22 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Оплата и доставка",
-		"/payment/",
+		"Услуги",
+		"/services/",
 		Array(), 
 		Array(), 
 		"" 
 	),
     Array(
-        "Отзывы",
-        "/reviews/",
+        "Прверка счетчиков воды",
+        "https://poverka-37.ru",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Оформить заявку",
+        "#",
         Array(),
         Array(),
         ""

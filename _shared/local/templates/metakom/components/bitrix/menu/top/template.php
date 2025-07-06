@@ -10,31 +10,22 @@
                 <?= str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"])); ?>
             <?php endif ?>
 
-            <?php if ($arItem["IS_PARENT"]): ?>
+            <?php $extraClass = '';
+                if($arItem["SELECTED"]) {
+                    $extraClass .= ' selected';
+                }
+                if ($arItem["IS_PARENT"]) {
+                    $extraClass .= ' top-menu__item--parent js-toggle-active';
+                }
+            ?>
 
-                <?php if ($arItem["DEPTH_LEVEL"] == 1): ?>
-                <li>
-                    <a href="<?= $arItem["LINK"] ?>"
-                       class="<?php if ($arItem["SELECTED"]): ?>selected<?php else: ?><?php endif ?>"><?= $arItem["TEXT"] ?></a>
+            <li class="top-menu__item <?=$extraClass ?>">
+                <a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
+                <?php if ($arItem["IS_PARENT"]): ?>
                     <ul>
-                        <?php else: ?>
-                        <li <?php if ($arItem["SELECTED"]): ?> class="selected"<?php endif ?>>
-                            <a href="<?= $arItem["LINK"] ?>" class=""><?= $arItem["TEXT"] ?></a>
-                            <ul>
                 <?php endif ?>
 
-            <?php else: ?>
-                <?php if ($arItem["DEPTH_LEVEL"] == 1): ?>
-                    <li class="top-menu__item">
-                        <a href="<?= $arItem["LINK"] ?>"
-                           class="<?php if ($arItem["SELECTED"]): ?>selected<?php endif ?>"><?= $arItem["TEXT"] ?></a>
-                    </li>
-                <?php else: ?>
-                    <li<?php if ($arItem["SELECTED"]): ?> class="selected"<?php endif ?>>
-                        <a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
-                    </li>
-                <?php endif ?>
-            <?php endif ?>
+
 
             <?php $previousLevel = $arItem["DEPTH_LEVEL"]; ?>
 
