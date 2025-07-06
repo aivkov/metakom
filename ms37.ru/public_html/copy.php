@@ -128,7 +128,6 @@ function iblockElementsCopy($fromIblockId, $toIblockId) {
         $el = new CIBlockElement;
         $el->Add($copyFields);
     }
-
 }
 
 
