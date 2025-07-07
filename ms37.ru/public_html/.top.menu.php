@@ -22,7 +22,7 @@ $aMenuLinks = Array(
 		"" 
 	),
     Array(
-        "Прверка счетчиков воды",
+        "Поверка счетчиков воды",
         "https://poverka-37.ru",
         Array(),
         Array(),

@@ -15,7 +15,7 @@
     white-space: nowrap;
 }
 
-.top-menu a:hover {
+.top-menu a:hover, .top-menu__item.selected a {
     color: var(--color-accent);
     transition: var(--transition);
 }
@@ -24,10 +24,16 @@
     position: relative;
 }
 
-.top-menu__item--parent>ul {
+.top-menu__list--children {
     position: absolute;
+    left: 0;
+    top: 50px;
+    padding: 16px 24px;
+    background: var(--color-white);
+    box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
     opacity: 0;
     pointer-events: none;
+    transition: var(--transition);
 }
 
 .top-menu__item--parent>a {
@@ -43,5 +49,23 @@
     width: 12px;
     height: 100%;
     background: url('/local/img/icons/chevron-down.svg') left center no-repeat;
+    transition: var(--transition);
+}
+
+.top-menu__item--parent>a:hover:after {
+    background-image: url('/local/img/icons/chevron-down-accent.svg');
+    transition: var(--transition);
+}
+
+.top-menu__item--parent.is-active ul {
+    opacity: 1;
+    pointer-events: auto;
+    top: 35px;
+    transition: var(--transition);
+}
+
+.top-menu__list--children {
+    display: flex;
+    gap: 16px
 }
 

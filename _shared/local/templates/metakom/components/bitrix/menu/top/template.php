@@ -15,17 +15,15 @@
                     $extraClass .= ' selected';
                 }
                 if ($arItem["IS_PARENT"]) {
-                    $extraClass .= ' top-menu__item--parent js-toggle-active';
+                    $extraClass .= ' top-menu__item--parent js-popup';
                 }
             ?>
 
             <li class="top-menu__item <?=$extraClass ?>">
                 <a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
                 <?php if ($arItem["IS_PARENT"]): ?>
-                    <ul>
+                    <ul class="top-menu__list top-menu__list--children js-popup-children">
                 <?php endif ?>
-
-
 
             <?php $previousLevel = $arItem["DEPTH_LEVEL"]; ?>
 

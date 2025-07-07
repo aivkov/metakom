@@ -3,7 +3,7 @@
 
 use Bitrix\Main\Page\Asset;
 
-$curPage = $APPLICATION->GetCurPage(true);
+$curPage = $APPLICATION->GetCurPage();
 $assets = Asset::getInstance();
 $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
 $assets->addCss('/local/css/main.css');
@@ -29,6 +29,11 @@ $assets->addCss('/local/css/main.css');
 <body>
 <div class="bx-panel"><?php $APPLICATION->ShowPanel() ?></div>
 <?php $APPLICATION->IncludeFile('/includes/metakom/header.php')?>
+
+<?php if($curPage !== '/'):?>
+    <div class="page">
+        <div class="container">
+<?php endif?>
 
 
 
