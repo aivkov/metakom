@@ -37,7 +37,7 @@ $aMenuLinks = Array(
     ),
 	Array(
 		"Контакты", 
-		"contacts/", 
+		"/contacts/",
 		Array(), 
 		Array(), 
 		"" 

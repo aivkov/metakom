@@ -6,7 +6,7 @@ use Ms\Tools;
 <header class="header">
     <div class="header__container container">
         <div class="header__left">
-            <a href="/" class="header__logo">
+            <a href="/" class="header__logo logo">
                 <img src="/local/img/logo.png" alt="Метаком-сервис">
             </a>
             <?php $APPLICATION->IncludeFile('/includes/metakom/menu/top.php')?>

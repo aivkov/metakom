@@ -16,7 +16,7 @@ $APPLICATION->IncludeComponent(
 		"MENU_CACHE_USE_GROUPS" => "Y",
 		"ROOT_MENU_TYPE" => "top",
 		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => "horizontal_multilevel"
+		"COMPONENT_TEMPLATE" => "top"
 	),
 	false
 );?>
