@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu()
     initToggleActive()
 })
+
+function initMobileMenu() {
+    document.querySelector('.js-toggle-menu').addEventListener('click', () => {
+        document.querySelector('.js-header-menu').classList.toggle('opened')
+    })
+}
+
 
 function initToggleActive() {
     document.querySelectorAll('.js-popup').forEach((link) => {

@@ -1,7 +1,7 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 
 <?php if (!empty($arResult)): ?>
-    <div class="top-menu">
+    <div class="top-menu js-header-menu">
         <ul class="top-menu__list">
             <?php $previousLevel = 0;?>
             <?php foreach ($arResult as $arItem): ?>
@@ -34,6 +34,6 @@
             <?php endif ?>
 
         </ul>
-
+                <div class="hamb js-toggle-menu"><i></i><i></i><i></i></div>
     </div>
 <?php endif ?>

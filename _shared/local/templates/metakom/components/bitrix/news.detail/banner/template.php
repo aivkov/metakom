@@ -15,6 +15,8 @@
 /** @var array $templateData */
 /** @var \CBitrixComponent $component */
 
+use Ms\Tools;
+
 ?>
 
 <div class="banner">
@@ -24,20 +26,16 @@
             <div class="banner__desc"><?=$arResult['PREVIEW_TEXT']?></div>
         <?php endif?>
         <?php if($arResult['PROPERTIES']['BUTTON']['VALUE']):?>
-            <?php $link = $arResult['PROPERTIES']['BUTTON']['DESCRIPTION'];
-                $dataAttr = '';
-                if(str_starts_with('##', $link)) {
-                    $dataAttr = 'data-modal-ajax-open="' . substr($link, 2) . '"';
-                    $link = '#';
-                }
-            ?>
-            <a href="<?=$link?>" class="btn btn--200"><?=$arResult['PROPERTIES']['BUTTON']['VALUE']?></a>
+            <?php $link = $arResult['PROPERTIES']['BUTTON']['DESCRIPTION']; ?>
+            <a href="<?=Tools::getHref($link)?>" class="btn btn--200" <?=Tools::getLinkAttr($link)?>>
+                <span><?=$arResult['PROPERTIES']['BUTTON']['VALUE']?></span>
+            </a>
         <?php endif?>
     </div>
     <?php if($arResult['PREVIEW_PICTURE']):?>
         <div class="banner__right">
             <div class="banner__img">
-                <?php $arSmallFile = CFile::REsizeImageGet($arResult['PREVIEW_PICTURE'], ['width' => 618, 'height' => 535], BX_RESIZE_IMAGE_EXACT);?>
+                <?php $arSmallFile = CFile::ResizeImageGet($arResult['PREVIEW_PICTURE'], ['width' => 618, 'height' => 535], BX_RESIZE_IMAGE_EXACT);?>
                 <img src="<?=$arSmallFile['src']?>" alt="<?=$arResult['NAME']?>">
             </div>
         </div>

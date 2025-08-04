@@ -17,5 +17,6 @@ $APPLICATION->SetTitle("Метаком Сервис Иваново");?>
     </div>
 </div>
 
+<?php $APPLICATION->IncludeFile('/includes/metakom/services.php', ['ID' => 11])?>
 
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

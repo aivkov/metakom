@@ -2,6 +2,8 @@
 /** @var \CMain $APPLICATION */
 /** @var array $arParams */
 
+use Ms\Tools;
+
 $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "content",
@@ -30,7 +32,7 @@ $APPLICATION->IncludeComponent(
         "ELEMENT_ID" => $arParams['ID'],
         "FIELD_CODE" => array("PREVIEW_TEXT","PREVIEW_PICTURE",""),
         "IBLOCK_ID" => $GLOBALS['MS']['IB_INFO']['content'],
-        "IBLOCK_TYPE" => $GLOBALS['MS']['DOMAIN_INFO']['UF_IB_ID'],
+        "IBLOCK_TYPE" => Tools::getIbType(),
         "IBLOCK_URL" => "",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "MESSAGE_404" => "",

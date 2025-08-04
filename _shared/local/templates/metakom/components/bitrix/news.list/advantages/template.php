@@ -23,7 +23,7 @@
             <?php foreach($arResult['ITEMS'] as $arItem):?>
                 <div class="advantages__item">
                     <div class="advantages__img">
-                        <?php $arSmallFile = CFile::REsizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 50, 'height' => 50], BX_RESIZE_IMAGE_EXACT);?>
+                        <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 50, 'height' => 50], BX_RESIZE_IMAGE_EXACT);?>
                         <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
                     </div>
                     <div class="advantages__title"><?=$arItem['NAME']?></div>

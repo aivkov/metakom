@@ -12,7 +12,7 @@ use Ms\Tools;
             <?php $APPLICATION->IncludeFile('/includes/metakom/menu/top.php')?>
         </div>
         <div class="header__right">
-            <?php if($phone = $GLOBALS['MS']['DOMAIN_INFO']['UF_PHONES'][0]):?>
+            <?php if($phone = Tools::getPhones()[0]):?>
                 <div class="header__phones">
                     <a href="tel:<?=Tools::phoneToTel($phone)?>" class="header__phone"><?=$phone?></a>
                 </div>
