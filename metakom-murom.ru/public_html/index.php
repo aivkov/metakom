@@ -10,7 +10,7 @@ $APPLICATION->SetTitle("Метаком Сервис Муром");?>
 
 <div class="container">
     <div class="section">
-        <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 9])?>
+        <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 27])?>
     </div>
     <div class="section">
         <?php $APPLICATION->IncludeFile('/includes/metakom/advantages.php')?>
