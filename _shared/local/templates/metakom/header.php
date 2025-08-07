@@ -33,6 +33,7 @@ $assets->addCss('/local/css/main.css');
 <?php if($curPage !== '/'):?>
     <div class="page">
         <div class="container">
+            <h1 class="page__title"><?php $APPLICATION->ShowTitle()?></h1>
 <?php endif?>
 
 

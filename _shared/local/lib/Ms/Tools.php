@@ -7,13 +7,12 @@ class Tools
     public static function phoneToTel($phone) {
         return preg_replace("/[^0-9\+]/", "", $phone);
     }
-
-    public static function getIbType() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_IB_TYPE'];
+    public static function getDomain() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_DOMAIN'];
     }
 
-    public static function getPhones() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_PHONES'];
+    public static function getLid() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_DOMAIN'];
     }
 
     public static function getHref($link) {

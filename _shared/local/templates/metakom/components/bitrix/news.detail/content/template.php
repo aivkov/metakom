@@ -18,6 +18,5 @@
 ?>
 
 <div class="content">
-    <h1 class="section__title"><?=$arResult['NAME']?></h1>
     <div class="content__text"><?=$arResult['DETAIL_TEXT']?></div>
 </div>

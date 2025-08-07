@@ -2,7 +2,7 @@
 /** @var \CMain $APPLICATION */
 /** @var array $arParams */
 
-use Ms\Tools;
+use Ms\Site;
 
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
@@ -31,7 +31,7 @@ $APPLICATION->IncludeComponent(
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => $GLOBALS['MS']['IB_INFO']['advantages'],
-        "IBLOCK_TYPE" => Tools::getIbType(),
+        "IBLOCK_TYPE" => Site::getIbType(),
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "Y",
         "MESSAGE_404" => "",

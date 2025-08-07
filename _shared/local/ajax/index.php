@@ -44,17 +44,6 @@ class CAjaxRequest
 
         $this->arParams = $this->forSql($_POST);
 
-        $sessId = bitrix_sessid();
-
-        if(isset($this->arParams['sessid']) && !check_bitrix_sessid()) {
-            $this->arResult = [
-                "status" => "error",
-                "message" => "Сессия истекла. Перезагрузите страницу и повторите попытку",
-            ];
-            echo json_encode($this->arResult);
-            die();
-        }
-
         $action = explode("/", $this->arParams['action']);
 
         $fullPath = \Bitrix\Main\Application::getDocumentRoot() . $this->ajaxDir . "/" . $action[0] . '.php';

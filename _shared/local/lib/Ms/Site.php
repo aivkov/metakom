@@ -31,4 +31,31 @@ class Site {
             $GLOBALS['MS']['IB_INFO'][$ib['CODE']] = $ib['ID'];
         }
     }
+
+    public static function getIbType() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_IB_TYPE'];
+    }
+
+    public static function getPhones() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_PHONES'];
+    }
+
+    public static function getEmails() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL'];
+    }
+
+    public static function getSchedule() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_SCHEDULE'];
+    }
+    public static function getMap() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_YA_MAP'];
+    }
+
+    public static function getDomain() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_DOMAIN'];
+    }
+
+    public static function getLid() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_DOMAIN'];
+    }
 }
