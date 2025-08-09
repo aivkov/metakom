@@ -57,6 +57,6 @@ class Site {
     }
 
     public static function getLid() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_DOMAIN'];
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_SITE_ID'];
     }
 }
