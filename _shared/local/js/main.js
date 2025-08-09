@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initMasks()
     initPhoneMasks()
     initInputsError()
+    initDadata()
 })
 
 function afterAjax() {
     initCheckboxesPolicy()
     initMasks()
+    initDadata()
 }
 
 function initModals() {
@@ -386,7 +388,11 @@ function openModalSuccess(data) {
         obModal.open('success', data)
     }
 
-
 }
+
+function initDadata() {
+    (new Dadata).init()
+}
+
 
 

@@ -29,14 +29,3 @@ $assets->addCss('/local/css/main.css');
 <body>
 <div class="bx-panel"><?php $APPLICATION->ShowPanel() ?></div>
 <?php $APPLICATION->IncludeFile('/includes/metakom/header.php')?>
-
-<?php if($curPage !== '/'):?>
-    <div class="page">
-        <div class="container">
-            <h1 class="page__title"><?php $APPLICATION->ShowTitle()?></h1>
-<?php endif?>
-
-
-
-
-

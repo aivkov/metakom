@@ -6,8 +6,10 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $APPLICATION->SetPageProperty("description", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Муром");
 $APPLICATION->SetPageProperty("keywords", "Метаком Сервис, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД,  г. Муром");
 $APPLICATION->SetPageProperty("title", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Муром");
-$APPLICATION->SetTitle("Метаком Сервис Муром"); ?>
+$APPLICATION->SetTitle("Метаком Сервис Муром");
 
+$APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
+?>
     <div class="container">
         <div class="section">
             <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 27]) ?>
@@ -17,7 +19,7 @@ $APPLICATION->SetTitle("Метаком Сервис Муром"); ?>
         </div>
     </div>
 
-    <?php $APPLICATION->IncludeFile('/includes/metakom/services.php', ['ID' => 14]) ?>
+<?php $APPLICATION->IncludeFile('/includes/metakom/services.php', ['ID' => 14]) ?>
 
     <div class="container">
         <div class="section">

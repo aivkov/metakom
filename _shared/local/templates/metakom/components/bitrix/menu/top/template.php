@@ -5,6 +5,7 @@
         <ul class="top-menu__list">
             <?php $previousLevel = 0;?>
             <?php foreach ($arResult as $arItem): ?>
+            <?php $modal = $arItem['PARAMS']['modal']; ?>
 
             <?php if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel): ?>
                 <?= str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"])); ?>
@@ -20,7 +21,8 @@
             ?>
 
             <li class="top-menu__item <?=$extraClass ?>">
-                <a href="<?= $arItem["IS_PARENT"] ? 'javascript:void(0)' : $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
+                <a href="<?= $arItem["IS_PARENT"] ? 'javascript:void(0)' : $arItem["LINK"] ?>"
+                    <?php if($modal):?> data-modal-ajax-open="<?=$modal?>"<?php endif?>><?= $arItem["TEXT"] ?></a>
                 <?php if ($arItem["IS_PARENT"]): ?>
                     <ul class="top-menu__list--children js-popup-children">
                 <?php endif ?>

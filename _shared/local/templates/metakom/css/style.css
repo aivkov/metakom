@@ -66,7 +66,7 @@
 body {
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.;
 }
 
 .container {
@@ -103,6 +103,18 @@ p {
 
 .content p {
     line-height: 26px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.semibold {
+    font-weight: 600;
+}
+
+.medium {
+    font-weight: 500;
 }
 
 ul.list, .content ul {
@@ -358,6 +370,65 @@ ul.list, .content ul {
     color: var(--color-accent);
 }
 
+
+.input-block__dropdown {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    border: 1px solid var(--color-text);
+    border-radius: 8px;
+    background: var(--color-white);
+
+    padding: 10px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.input-block__dropdown-list {
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.input-block__dropdown-list::-webkit-scrollbar {
+    z-index: -1;
+    width: 6px;
+}
+
+.input-block__dropdown-list::-webkit-scrollbar-track {
+    background: var(--color-white);
+}
+
+.input-block__dropdown-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent);
+}
+
+.input-block__dropdown.is-active {
+    display: block;
+}
+
+.input-block__dropdown-item {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-grey);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.input-block__dropdown-item:not(.empty):hover {
+    background: var(--color-grey);
+}
+
+.input-block__dropdown-item.empty {
+    cursor: default;
+    color: green;
+}
+
+.input-block__dropdown-item:first-child {
+    border-top: none;
+}
+
 /* Checkbox */
 .checkbox__input {
     display: none;
@@ -468,6 +539,9 @@ ul.list, .content ul {
     position: relative;
 }
 
+.modal__inner--order {
+    max-width: 600px;
+}
 
 .modal__close {
     position: absolute;
@@ -582,6 +656,16 @@ ul.list, .content ul {
     .contacts__info {
         width: 100%;
         padding: 24px;
+    }
+
+    .input-block__dropdown {
+        top: 100px;
+        padding-right: 0;
+    }
+
+    .input-block__dropdown-item {
+        padding: 12px 0;
+        font-size: 14px;
     }
 }
 
