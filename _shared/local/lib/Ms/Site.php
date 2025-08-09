@@ -41,7 +41,7 @@ class Site {
     }
 
     public static function getEmails() {
-        return 'a343147@yandex.ru'; //ToDo remove it
+        return ['a343147@yandex.ru']; //ToDo remove it
         return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL'];
     }
 
