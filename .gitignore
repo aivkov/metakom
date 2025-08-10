@@ -21,3 +21,6 @@
 /.osp/*
 /.idea/*
 ivkov.php
+
+/*.private
+/*.public
