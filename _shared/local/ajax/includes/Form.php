@@ -3,22 +3,22 @@ namespace AjaxRequest;
 
 use \Ms\Tools;
 use \Ms\Site;
+use \Ms\Sender;
+
 
 class Form extends \CAjaxRequest
 {
     public function sendCall() {
         $message = '<p>Имя: <b>' . $this->arParams['name'] . '</b></p>';
         $message .= '<p>Телефон: <b>' . $this->arParams['phone'] . '</b></p>';
-        $emailsTo = Site::getEmails();
-        $sendFields = [
-            'MESSAGE' => $message,
-            'SUBJECT' => 'Сообщение с формы Обратной связи',
-            'EMAIL_TO' => implode(',', $emailsTo),
-            'DOMAIN' => Site::getDomain()
-        ];
 
-        $res = \CEvent::Send('METAKOM_SIMPLE', Site::getLid(), $sendFields);
-        if($res) {
+        $subject = 'Сообщение с формы Обратной связи';
+        $title = 'Письмо с сайта';
+
+        $obSender = new Sender($subject, $message);
+        $obSender->setLetterTitle($title);
+
+        if($obSender->send()) {
             $this->arResult = ['status' => 'success', 'message' => 'Ваше сообщение отправлено'];
         } else {
             $this->arResult = ['status' => 'error', 'message' => 'Ошибка отправки сообщения. Повторите попытку позже'];
@@ -33,16 +33,13 @@ class Form extends \CAjaxRequest
         $message .= '<p>Подъезд: <b>' . $this->arParams['entrance'] . '</b></p>';
         $message .= '<p>Сообщение: <b>' . $this->arParams['message'] . '</b></p>';
 
-        $emailsTo = Site::getEmails();
-        $sendFields = [
-            'MESSAGE' => $message,
-            'SUBJECT' => 'Сообщение с формы Обратной связи',
-            'EMAIL_TO' => implode(',', $emailsTo),
-            'DOMAIN' => Site::getDomain()
-        ];
+        $subject = 'Сообщение с формы Обратной связи';
+        $title = 'Письмо с сайта';
 
-        $res = \CEvent::Send('METAKOM_SIMPLE', Site::getLid(), $sendFields);
-        if($res) {
+        $obSender = new Sender($subject, $message);
+        $obSender->setLetterTitle($title);
+
+        if($obSender->send()) {
             $this->arResult = ['status' => 'success', 'message' => 'Ваше сообщение отправлено'];
         } else {
             $this->arResult = ['status' => 'error', 'message' => 'Ошибка отправки сообщения. Повторите попытку позже'];
