@@ -9,7 +9,7 @@ $headers = 'From: Конпания Метаком Сервис<no-reply@metakom-
     'MIME-Version: 1.0' . "\r\n" .
     'Content-type: text/html; charset=utf-8' . "\r\n";
 
-if(mail($to, $subject, $message, $headers, '-f Конпания Метаком Сервис<no-reply@metakom-murom.ru>')) {
+if(mail($to, $subject, $message, $headers, '-f no-reply@metakom-murom.ru')) {
     echo 'success';
 } else {
     echo 'error';
