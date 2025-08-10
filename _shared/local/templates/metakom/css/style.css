@@ -9,12 +9,13 @@
     --color-footer: #bdddde;
     --color-hover: #33aabb;
     --color-disabled: #d6d6d6;
+    --color-adv: #134872;
     --color-grey: #eee;
     --color-grey2: #ccc;
     --color-border: #ccc;
     --color-input: #777;
     --color-success: green;
-    --color-error: red;
+    --color-error: #e71a1a;
     --color-desc: #134772;
     --color-footer: #bdddde;
 
@@ -66,7 +67,7 @@
 body {
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-size: 16px;
-    line-height: 1.;
+    line-height: 1.5;
 }
 
 .container {
@@ -76,13 +77,27 @@ body {
 }
 
 .section {
-    margin-bottom: 64px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.section--no-pt {
+    padding-top: 0;
+}
+
+.section--grey {
+    background: var(--color-grey);
 }
 
 .section__title {
     text-align: center;
     margin-bottom: 36px;
     font-size: 32px;
+    font-weight: bold;
+}
+
+.section__title--big {
+    font-size: 40px;
 }
 
 .page {
@@ -116,6 +131,21 @@ p {
 .medium {
     font-weight: 500;
 }
+
+.error {
+    color: var(--color-error);
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 
 ul.list, .content ul {
     display: flex;
@@ -590,6 +620,10 @@ ul.list, .content ul {
         padding: 0 24px;
     }
 
+    .title {
+        font-size: 32px;
+    }
+
     .header__left {
         gap: 0;
     }
@@ -615,6 +649,18 @@ ul.list, .content ul {
 
     .header__logo {
         width: 180px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .section__title {
+        font-size: 28px;
+    }
+
+    .section__title--big {
+        font-size: 36px;
     }
 
     .footer-menu__list {
@@ -651,6 +697,18 @@ ul.list, .content ul {
     .header__right {
         padding-right: 0;
         justify-items: center;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .section__title {
+        font-size: 24px;
+    }
+
+    .section__title--big {
+        font-size: 28px;
     }
 
     .contacts__info {

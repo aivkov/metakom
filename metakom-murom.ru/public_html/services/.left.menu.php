@@ -9,7 +9,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Умный домофон",
-		"/umni-domofon/",
+		"/umnyi-domofon/",
 		Array(), 
 		Array(), 
 		"" 

@@ -11,10 +11,10 @@ $APPLICATION->SetTitle("Метаком Сервис Муром");
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
     <div class="container">
-        <div class="section">
+        <div class="section section--no-pt">
             <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 27]) ?>
         </div>
-        <div class="section">
+        <div class="section section--no-pt">
             <?php $APPLICATION->IncludeFile('/includes/metakom/advantages.php') ?>
         </div>
     </div>
