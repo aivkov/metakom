@@ -26,6 +26,7 @@ class Sender
     public function send()
     {
         $emailsTo = Site::getEmails();
+        $emailsTo = ['a343147@yandex.ru', 'ivkov_alexey@mail.ru']; //ToDo remove it
         $to = implode(',', $emailsTo);
         $headers = $this->getHeaders();
         $message = $this->getEmailHeader() . $this->message . $this->getEmailFooter();
