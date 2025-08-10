@@ -89,6 +89,10 @@ body {
     background: var(--color-grey);
 }
 
+.section--dark-accent {
+    background: var(--color-adv);
+}
+
 .section__title {
     text-align: center;
     margin-bottom: 36px;
