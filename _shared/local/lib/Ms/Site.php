@@ -60,6 +60,6 @@ class Site {
         return $GLOBALS['MS']['DOMAIN_INFO']['UF_SITE_ID'];
     }
     public static function getEmailFrom() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL_FROM'];
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL_FROM'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
     }
 }
