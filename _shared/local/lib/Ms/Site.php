@@ -61,4 +61,30 @@ class Site {
     public static function getEmailFrom() {
         return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL_FROM'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
     }
+
+    public static function getHeaderScripts() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_HEADER_SCRIPTS'];
+    }
+
+    public static function getFooterScripts() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_FOOTER_SCRIPTS'];
+    }
+
+    public static function getYandexVerification() {
+        if($GLOBALS['MS']['DOMAIN_INFO']['UF_YANDEX_VERIFICATION']) {
+            return '<meta name="yandex-verification" content="' . $GLOBALS['MS']['DOMAIN_INFO']['UF_YANDEX_VERIFICATION'] . '" />';
+        }
+        return '';
+    }
+
+    public static function getGoogleVerification() {
+        if($GLOBALS['MS']['DOMAIN_INFO']['UF_GOOGLE_VERIFICATION']) {
+            return '<meta name="google-site-verification" content="' . $GLOBALS['MS']['DOMAIN_INFO']['UF_GOOGLE_VERIFICATION'] . '" />';
+        }
+        return '';
+    }
+
+    public static function getYandexRaiting() {
+        return $GLOBALS['MS']['DOMAIN_INFO']['UF_YANDEX_RAITING'];
+    }
 }
