@@ -2,3 +2,8 @@ ln -s ./../../_shared/bitrix bitrix
 ln -s ./../../_shared/upload upload
 ln -s ./../../_shared/local local
 ln -s ./../../_shared/includes includes
+
+mklink /d bitrix .\..\..\_shared\bitrix
+mklink /d upload .\..\..\_shared\upload
+mklink /d local .\..\..\_shared\local
+mklink /d includes .\..\..\_shared\includes
