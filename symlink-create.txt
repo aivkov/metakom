@@ -1,0 +1,4 @@
+ln -s ./../../_shared/bitrix bitrix
+ln -s ./../../_shared/upload upload
+ln -s ./../../_shared/local local
+ln -s ./../../_shared/includes includes
