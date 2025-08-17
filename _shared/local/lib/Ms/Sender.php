@@ -2,6 +2,8 @@
 
 namespace Ms;
 
+use Bitrix\Main\Type\DateTime;
+
 class Sender
 {
     private $subject;
@@ -9,6 +11,8 @@ class Sender
     private $title;
 
     private $emailFrom;
+
+    private $emailTo;
 
     public function __construct($subject, $message)
     {
@@ -27,12 +31,14 @@ class Sender
     {
         $emailsTo = Site::getEmails();
         //$emailsTo = ['a343147@yandex.ru', 'ivkov_alexey@mail.ru']; //ToDo remove it
-        $to = implode(',', $emailsTo);
+        $this->emailTo = implode(',', $emailsTo);
+
         $headers = $this->getHeaders();
         $message = $this->getEmailHeader() . $this->message . $this->getEmailFooter();
 
-        return mail($to, $this->subject, $message, $headers, $this->getAdditionalParams());
-
+        $result = mail($this->emailTo, $this->subject, $message, $headers, $this->getAdditionalParams());
+        $this->save($result);
+        return $result;
     }
 
     private function getHeaders() {
@@ -57,5 +63,25 @@ class Sender
 
     private function getAdditionalParams() {
         return '-f ' . Site::getEmailFrom();
+    }
+
+    private function save($result)
+    {
+        $arFields = [
+            'UF_SITE_ID' => Site::getLid(),
+            'UF_DOMAIN' => Site::getDomain(),
+            'UF_SUBJECT' => $this->subject,
+            'UF_MESSAGE' => $this->message,
+            'UF_EMAIL_TO' => $this->emailTo,
+            'UF_DATE_TIME' => new DateTime(),
+            'UF_SUCCESS_EXEC' => $result
+        ];
+        $entityDataClass = HLBlock::GetEntityDataClass(FEEDBACK_HL_ID);
+        $res = $entityDataClass::add($arFields);
+        if($res->isSuccess()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -5,7 +5,7 @@ use \Bitrix\Main\Loader;
 
 class Site {
 
-    private $hlBlockId = 1;
+    private $hlBlockId = SITE_HL_ID;
     private $entityDataClass = null;
 
     public static function init() {
