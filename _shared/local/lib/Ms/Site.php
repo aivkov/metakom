@@ -8,83 +8,96 @@ class Site {
     private $hlBlockId = SITE_HL_ID;
     private $entityDataClass = null;
 
+    private static $info;
+
+    private static $iblockId;
+
     public static function init() {
-        $instance = new static;
-        $instance->selectDomainInfo();
-        $instance->selectIbInfo();
+        static::selectInfo();
+        static::selectIblockId();
     }
 
-    private function selectDomainInfo() {
-
-        $this->entityDataClass = HLBlock::GetEntityDataClass($this->hlBlockId);
-        $domainInfo = $this->entityDataClass::getList(['filter' => ['UF_SITE_ID' => SITE_ID]])->Fetch();
-        $GLOBALS['MS']['DOMAIN_INFO'] = $domainInfo ?: [];
-    }
-
-    private function selectIbInfo() {
-        global $DB;
-        $siteId = $GLOBALS['MS']['DOMAIN_INFO']['UF_SITE_ID'];
-        $sql = 'SELECT `CODE`, `ID` FROM b_iblock WHERE LID = "' . $siteId . '"';
-        $res = $DB->Query($sql);
-        $GLOBALS['MS']['IB_INFO'] = [];
-        while($ib = $res->Fetch()) {
-            $GLOBALS['MS']['IB_INFO'][$ib['CODE']] = $ib['ID'];
+    private static function selectInfo() {
+        Loader::includeModule('iblock');
+        $arFilter = ['IBLOCK_TYPE' => 'content', 'IBLOCK_CODE' => 'contacts', 'CODE' => SITE_ID, 'ACTIVE' => 'Y'];
+        $res = \CIBlockElement::getList(['SORT' => 'asc'], $arFilter);
+        static::$info = [];
+        while($ob = $res->GetNextElement()) {
+            $arFields = $ob->getFields();
+            $arFields['PROPERTIES'] = $ob->getProperties();
+            static::$info[] = $arFields;
         }
     }
 
+    private static function selectIblockId() {
+        Loader::includeModule('iblock');
+        $arFilter = ['TYPE' => 'content','CODE' => static::getDomain(), "CHECK_PERMISSIONS" => "N"];
+        $iBlock = \CIBlock::GetList([], $arFilter)->Fetch();
+        if($iBlock['ID']) {
+            static::$iblockId = $iBlock['ID'];
+        }
+    }
+
+    public static function getIblockId() {
+        if(!static::$iblockId) {
+            static::selectIblockId();
+        }
+        return static::$iblockId;
+    }
+
     public static function getIbType() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_IB_TYPE'];
+        return '';
     }
 
     public static function getPhones() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_PHONES'];
+        return self::$info[0]['PROPERTIES']['PHONES']['VALUE'];
     }
 
     public static function getEmails() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL'];
+        return self::$info[0]['PROPERTIES']['EMAIL']['VALUE'];
     }
 
     public static function getSchedule() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_SCHEDULE'];
+        return self::$info[0]['PROPERTIES']['SCHEDULE']['VALUE'];
     }
     public static function getMap() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_YA_MAP'];
+        return self::$info[0]['PROPERTIES']['YANDEX_MAP']['VALUE'];
     }
 
     public static function getDomain() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_DOMAIN'];
+        return self::$info[0]['PROPERTIES']['DOMAIN']['VALUE'];
     }
 
     public static function getLid() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_SITE_ID'];
+        return self::$info[0]['CODE'];
     }
     public static function getEmailFrom() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_EMAIL_FROM'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
+        return self::$info[0]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
     }
 
     public static function getHeaderScripts() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_HEADER_SCRIPTS'];
+        return self::$info[0]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
     }
 
     public static function getFooterScripts() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_FOOTER_SCRIPTS'];
+        return self::$info[0]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
     }
 
     public static function getYandexVerification() {
-        if($GLOBALS['MS']['DOMAIN_INFO']['UF_YANDEX_VERIFICATION']) {
-            return '<meta name="yandex-verification" content="' . $GLOBALS['MS']['DOMAIN_INFO']['UF_YANDEX_VERIFICATION'] . '" />';
+        if(self::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
+            return '<meta name="yandex-verification" content="' . self::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />';
         }
         return '';
     }
 
     public static function getGoogleVerification() {
-        if($GLOBALS['MS']['DOMAIN_INFO']['UF_GOOGLE_VERIFICATION']) {
-            return '<meta name="google-site-verification" content="' . $GLOBALS['MS']['DOMAIN_INFO']['UF_GOOGLE_VERIFICATION'] . '" />';
+        if(self::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
+            return '<meta name="google-site-verification" content="' . self::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />';
         }
         return '';
     }
 
     public static function getYandexRaiting() {
-        return $GLOBALS['MS']['DOMAIN_INFO']['UF_YANDEX_RAITING'];
+        return self::$info[0]['PROPERTIES']['YANDEX_RAITING']['VALUE'];
     }
 }

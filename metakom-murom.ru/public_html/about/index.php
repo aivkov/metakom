@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("О компании ООО «Метаком Сервис
     <div class="page">
         <div class="container">
             <h1 class="page__title"><?php $APPLICATION->ShowTitle() ?></h1>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['ID' => 28]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['ID' => 57]) ?>
         </div>
     </div>
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

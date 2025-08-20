@@ -19,9 +19,9 @@
 
 <?php if($arResult['ITEMS']):?>
     <div class="benefit">
-        <?php if($arResult['PICTURE']):?>
+        <?php if($arResult['PARENT_SECTION']['PICTURE']):?>
             <div class="benefit__img">
-                <img src="<?=CFile::GetPath($arResult['PICTURE'])?>" alt="">
+                <img src="<?=CFile::GetPath($arResult['PARENT_SECTION']['PICTURE'])?>" alt="">
             </div>
         <?php endif?>
         <div class="benefit__list">

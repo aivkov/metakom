@@ -7,14 +7,13 @@ $APPLICATION->SetTitle("Установка и облуживание Ip виде
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
 
-
     <div class="section section--no-pt">
         <div class="container">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 42]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 83]) ?>
         </div>
     </div>
     <div class="section section--grey">
-        <?php $APPLICATION->IncludeFile('/includes/metakom/banner2.php', ['ID' => 43]) ?>
+        <?php $APPLICATION->IncludeFile('/includes/metakom/banner2.php', ['ID' => 84]) ?>
     </div>
 
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
