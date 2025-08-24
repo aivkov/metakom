@@ -36,4 +36,9 @@ $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.cs
         </div>
     </div>
 
+    <div class="section section--grey">
+        <div class="container">
+            <?php $APPLICATION->IncludeFile('/includes/metakom/feedback.php', ['ID' => 94]) ?>
+        </div>
+    </div>
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

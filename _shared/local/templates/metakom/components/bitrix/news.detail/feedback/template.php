@@ -41,7 +41,7 @@ use Ms\Tools;
                        autocomplete="off" data-required="">
             </div>
             <div class="input-block">
-                <label class="input-block__label">Сообщение <sup>*</sup></label>
+                <label class="input-block__label">Сообщение</label>
                 <textarea name="message" class="input-block__input input-block__input--textarea" placeholder="Опишите, какую услугу вы хотите получить"
                           autocomplete="off"></textarea>
             </div>
