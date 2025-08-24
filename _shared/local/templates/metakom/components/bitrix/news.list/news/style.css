@@ -18,3 +18,8 @@
 .news__item p {
     margin-bottom: 8px;
 }
+
+.news__item-preview {
+    color: var(--color-adv);
+    font-style: italic;
+}
