@@ -3,14 +3,13 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Новости");
-$APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
+$APPLICATION->SetTitle("Новости Метаком Сервис в Муроме");
 ?>
 
     <div class="page">
         <div class="container">
             <h1 class="page__title"><?php $APPLICATION->ShowTitle() ?></h1>
-            <p class="error">Нет новостей</p>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/news.php', ['PARENT_SECTION' => 16]) ?>
         </div>
     </div>
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
