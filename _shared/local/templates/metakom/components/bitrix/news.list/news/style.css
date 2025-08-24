@@ -1,5 +1,7 @@
 .news {
     max-width: 800px;
+    display: grid;
+    gap: 48px;
 }
 
 .news__item {
