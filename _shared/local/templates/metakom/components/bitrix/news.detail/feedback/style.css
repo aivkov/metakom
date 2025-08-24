@@ -1,0 +1,43 @@
+.feedback {
+    display: flex;
+}
+
+.feedback__title {
+    margin-bottom: 16px;
+}
+
+.feedback__form {
+    max-width: 500px;
+    border-radius: 16px;
+    padding: 24px 48px;
+    background: var(--color-white);
+}
+
+.feedback__right {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 48px;
+}
+
+.feedback__img {
+    max-width: 450px;
+}
+
+@media (max-width: 1024px) {
+    .feedback {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    .feedback__form {
+        max-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedback__form {
+        padding: 16px 24px;
+    }
+}

@@ -31,7 +31,6 @@ h2.banner__title {
     border-left: 4px solid var(--color-accent);
 }
 
-
 .banner__picture {
     display: flex;
     justify-content: center;
@@ -75,5 +74,10 @@ h2.banner__title {
 @media (max-width: 576px) {
     .banner__title {
         font-size: 28px;
+    }
+
+    .banner__desc--accent {
+        padding-left: 0;
+        border-left: none;
     }
 }

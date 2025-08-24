@@ -79,11 +79,11 @@
 
 @media (max-width: 1024px) {
     .steps__item:nth-child(odd) {
-        padding-left: 56px;
+        padding-left: 48px;
     }
 
     .steps__item:nth-child(even) {
-        padding-right: 56px;
+        padding-right: 48px;
     }
 
     .steps__number {
@@ -107,7 +107,7 @@
 @media (max-width: 768px) {
     .steps {
         padding-top: 24px;
-        padding-left: 48px;
+        padding-left: 24px;
     }
 
     .steps__item {
@@ -127,7 +127,7 @@
     .steps__item:nth-child(even) {
         text-align: left;
         padding-right: 0;
-        padding-left: 64px;
+        padding-left: 48px;
     }
 
     .steps__item:nth-child(even) .steps__number {

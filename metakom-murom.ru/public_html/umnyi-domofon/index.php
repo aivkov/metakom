@@ -18,11 +18,29 @@ $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.cs
     <div class="section section--dark-accent">
         <?php $APPLICATION->IncludeFile('/includes/metakom/description.php', ['ID' => 78]) ?>
     </div>
-    <div class="section">
+
+    <div class="section section">
+        <div class="container">
+            <?php $APPLICATION->IncludeFile('/includes/metakom/bonus.php', ['PARENT_SECTION' => 21]) ?>
+        </div>
+    </div>
+
+    <div class="section section--grey">
         <div class="container">
             <h2 class="section__title section__title--big"><?= $APPLICATION->ShowViewContent('section-title-9') ?></h2>
             <?php $APPLICATION->IncludeFile('/includes/metakom/steps.php', ['PARENT_SECTION' => 9]) ?>
         </div>
     </div>
 
+    <div class="section">
+        <div class="container">
+            <?php $APPLICATION->IncludeFile('/includes/metakom/advance.php', ['PARENT_SECTION' => 17]) ?>
+        </div>
+    </div>
+
+    <div class="section section--grey">
+        <div class="container">
+            <?php $APPLICATION->IncludeFile('/includes/metakom/feedback.php', ['ID' => 87]) ?>
+        </div>
+    </div>
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>

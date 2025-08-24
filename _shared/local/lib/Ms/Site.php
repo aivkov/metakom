@@ -4,10 +4,6 @@ namespace Ms;
 use \Bitrix\Main\Loader;
 
 class Site {
-
-    private $hlBlockId = SITE_HL_ID;
-    private $entityDataClass = null;
-
     private static $info;
 
     private static $iblockId;
@@ -43,10 +39,6 @@ class Site {
             static::selectIblockId();
         }
         return static::$iblockId;
-    }
-
-    public static function getIbType() {
-        return '';
     }
 
     public static function getPhones() {

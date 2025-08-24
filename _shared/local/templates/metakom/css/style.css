@@ -102,6 +102,7 @@ body {
 
 .section__title--big {
     font-size: 40px;
+    line-height: 1.2;
 }
 
 .page {
@@ -347,7 +348,7 @@ ul.list, .content ul {
 .form__fields {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 36px;
 }
 
 .form__message {
@@ -705,7 +706,7 @@ ul.list, .content ul {
     }
 
     .title {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .section__title {
@@ -713,7 +714,7 @@ ul.list, .content ul {
     }
 
     .section__title--big {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .contacts__info {

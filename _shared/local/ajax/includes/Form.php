@@ -9,8 +9,11 @@ use \Ms\Sender;
 class Form extends \CAjaxRequest
 {
     public function sendCall() {
-        $message = '<p>Имя: <b>' . $this->arParams['name'] . '</b></p>';
-        $message .= '<p>Телефон: <b>' . $this->arParams['phone'] . '</b></p>';
+        $message = '<p>Имя: <b>' . htmlspecialchars($this->arParams['name']) . '</b></p>';
+        $message .= '<p>Телефон: <b>' . htmlspecialchars($this->arParams['phone']) . '</b></p>';
+        if($this->arParams['message']) {
+            $message .= '<p>Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b></p>';
+        }
 
         $subject = 'Сообщение с формы Обратной связи';
         $title = 'Письмо с сайта';
