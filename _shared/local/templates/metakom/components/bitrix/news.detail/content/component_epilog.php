@@ -15,13 +15,5 @@
 /** @var array $templateData */
 /** @var \CBitrixComponent $component */
 
-?>
 
-<div class="content">
-    <div class="content__text"><?=$arResult['DETAIL_TEXT']?></div>
-    <?php if($arResult['DETAIL_PICTURE']):?>
-        <div class="content__img">
-            <img src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="">
-        </div>
-    <?php endif?>
-</div>
+$APPLICATION->AddViewContent('element-title-' . $arResult['ID'], $arResult['NAME']);

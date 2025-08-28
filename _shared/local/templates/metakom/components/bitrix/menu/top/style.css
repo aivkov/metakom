@@ -2,9 +2,10 @@
 
 .top-menu__list, .footer-menu__list {
     display: flex;
-    gap: 16px 32px;
+    gap: 8px 32px;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 0;
 }
 
 .top-menu a, .footer-menu a {

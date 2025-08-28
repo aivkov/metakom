@@ -204,9 +204,10 @@ function initCheckboxesPolicy() {
         checkbox.addEventListener('change', (e) => {
             const form = checkbox.closest('.form');
             if (!!form) {
+                const formPolicyCheckboxesNotChecked = form.querySelectorAll('[data-checkbox-policy]:not(:checked)')
                 const submitBtns = form.querySelectorAll('[type=submit]');
                 submitBtns.forEach((submitBtn) => {
-                    submitBtn.disabled = !checkbox.checked
+                    submitBtn.disabled = !!formPolicyCheckboxesNotChecked.length
                 })
             }
         })

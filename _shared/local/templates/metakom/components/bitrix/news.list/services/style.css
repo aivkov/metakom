@@ -24,6 +24,10 @@
     gap: 32px;
 }
 
+.services__container--3-col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .service {
     display: flex;
     flex-direction: column;
@@ -44,7 +48,7 @@
 .service__head {
     position: relative;
     display: flex;
-    gap: 8px;
+    gap: 16px;
     padding-bottom: 4px;
     align-items: center;
 }
@@ -60,6 +64,7 @@
 }
 
 .service__head-img {
+    flex-shrink: 0;
     width: 50px;
 }
 

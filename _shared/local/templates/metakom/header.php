@@ -2,6 +2,7 @@
 /** @global CMain $APPLICATION */
 
 use Bitrix\Main\Page\Asset;
+use Ms\Site;
 
 $curPage = $APPLICATION->GetCurPage();
 $assets = Asset::getInstance();
@@ -17,6 +18,8 @@ $assets->addCss('/local/css/main.css');
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php $APPLICATION->ShowTitle(); ?></title>
+    <?=Site::getGoogleVerification()?>
+    <?=Site::getYandexVerification()?>
     <?php
     $APPLICATION->ShowMeta("keywords", false);
     $APPLICATION->ShowMeta("description", false);
@@ -25,7 +28,9 @@ $assets->addCss('/local/css/main.css');
     $APPLICATION->ShowHeadStrings();
     $APPLICATION->ShowHeadScripts();
     ?>
+    <?=Site::getHeaderScripts()?>
 </head>
 <body>
 <div class="bx-panel"><?php $APPLICATION->ShowPanel() ?></div>
+<?=Site::getYandexRaiting()?>
 <?php $APPLICATION->IncludeFile('/includes/metakom/header.php')?>

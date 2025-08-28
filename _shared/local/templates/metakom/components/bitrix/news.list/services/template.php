@@ -20,8 +20,9 @@ use Ms\Tools;
 ?>
 
 <?php if($arResult['ITEMS']):?>
+<?php $cols = count($arResult['ITEMS'])?>
     <div class="section services">
-        <div class="container services__container">
+        <div class="container services__container <?php if($cols < 4):?> services__container--<?=$cols?>-col<?php endif?>">
             <?php foreach($arResult['ITEMS'] as $arItem):?>
                 <div class="services__item service">
                     <div class="service__top">

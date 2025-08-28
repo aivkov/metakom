@@ -42,54 +42,113 @@ class Site {
     }
 
     public static function getPhones() {
-        return self::$info[0]['PROPERTIES']['PHONES']['VALUE'];
+        return static::$info[0]['PROPERTIES']['PHONES']['VALUE'];
     }
 
     public static function getEmails() {
-        return self::$info[0]['PROPERTIES']['EMAIL']['VALUE'];
+        return static::$info[0]['PROPERTIES']['EMAIL']['VALUE'];
     }
 
     public static function getSchedule() {
-        return self::$info[0]['PROPERTIES']['SCHEDULE']['VALUE'];
+        return static::$info[0]['PROPERTIES']['SCHEDULE']['VALUE'];
     }
     public static function getMap() {
-        return self::$info[0]['PROPERTIES']['YANDEX_MAP']['VALUE'];
+        return static::$info[0]['PROPERTIES']['YANDEX_MAP']['~VALUE'] ?: '';
     }
 
     public static function getDomain() {
-        return self::$info[0]['PROPERTIES']['DOMAIN']['VALUE'];
+        return static::$info[0]['PROPERTIES']['DOMAIN']['VALUE'];
     }
 
     public static function getLid() {
-        return self::$info[0]['CODE'];
+        return static::$info[0]['CODE'];
     }
     public static function getEmailFrom() {
-        return self::$info[0]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
+        return static::$info[0]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
     }
 
     public static function getHeaderScripts() {
-        return self::$info[0]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
+        $arScripts = static::$info[0]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
+        $scriptStr = '';
+        if(is_array($arScripts) && !empty($arScripts)) {
+            $scriptStr .= "\r\n";
+            foreach($arScripts as $arScript) {
+                $scriptStr .= htmlspecialchars_decode($arScript['TEXT']);
+            }
+        }
+        $scriptStr .= "\r\n";
+        return $scriptStr;
     }
 
     public static function getFooterScripts() {
-        return self::$info[0]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
+        $arScripts = static::$info[0]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
+        $scriptStr = '';
+        if(is_array($arScripts) && !empty($arScripts)) {
+            $scriptStr .= "\r\n";
+            foreach($arScripts as $arScript) {
+                $scriptStr .= htmlspecialchars_decode($arScript['TEXT']);
+            }
+        }
+        $scriptStr .= "\r\n";
+        return $scriptStr;
     }
 
     public static function getYandexVerification() {
-        if(self::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
-            return '<meta name="yandex-verification" content="' . self::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />';
+        if(static::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
+            return '<meta name="yandex-verification" content="' . static::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
 
     public static function getGoogleVerification() {
-        if(self::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
-            return '<meta name="google-site-verification" content="' . self::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />';
+        if(static::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
+            return '<meta name="google-site-verification" content="' . static::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
 
     public static function getYandexRaiting() {
-        return self::$info[0]['PROPERTIES']['YANDEX_RAITING']['VALUE'];
+        if($iframe = static::$info[0]['PROPERTIES']['YANDEX_RAITING']['VALUE']) {
+            return htmlspecialchars_decode($iframe) . "\r\n";
+        }
+        return '';
+    }
+
+    public static function getSocial() {
+        $arSocial = [];
+        $prop = static::$info[0]['PROPERTIES']['SOCIAL'];
+        if(is_array($prop['VALUE'])) {
+            foreach($prop['VALUE'] as $key => $link) {
+                $icon = $prop['DESCRIPTION'][$key];
+                if(strpos($icon, '.') === false) {
+                    $icon .= '.svg';
+                }
+                $arSocial[] = [
+                    'link' => $link,
+                    'icon' => $icon
+                ];
+            }
+        }
+        return $arSocial;
+    }
+    
+    public static function getCities() {
+        $arCities = [];
+        foreach(static::$info as $arItem) {
+            if($city = trim($arItem['PROPERTIES']['CITY']['VALUE'])) {
+                $arCities[] = $city;
+            }
+        }
+        return $arCities;
+    }
+
+    public static function getAddresses() {
+        $arAddresses = [];
+        foreach(static::$info as $arItem) {
+            if($address = trim($arItem['PROPERTIES']['ADDRESS']['VALUE'])) {
+                $arAddresses[] = $address;
+            }
+        }
+        return $arAddresses;
     }
 }
