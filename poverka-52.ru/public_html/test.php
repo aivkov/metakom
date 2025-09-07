@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer();
 
 $mail->setFrom('no-reply@' . $_SERVER['SERVER_NAME'], 'Метаком Севис');
-$mail->addAddress('a343147@yandex.ru');
+$mail->addAddress('ivkov_alexey@mail.ru');
 
 $mail->isHTML();
 $mail->Subject = 'Привет из PHPMailer!';
