@@ -8,7 +8,7 @@ $mail = new PHPMailer();
 
 $mail->Port = 587;
 $mail->setFrom('no-reply@' . $_SERVER['SERVER_NAME'], 'Метаком Севис');
-$mail->addAddress('a343147@yandex,ru', 'Имя получателя');
+$mail->addAddress('a343147@yandex.ru');
 
 $mail->isHTML();
 $mail->Subject = 'Привет из PHPMailer!';
