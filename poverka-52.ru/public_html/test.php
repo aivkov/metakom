@@ -6,9 +6,8 @@ use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer();
 
-$mail->Port = 587;
 $mail->setFrom('no-reply@' . $_SERVER['SERVER_NAME'], 'Метаком Севис');
-$mail->addAddress('test-nnrk1lgbd@srv1.mail-tester.com');
+$mail->addAddress('a343147@yandex.ru');
 
 $mail->isHTML();
 $mail->Subject = 'Привет из PHPMailer!';
@@ -16,9 +15,9 @@ $mail->Body = 'Это <b>HTML-письмо</b>, отправленное с по
 $mail->DKIM_private ='/home/c/cw04289/poverka-52.ru.private';
 $mail->DKIM_selector = 'mail';
 
+if($mail->send()) {
+    echo 'success';
+} else {
+    echo 'error<br>' . $mail->ErrorInfo;
+}
 
-// Отправка письма
-var_dump($mail->send());
-echo $mail->ErrorInfo;
-
-$a = $mail;
