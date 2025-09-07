@@ -10,9 +10,12 @@ $mail->Port = 587;
 $mail->setFrom('no-reply@' . $_SERVER['SERVER_NAME'], 'Метаком Севис');
 $mail->addAddress('a343147@yandex,ru', 'Имя получателя');
 
-$mail->isHTML(true);
+$mail->isHTML();
 $mail->Subject = 'Привет из PHPMailer!';
 $mail->Body = 'Это <b>HTML-письмо</b>, отправленное с помощью PHPMailer.';
 
 // Отправка письма
 var_dump($mail->send());
+echo $mail->ErrorInfo;
+
+$a = $mail;
