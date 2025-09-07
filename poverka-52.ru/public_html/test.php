@@ -13,6 +13,9 @@ $mail->addAddress('a343147@yandex.ru');
 $mail->isHTML();
 $mail->Subject = 'Привет из PHPMailer!';
 $mail->Body = 'Это <b>HTML-письмо</b>, отправленное с помощью PHPMailer с сайта ' . $_SERVER['SERVER_NAME'];
+$mail->DKIM_private('/home/c/cw04289/poverka-52.ru.private');
+$mail->DKIM_selector('mail');
+
 
 // Отправка письма
 var_dump($mail->send());
