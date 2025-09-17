@@ -51,7 +51,7 @@ class Sender
         $dkimFile = realpath($_SERVER['DOCUMENT_ROOT'] . '/../..') . '/' . $domain . '.private';
 
         if(file_exists($dkimFile)) {
-            $mail->DKIM_private = $_SERVER['DOCUMENT_ROOT'] . '/home/c/cw04289/poverka-52.ru.private';
+            $mail->DKIM_private = $dkimFile;
             $mail->DKIM_domain = $domain;
             $mail->DKIM_selector = 'mail';
         }
