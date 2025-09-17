@@ -3,6 +3,8 @@
 namespace Ms;
 
 use Bitrix\Main\Type\DateTime;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Sender
 {
@@ -33,10 +35,30 @@ class Sender
         //$emailsTo = ['a343147@yandex.ru', 'ivkov_alexey@mail.ru']; //ToDo remove it
         $this->emailTo = implode(',', $emailsTo);
 
-        $headers = $this->getHeaders();
+        //$headers = $this->getHeaders();
         $message = $this->getEmailHeader() . $this->message . $this->getEmailFooter();
 
-        $result = mail($this->emailTo, $this->subject, $message, $headers, $this->getAdditionalParams());
+        $mail = new PHPMailer();
+        $mail->setFrom(Site::getEmailFrom(), 'Метаком Севис');
+        $mail->addAddress($this->emailTo);
+        $mail->isHTML();
+        $mail->CharSet = 'UTF-8';
+
+        $mail->Subject = $this->subject;
+        $mail->Body = $message;
+
+        $domain = Site::getDomain();
+        $dkimFile = realpath($_SERVER['DOCUMENT_ROOT'] . '/../..') . '/' . $domain . '.private';
+
+        if(file_exists($dkimFile)) {
+            $mail->DKIM_private = $_SERVER['DOCUMENT_ROOT'] . '/home/c/cw04289/poverka-52.ru.private';
+            $mail->DKIM_domain = $domain;
+            $mail->DKIM_selector = 'mail';
+        }
+
+        $result = $mail->send();
+        //$result = mail($this->emailTo, $this->subject, $message, $headers, $this->getAdditionalParams());
+
         $this->save($result);
         return $result;
     }
