@@ -9,6 +9,11 @@ use Bitrix\Main\Result;
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php');
 
+global $USER;
+if(!$USER->IsAdmin()) {
+    die('not authorized as admin');
+}
+
 /**
  * Метод для копирования инфоблока
  * @param int $iblockIdFrom ID инфоблока для копирования
@@ -17,6 +22,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.
  */
 function iblockCopy(int $iblockIdFrom, string $iblockTypeTo, string $site): Result
 {
+    $request = Context::getCurrent()->getRequest();
     $result = new Bitrix\Main\Result();
     if (empty($iblockIdFrom)) {
         $result->addError(new Bitrix\Main\Error('Не указан инфоблок для копирования'));
@@ -49,6 +55,9 @@ function iblockCopy(int $iblockIdFrom, string $iblockTypeTo, string $site): Resu
     /**
      * Создаем инфоблок
      */
+
+    $iblockFields['NAME'] = $request->getPost('name');
+    $iblockFields['CODE'] = $request->getPost('domain');
     $iblockNew = new CIBlock();
     $iblockIdNew = $iblockNew->Add($iblockFields);
     if ($iblockIdNew === false) {
@@ -107,29 +116,52 @@ function iblockCopy(int $iblockIdFrom, string $iblockTypeTo, string $site): Resu
     return $result;
 }
 
-function iblockElementsCopy($fromIblockId, $toIblockId) {
+function iblockElementsCopy($fromIblockId, $toIblockId)
+{
     $arFilter = ['IBLOCK_ID' => $fromIblockId];
     $res = CIBlockElement::GetList([], $arFilter);
-    while($item = $res->Fetch()) {
+    while ($ob = $res->GetNextElement()) {
+        $arFields = $ob->GetFields();
+        $arProperties = $ob->getProperties();
         $copyFields = [
             'IBLOCK_ID' => $toIblockId,
-            'NAME' => $item['NAME'],
-            'DETAIL_TEXT' => $item['DETAIL_TEXT'],
-            'PREVIEW_TEXT' => $item['PREVIEW_TEXT'],
-            'ACTIVE' => $item['ACTIVE'],
-            'SORT' => $item['SORT'],
+            'NAME' => $arFields['NAME'],
+            'DETAIL_TEXT' => $arFields['DETAIL_TEXT'],
+            'PREVIEW_TEXT' => $arFields['PREVIEW_TEXT'],
+            'ACTIVE' => $arFields['ACTIVE'],
+            'SORT' => $arFields['SORT'],
         ];
-        if($item['PREVIEW_PICTURE']) {
-            $copyFields['PREVIEW_PICTURE'] = CFile::MakeFileArray(CFile::GetPath($item['PREVIEW_PICTURE']));
+        if ($arFields['PREVIEW_PICTURE']) {
+            $copyFields['PREVIEW_PICTURE'] = CFile::MakeFileArray(CFile::GetPath($arFields['PREVIEW_PICTURE']));
         }
-        if($item['DETAIL_PICTURE']) {
-            $copyFields['DETAIL_PICTURE'] = CFile::MakeFileArray(CFile::GetPath($item['DETAIL_PICTURE']));
+        if ($arFields['DETAIL_PICTURE']) {
+            $copyFields['DETAIL_PICTURE'] = CFile::MakeFileArray(CFile::GetPath($arFields['DETAIL_PICTURE']));
+        }
+        if (!empty($arProperties)) {
+            foreach ($arProperties as $arProp) {
+                if ($arProp['PROPERTY_TYPE'] == 'S') {
+                    if ($arProp['DESCRIPTION']) {
+                        $copyFields['PROPERTY_VALUES'][$arProp['CODE']] = [
+                            'n0' => [
+                                'VALUE' => $arProp['VALUE'],
+                                'DESCRIPTION' => $arProp['DESCRIPTION']
+                            ]
+                        ];
+                    } else {
+                        $copyFields['PROPERTY_VALUES'][$arProp['CODE']] = $arProp['VALUE'];
+                    }
+                } elseif($arProp['PROPERTY_TYPE'] == 'F') {
+                    if($arProp['VALUE']) {
+                        $copyFields['PROPERTY_VALUES'][$arProp['CODE']] = CFile::MakeFileArray(CFile::GetPath($arProp['VALUE']));
+                    }
+                }
+
+            }
         }
         $el = new CIBlockElement;
         $el->Add($copyFields);
     }
 }
-
 
 
 Loader::IncludeModule("iblock");
@@ -139,7 +171,7 @@ $request = Context::getCurrent()->getRequest();
  */
 if ($request->isPost()) {
     $result = iblockCopy((int)$request->getPost('from'), (string)$request->getPost('to'), (string)$request->getPost('site'));
-    if($result && $result->isSuccess()) {
+    if ($result && $result->isSuccess()) {
         iblockElementsCopy((int)$request->getPost('from'), $GLOBALS['newIblockId']);
     }
 }
@@ -167,19 +199,20 @@ $siteList = SiteTable::getList()->fetchCollection();
             <div class="row justify-content-md-center">
                 <div class="col-6">
                     <div class="alert alert-danger" role="alert">
-                        <?=implode('<br />', $result->getErrorMessages())?>
+                        <?= implode('<br />', $result->getErrorMessages()) ?>
                     </div>
                 </div>
             </div>
         <?php } ?>
-        <form action="<?=$request->getRequestedPage()?>" method="post">
+        <form action="<?= $request->getRequestedPage() ?>" method="post">
             <div class="row justify-content-md-center">
                 <div class="col-6">
                     <label for="from" class="form-label">Скопировать инфоблок</label>
                     <select class="form-select mb-3" name="from" required>
                         <option value="">-</option>
                         <?php foreach ($iblockList as $iblock) { ?>
-                            <option value="<?= $iblock->getId() ?>"><?= $iblock->getId() ?>.  <?= $iblock->getName() ?>  - <?= $iblock->getIblockTypeId() ?></option>
+                            <option value="<?= $iblock->getId() ?>"><?= $iblock->getId() ?>. <?= $iblock->getName() ?>
+                                - <?= $iblock->getIblockTypeId() ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -201,9 +234,23 @@ $siteList = SiteTable::getList()->fetchCollection();
                     <select class="form-select mb-3" name="site" required>
                         <option value="">-</option>
                         <?php foreach ($siteList as $siteItem) { ?>
-                            <option value="<?= $siteItem->getLid() ?>"><?= $siteItem->getLid() ?> - <?= $siteItem->getName() ?></option>
+                            <option value="<?= $siteItem->getLid() ?>"><?= $siteItem->getLid() ?>
+                                - <?= $siteItem->getName() ?></option>
                         <?php } ?>
                     </select>
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-6">
+                    <label for="to" class="form-label">Наименование ИБ</label>
+                    <input type="text" class="mb-3 input-group" name="name" required>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-6">
+                    <label for="to" class="form-label">Домен</label>
+                    <input type="text" class="mb-3 input-group" name="domain" required>
                 </div>
             </div>
 
