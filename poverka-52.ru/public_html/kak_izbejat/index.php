@@ -11,7 +11,7 @@ $APPLICATION->SetPageProperty("title", "Избежать схем обмана �
     <div class="page">
         <div class="container">
             <h1 class="page__title"><?= $APPLICATION->ShowViewContent('element-title-security') ?></h1>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['CODE' => 'security']) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/news-detail.php', ['CODE' => 'security', 'TEMPLATE' => 'content']) ?>
         </div>
     </div>
 

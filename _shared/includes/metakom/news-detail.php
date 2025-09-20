@@ -6,7 +6,7 @@ use Ms\Site;
 
 $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    "banner2",
+    $arParams['TEMPLATE'],
     Array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_ELEMENT_CHAIN" => "N",
