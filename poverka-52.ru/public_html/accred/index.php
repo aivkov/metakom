@@ -10,8 +10,8 @@ $APPLICATION->SetPageProperty("title", "Аттестат аккредитаци�
 ?>
     <div class="page">
         <div class="container">
-            <h1 class="page__title"><?= $APPLICATION->ShowViewContent('element-title-122') ?></h1>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['ID' => 122]) ?>
+            <h1 class="page__title"><?= $APPLICATION->ShowViewContent('element-title-how') ?></h1>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['CODE' => 'how']) ?>
         </div>
     </div>
 

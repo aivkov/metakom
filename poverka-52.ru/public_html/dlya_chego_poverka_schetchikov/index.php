@@ -10,8 +10,8 @@ $APPLICATION->SetPageProperty("title", "Поверка счетчиков: не�
 ?>
     <div class="page">
         <div class="container">
-            <h1 class="page__title"><?= $APPLICATION->ShowViewContent('element-title-120') ?></h1>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['ID' => 120]) ?>
+            <h1 class="page__title"><?= $APPLICATION->ShowViewContent('element-title-about') ?></h1>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['CODE' => 'about']) ?>
         </div>
     </div>
 

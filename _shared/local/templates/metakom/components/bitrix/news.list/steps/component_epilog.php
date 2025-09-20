@@ -16,4 +16,4 @@
 /** @var \CBitrixComponent $component */
 
 
-$APPLICATION->AddViewContent('section-title-' . $arResult['PARENT_SECTION']['ID'], $arResult['PARENT_SECTION']['NAME']);
+$APPLICATION->AddViewContent('section-title-' . $arResult['PARENT_SECTION']['CODE'], $arResult['PARENT_SECTION']['NAME']);

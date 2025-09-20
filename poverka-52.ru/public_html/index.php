@@ -12,19 +12,19 @@ $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.cs
 ?>
     <div class="container">
         <div class="section section--no-pt section--no-pb">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 111]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['CODE' => 'main-banner']) ?>
         </div>
 
         <div class="section">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['ID' => 112]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/content.php', ['CODE' => 'main-about']) ?>
         </div>
 
         <div class="section section--no-pt">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/advantages.php', ['PARENT_SECTION' => 23]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/advantages.php', ['SECTION_CODE' => 'advantages']) ?>
         </div>
     </div>
 
-<?php $APPLICATION->IncludeFile('/includes/metakom/services.php', ['PARENT_SECTION' => 24]) ?>
+<?php $APPLICATION->IncludeFile('/includes/metakom/services.php', ['SECTION_CODE' => 'services']) ?>
 
     <div class="container">
         <div class="section">

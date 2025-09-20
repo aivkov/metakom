@@ -9,30 +9,30 @@ $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.cs
 
     <div class="container">
         <div class="section section--no-pt">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['ID' => 66]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/banner.php', ['CODE' => 'domofon-banner']) ?>
         </div>
     </div>
     <div class="section section--grey">
         <div class="container">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/banner2.php', ['ID' => 67]) ?>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/banner2.php', ['CODE' => 'domofon-banner2']) ?>
         </div>
     </div>
     <div class="container">
         <div class="section">
-            <h2 class="section__title"><?=$APPLICATION->ShowViewContent('section-title-8')?></h2>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/benefit.php', ['PARENT_SECTION' => 8]) ?>
+            <h2 class="section__title"><?=$APPLICATION->ShowViewContent('section-title-domofon-benefit')?></h2>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/benefit.php', ['SECTION_CODE' => 'domofon-benefit']) ?>
         </div>
     </div>
     <div class="section section--grey">
         <div class="container">
-            <h2 class="section__title section__title--big"><?=$APPLICATION->ShowViewContent('section-title-10')?></h2>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/steps.php', ['PARENT_SECTION' => 10]) ?>
+            <h2 class="section__title section__title--big"><?=$APPLICATION->ShowViewContent('section-title-domofon-steps')?></h2>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/steps.php', ['SECTION_CODE' => 'domofon-steps']) ?>
         </div>
     </div>
     <div class="container">
         <div class="section section--extra">
-            <h2 class="section__title"><?=$APPLICATION->ShowViewContent('section-title-6')?></h2>
-            <?php $APPLICATION->IncludeFile('/includes/metakom/benefit.php', ['PARENT_SECTION' => 6]) ?>
+            <h2 class="section__title"><?=$APPLICATION->ShowViewContent('section-title-domofon-advanced')?></h2>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/benefit.php', ['SECTION_CODE' => 'domofon-advanced']) ?>
         </div>
     </div>
 
