@@ -28,9 +28,8 @@ use Ms\Tools;
                     <div class="service__top">
                         <div class="service__head">
                             <div class="service__head-img">
-                                <?php if($arItem['PREVIEW_PICTURE']):?>
-                                    <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 50, 'height' => 50], BX_RESIZE_IMAGE_EXACT);?>
-                                    <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
+                                <?php if($pictureId = $arItem['PROPERTIES']['PICTURE']['VALUE']):?>
+                                    <img src="<?=CFile::GetPath($pictureId)?>" alt="<?=$arItem['NAME']?>">
                                 <?php endif?>
                             </div>
                             <div class="service__title"><?=$arItem['NAME']?></div>

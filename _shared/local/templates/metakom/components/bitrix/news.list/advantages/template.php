@@ -22,10 +22,11 @@
         <div class="advantages__list">
             <?php foreach($arResult['ITEMS'] as $arItem):?>
                 <div class="advantages__item">
-                    <div class="advantages__img">
-                        <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 50, 'height' => 50], BX_RESIZE_IMAGE_EXACT);?>
-                        <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
-                    </div>
+                    <?php if($pictureId = $arItem['PROPERTIES']['PICTURE']['VALUE']):?>
+                        <div class="advantages__img">
+                            <img src="<?=CFile::GetPath($pictureId)?>" alt="<?=$arItem['NAME']?>">
+                        </div>
+                    <?php endif?>
                     <div class="advantages__title"><?=$arItem['NAME']?></div>
                     <div class="advantages__desc"><?=$arItem['PREVIEW_TEXT']?></div>
                 </div>

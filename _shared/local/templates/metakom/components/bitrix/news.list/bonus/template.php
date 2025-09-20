@@ -28,7 +28,7 @@
             <?php foreach($arResult['ITEMS'] as $arItem):?>
                 <div class="bonus__item">
                     <div class="bonus__item-img">
-                        <?php if($pictureId = $arItem['PROPERTIES']['SVG_IMAGE']['VALUE']):?>
+                        <?php if($pictureId = $arItem['PROPERTIES']['PICTURE']['VALUE']):?>
                             <img src="<?=CFile::GetPath($pictureId)?>" alt="<?=$arItem['NAME']?>">
                         <?php elseif($arItem['PREVIEW_PICTURE']):?>
                             <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 70, 'height' => 70], BX_RESIZE_IMAGE_EXACT);?>

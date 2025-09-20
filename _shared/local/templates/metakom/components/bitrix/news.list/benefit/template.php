@@ -26,9 +26,8 @@
         <?php endif?>
         <div class="benefit__list">
             <?php foreach($arResult['ITEMS'] as $arItem):?>
-                <?php $imageId = $arItem['PREVIEW_PICTURE']['ID'] ?: $arItem['PROPERTIES']['SVG_IMAGE']['VALUE'];?>
                 <div class="benefit__item">
-                    <?php if($imageId):?>
+                    <?php if($imageId = $arItem['PROPERTIES']['PICTURE']['VALUE']):?>
                         <div class="benefit__item-img">
                             <img src="<?=CFile::getPath($imageId)?>" alt="<?=$arItem['NAME']?>">
                         </div>

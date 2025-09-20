@@ -46,7 +46,7 @@ $APPLICATION->IncludeComponent(
         "PARENT_SECTION" => $arParams['SECTION_ID'] ?: "",
         "PARENT_SECTION_CODE" => $arParams['SECTION_CODE'] ?: "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => array("SVG_IMAGE",""),
+        "PROPERTY_CODE" => array("PICTURE","BUTTON"),
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
