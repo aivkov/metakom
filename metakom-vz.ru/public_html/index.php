@@ -3,22 +3,17 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "Компания «Метаком-Сервис» занимается поверкой счетчиков воды в Нижнем Новгороде. Внесение данных в систему «АРШИН»");
-$APPLICATION->SetPageProperty("keywords", "Поверка счетчиков воды, Метаком Сервис Нижний Новгород");
-$APPLICATION->SetPageProperty("title", "Поверка счетчиков воды | Компания Метаком Сервис Нижний Новгород");
-$APPLICATION->SetTitle("Поверка счетчиков воды, Метаком Сервис Нижний Новгород");
+$APPLICATION->SetPageProperty("description", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Муром");
+$APPLICATION->SetPageProperty("keywords", "Метаком Сервис, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД,  г. Муром");
+$APPLICATION->SetPageProperty("title", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Муром");
+$APPLICATION->SetTitle("Метаком Сервис Муром");
 
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
     <div class="container">
-        <div class="section section--no-pt section--no-pb">
+        <div class="section section--no-pt">
             <?php $APPLICATION->IncludeFile('/includes/metakom/news-detail.php', ['CODE' => 'main-banner', 'TEMPLATE' => 'banner']) ?>
         </div>
-
-        <div class="section">
-            <?php $APPLICATION->IncludeFile('/includes/metakom/news-detail.php', ['CODE' => 'main-about', 'TEMPLATE' => 'content']) ?>
-        </div>
-
         <div class="section section--no-pt">
             <?php $APPLICATION->IncludeFile('/includes/metakom/news-list.php', ['SECTION_CODE' => 'advantages', 'TEMPLATE' => 'advantages']) ?>
         </div>

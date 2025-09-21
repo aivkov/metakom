@@ -1,40 +1,32 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Для чего нужна поверка",
-		"/dlya_chego_poverka_schetchikov/",
+		"Новости",
+		"/news/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"О нас",
+		"/about/",
 		Array(), 
 		Array(), 
 		"" 
 	),
     Array(
-        "Как защититься от мошейников",
-        "/kak_izbejat/",
+        "Оформить заявку",
+        "#",
         Array(),
         Array(),
         ""
     ),
-    Array(
-        "Аттестат аккредитации",
-        "/accred/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Оферта",
-        "/accred/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Контакты",
-        "/contacts/",
-        Array(),
-        Array(),
-        ""
-    ),
-
+	Array(
+		"Контакты", 
+		"/contacts/",
+		Array(), 
+		Array(), 
+		"" 
+	)
 );
 ?>
