@@ -21,6 +21,14 @@
                                    autocomplete="off" data-required >
                         </div>
                         <div class="input-block">
+                            <label class="input-block__label">Город <sup>*</sup></label>
+                            <select class="input-block__select" name="city" data-required>
+                                <option value="">---Выберите город---</option>
+                                <option value="Иваново">Иваново</option>
+                                <option value="Кинешма">Кинешма</option>
+                            </select>
+                        </div>
+                        <div class="input-block">
                             <label class="input-block__label">Заявка</label>
                             <textarea class="input-block__textarea input-block__input" name="comment"
                                       placeholder="Опишите, какую услугу Вы хотите получить"></textarea>

@@ -20,7 +20,7 @@
                     <label class="input-block__label">Город <sup>*</sup></label>
                     <select class="input-block__select" name="city" data-required>
                         <option value="">---Выберите город---</option>
-                        <option value="Иваново" selected>Иваново</option>
+                        <option value="Иваново">Иваново</option>
                         <option value="Кинешма">Кинешма</option>
                     </select>
                 </div>
