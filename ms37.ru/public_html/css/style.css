@@ -733,7 +733,7 @@ a:hover {
     height: 50px;
     border-radius: 6px;
     box-shadow: var(--shadow);
-    font-size: 20px;
+    font-size: 18px;
     padding: 0 12px;
     border: 1px solid var(--color-text)
 }
@@ -815,10 +815,10 @@ a:hover {
 
 .input-block__select {
     height: 50px;
+    font-size: 18px;
     border-radius: 6px;
     box-shadow: var(--shadow);
     outline: none;
-    font-size: 16px;
     padding: 0 16px;
 }
 

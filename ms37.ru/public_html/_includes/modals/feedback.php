@@ -22,6 +22,14 @@
                            autocomplete="off" data-required >
                 </div>
                 <div class="input-block">
+                    <label class="input-block__label">Город <sup>*</sup></label>
+                    <select class="input-block__select" name="city" data-required>
+                        <option value="">---Выберите город---</option>
+                        <option value="Иваново" selected>Иваново</option>
+                        <option value="Кинешма">Кинешма</option>
+                    </select>
+                </div>
+                <div class="input-block">
                     <label class="input-block__label">Адрес <sup>*</sup></label>
                     <textarea name="address" class="input-block__input input-block__textarea input-block__textarea--address" placeholder="Адрес"
                     autocomplete="off" data-dadata="address" data-required></textarea>

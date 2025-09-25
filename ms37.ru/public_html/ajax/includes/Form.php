@@ -7,6 +7,7 @@ class Form extends \CAjaxRequest
         $name = htmlspecialchars($this->arParams['name']);
         $phone = htmlspecialchars($this->arParams['phone']);
         $email = htmlspecialchars($this->arParams['email']);
+        $city = htmlspecialchars($this->arParams['city']);
         $address = htmlspecialchars($this->arParams['address']);
         $entrance = htmlspecialchars($this->arParams['entrance']);
         $comment = htmlspecialchars($this->arParams['comment']);
@@ -14,6 +15,7 @@ class Form extends \CAjaxRequest
         $message = '<p>Имя: <b>' . $name . '</b></p>';
         $message .= '<p>Телефон: <b>' . $phone . '</b></p>';
         $message .= '<p>Email: <b>' . $email . '</b></p>';
+        $message .= '<p>Город: <b>' . $city . '</b></p>';
         $message .= '<p>Адрес: <b>' . $address . '</b></p>';
         $message .= '<p>Подъезд: <b>' . $entrance . '</b></p>';
         $message .= '<p>Сообщение: <b>' . $comment . '</b></p>';
