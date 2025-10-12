@@ -15,7 +15,6 @@
     background: var(--color-footer);
     transform: rotate(-2deg);
     z-index: -1;
-    z-index: -1;
 }
 
 .services__container {
@@ -28,7 +27,7 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-.services__container--2-col {
+.services__container--2-col.container {
     grid-template-columns: repeat(2, 1fr);
     max-width: 1000px;
 }
