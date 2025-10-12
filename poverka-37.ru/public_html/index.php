@@ -2,7 +2,7 @@
 /** @var \CMain $APPLICATION */
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-echo SITE_ID;
+
 
 $APPLICATION->SetPageProperty("description", "Компания «Метаком-Сервис» занимается поверкой приборов учёта водоснабжения в городе Иваново. Внесение данных в систему «АРШИН»");
 $APPLICATION->SetPageProperty("keywords", "Поверка счетчиков воды, Метаком Иваново");
