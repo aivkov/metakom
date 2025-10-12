@@ -30,7 +30,7 @@
 
 .services__container--2-col {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 1000px !important;
+    max-width: 1000px;
 }
 
 .service {

@@ -6,8 +6,8 @@ use Ms\Site;
 
 $curPage = $APPLICATION->GetCurPage();
 $assets = Asset::getInstance();
-$assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
 $assets->addCss('/local/css/main.css');
+$assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
 
 ?>
 
