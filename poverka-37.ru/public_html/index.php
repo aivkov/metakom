@@ -17,6 +17,7 @@ $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.cs
         </div>
 
         <div class="section">
+            <h2 class="page__title"><?= $APPLICATION->ShowViewContent('element-title-main-about') ?></h2>
             <?php $APPLICATION->IncludeFile('/includes/metakom/news-detail.php', ['CODE' => 'main-about', 'TEMPLATE' => 'content']) ?>
         </div>
 
