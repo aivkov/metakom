@@ -190,7 +190,7 @@ ul.list, .content ul {
     content: '';
     position: absolute;
     left: 8px;
-    top: 6px;
+    top: 10px;
     width: 4px;
     height: 4px;
     background: var(--color-accent);
