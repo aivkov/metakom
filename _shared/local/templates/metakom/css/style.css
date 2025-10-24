@@ -303,6 +303,15 @@ ul.list, .content ul {
     margin-top: 8px;
 }
 
+/* Table */
+.table {
+    border-collapse: collapse;
+}
+
+.table td, .table th {
+    padding: 4px 12px;
+}
+
 /* Contacts */
 .contacts {
 
