@@ -15,6 +15,13 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Сантехнические работы",
+        "/cantexniceskie-raboty/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Сертификат аккредитации",
         "/accred/",
         Array(),
