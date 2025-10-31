@@ -4,6 +4,16 @@
     <div class="news__content main">
         <div class="news__list">
             <div class="news__item">
+                <div class="news__date title">30.10.2025</div>
+                <div class="news__text">
+                    <p>График работы ООО «Метаком-Сервис» в праздничные дни:</p>
+                    <p>1 ноября 2025 г. - с 09.00 до 16.00</p>
+                    <p>Перерыв с 13.00 до 14.00</p>
+                    <p>2-4 ноября 2025 г. - выходной</p>
+                    <p>С 5 ноября 2025 г. - офис компании работает в обычном режиме</p>
+                </div>
+            </div>
+            <div class="news__item">
                 <div class="news__date title">30.04.2025</div>
                 <div class="news__text">
                     <p>График работы ООО «Метаком-Сервис» Иваново в праздничные дни:</p>
