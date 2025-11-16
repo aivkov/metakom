@@ -1,6 +1,8 @@
 <?php
 use Ms\Site;
-$arCities = Site::getCities();?>
+$arCities = Site::getCities();
+$arCities = array_unique($arCities);
+?>
 <?php if(is_array($arCities) && !empty($arCities)):?>
     <?php if(count($arCities) == 1):?>
         <div class="header__city">

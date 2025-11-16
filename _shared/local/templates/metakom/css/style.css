@@ -303,6 +303,19 @@ ul.list, .content ul {
     margin-top: 8px;
 }
 
+/* Tabs */
+.tab {
+    cursor: pointer;
+}
+
+.tab-block {
+    display: none;
+}
+
+.tab-block.is-active {
+    display: block;
+}
+
 /* Table */
 .table {
     border-collapse: collapse;
@@ -325,6 +338,10 @@ ul.list, .content ul {
     font-weight: 500;
     margin-bottom: 8px;
     font-size: 18px;
+}
+
+.contacts__address.is-active .contacts__address-address {
+    border-bottom: 2px solid var(--color-accent);
 }
 
 .contacts__address img {

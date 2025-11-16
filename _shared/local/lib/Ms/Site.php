@@ -41,34 +41,34 @@ class Site {
         return static::$iblockId;
     }
 
-    public static function getPhones() {
-        return static::$info[0]['PROPERTIES']['PHONES']['VALUE'];
+    public static function getPhones($key = 0) {
+        return static::$info[$key]['PROPERTIES']['PHONES']['VALUE'];
     }
 
-    public static function getEmails() {
-        return static::$info[0]['PROPERTIES']['EMAIL']['VALUE'];
+    public static function getEmails($key = 0) {
+        return static::$info[$key]['PROPERTIES']['EMAIL']['VALUE'];
     }
 
-    public static function getSchedule() {
-        return static::$info[0]['PROPERTIES']['SCHEDULE']['VALUE'];
+    public static function getSchedule($key = 0) {
+        return static::$info[$key]['PROPERTIES']['SCHEDULE']['VALUE'];
     }
-    public static function getMap() {
-        return static::$info[0]['PROPERTIES']['YANDEX_MAP']['~VALUE'] ?: '';
-    }
-
-    public static function getDomain() {
-        return static::$info[0]['PROPERTIES']['DOMAIN']['VALUE'];
+    public static function getMap($key = 0) {
+        return static::$info[$key]['PROPERTIES']['YANDEX_MAP']['~VALUE'] ?: '';
     }
 
-    public static function getLid() {
-        return static::$info[0]['CODE'];
-    }
-    public static function getEmailFrom() {
-        return static::$info[0]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
+    public static function getDomain($key = 0) {
+        return static::$info[$key]['PROPERTIES']['DOMAIN']['VALUE'];
     }
 
-    public static function getHeaderScripts() {
-        $arScripts = static::$info[0]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
+    public static function getLid($key = 0) {
+        return static::$info[$key]['CODE'];
+    }
+    public static function getEmailFrom($key = 0) {
+        return static::$info[$key]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
+    }
+
+    public static function getHeaderScripts($key = 0) {
+        $arScripts = static::$info[$key]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
         $scriptStr = '';
         if(is_array($arScripts) && !empty($arScripts)) {
             $scriptStr .= "\r\n";
@@ -80,8 +80,8 @@ class Site {
         return $scriptStr;
     }
 
-    public static function getFooterScripts() {
-        $arScripts = static::$info[0]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
+    public static function getFooterScripts($key = 0) {
+        $arScripts = static::$info[$key]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
         $scriptStr = '';
         if(is_array($arScripts) && !empty($arScripts)) {
             $scriptStr .= "\r\n";
@@ -93,30 +93,30 @@ class Site {
         return $scriptStr;
     }
 
-    public static function getYandexVerification() {
-        if(static::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
+    public static function getYandexVerification($key = 0) {
+        if(static::$info[$key]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
             return '<meta name="yandex-verification" content="' . static::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
 
-    public static function getGoogleVerification() {
-        if(static::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
+    public static function getGoogleVerification($key = 0) {
+        if(static::$info[$key]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
             return '<meta name="google-site-verification" content="' . static::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
 
-    public static function getYandexRaiting() {
-        if($iframe = static::$info[0]['PROPERTIES']['YANDEX_RAITING']['VALUE']) {
+    public static function getYandexRaiting($key = 0) {
+        if($iframe = static::$info[$key]['PROPERTIES']['YANDEX_RAITING']['VALUE']) {
             return htmlspecialchars_decode($iframe) . "\r\n";
         }
         return '';
     }
 
-    public static function getSocial() {
+    public static function getSocial($key = 0) {
         $arSocial = [];
-        $prop = static::$info[0]['PROPERTIES']['SOCIAL'];
+        $prop = static::$info[$key]['PROPERTIES']['SOCIAL'];
         if(is_array($prop['VALUE'])) {
             foreach($prop['VALUE'] as $key => $link) {
                 $icon = $prop['DESCRIPTION'][$key];

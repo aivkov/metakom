@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPhoneMasks()
     initInputsError()
     initDadata()
+    initTabs()
 })
 
 function afterAjax() {
@@ -394,6 +395,61 @@ function openModalSuccess(data) {
 
 function initDadata() {
     (new Dadata).init()
+}
+
+class Tab {
+
+    activeClass = 'is-active'
+    initClass = 'initialized'
+
+    init() {
+        document.querySelectorAll(`[data-tab]:not(.${this.initClass})`).forEach((tab) => {
+            this.initTab(tab)
+        })
+    }
+
+    initTab(tab) {
+        tab.classList.add(this.initClass)
+        tab.addEventListener('click', (e) => {
+            e.preventDefault()
+            this.toggle(tab)
+        })
+    }
+
+    toggle(tab) {
+        if (tab.classList.contains(this.activeClass)) {
+            return
+        }
+        const tabName = tab.dataset.tab
+        const tabId = tab.dataset.tabId
+        this.close(tabName)
+        this.open(tabName, tabId)
+    }
+
+    close(tabName) {
+        document.querySelectorAll(`[data-tab="${tabName}"]`).forEach((tab) => {
+            tab.classList.remove(this.activeClass)
+        })
+        document.querySelectorAll(`[data-tab-block="${tabName}"]`).forEach((tabBlock) => {
+            tabBlock.classList.remove(this.activeClass)
+        })
+    }
+
+    open(tabName, tabId) {
+        let tab = document.querySelector(`[data-tab="${tabName}"][data-tab-id="${tabId}"]`)
+        tab.classList.add(this.activeClass)
+
+        document.querySelectorAll(`[data-tab-block="${tabName}"][data-tab-block-id="${tabId}"]`).forEach((tabBlock) => {
+            tabBlock.classList.add(this.activeClass)
+        })
+
+        let event = new Event("changeTab", {bubbles: true}); // (2)
+        tab.dispatchEvent(event);
+    }
+}
+
+function initTabs() {
+    (new Tab).init()
 }
 
 
