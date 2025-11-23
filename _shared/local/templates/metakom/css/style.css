@@ -354,8 +354,9 @@ ul.list, .content ul {
 }
 
 .contacts__map {
-    flex-grow: 1;
     position: relative;
+    flex-grow: 1;
+    min-height: 350px;
 }
 
 .contact {
