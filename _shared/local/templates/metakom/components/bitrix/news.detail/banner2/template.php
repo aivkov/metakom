@@ -19,7 +19,7 @@ use Ms\Tools;
 
 ?>
 
-<div class="banner ">
+<div class="banner container">
     <?php if($arResult['PREVIEW_PICTURE']):?>
         <div class="banner__picture">
             <div class="banner__img banner__img--small">

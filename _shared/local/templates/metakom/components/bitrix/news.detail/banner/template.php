@@ -19,7 +19,7 @@ use Ms\Tools;
 
 ?>
 
-<div class="banner">
+<div class="banner container">
     <div class="banner__info">
         <h1 class="banner__title"><?=$arResult['NAME']?></h1>
         <?php if($arResult['PREVIEW_TEXT']):?>
