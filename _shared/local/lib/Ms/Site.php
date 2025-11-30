@@ -13,6 +13,10 @@ class Site {
         static::selectIblockId();
     }
 
+    public static function getInfo() {
+        return static::$info;
+    }
+
     private static function selectInfo() {
         Loader::includeModule('iblock');
         $arFilter = ['IBLOCK_TYPE' => 'content', 'IBLOCK_CODE' => 'contacts', 'CODE' => SITE_ID, 'ACTIVE' => 'Y'];
