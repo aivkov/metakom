@@ -14,6 +14,10 @@ $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.cs
         <div class="section section--no-pt">
             <?php $APPLICATION->IncludeFile('/includes/metakom/news-detail.php', ['CODE' => 'main-banner', 'TEMPLATE' => 'banner']) ?>
         </div>
+	<div class="section section--no-pt">
+	    <h2 class="section__title"><?= $APPLICATION->ShowViewContent('element-title-main-desc') ?></h2>
+            <?php $APPLICATION->IncludeFile('/includes/metakom/news-detail.php', ['CODE' => 'main-desc', 'TEMPLATE' => 'content']) ?>
+        </div>
         <div class="section section--no-pt">
             <?php $APPLICATION->IncludeFile('/includes/metakom/news-list.php', ['SECTION_CODE' => 'advantages', 'TEMPLATE' => 'advantages']) ?>
         </div>
