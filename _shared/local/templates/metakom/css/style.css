@@ -666,7 +666,6 @@ ul.list, .content ul {
     pointer-events: none;
     visibility: hidden;
     transition: opacity .3s ease, visibility .3s ease;
-    padding: 20px;
 }
 
 .modal.is-active {
