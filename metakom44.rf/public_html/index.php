@@ -9,6 +9,7 @@ $APPLICATION->SetPageProperty("title", "Обслуживание, монтаж �
 $APPLICATION->SetTitle("Метаком Сервис - Кострома");
 
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
+$APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/style.css'));
 ?>
     <div class="container">
         <div class="section section--no-pt">
