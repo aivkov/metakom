@@ -19,6 +19,7 @@
     --color-desc: #134772;
     --color-date: #999;
     --color-footer: #bdddde;
+    --color-hint: #aaa;
 
 
     --transition: all .3s ease-in-out;
@@ -484,14 +485,25 @@ ul.list, .content ul {
     left: 8px;
     top: -9px;
     font-size: 13px;
-    padding: 0 2px;
+    padding: 0 4px;
     background: var(--color-white);
 }
 
 .input-block__label sup {
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    height: 100%;
+    padding-right: 4px;
     color: var(--color-accent);
+    background: var(--color-white);
+    font-size: 150%;
 }
 
+.input-block__hint {
+    font-size: 12px;
+    color: var(--color-hint);
+}
 
 .input-block__dropdown {
     display: none;
@@ -675,6 +687,10 @@ ul.list, .content ul {
 }
 
 .modal__inner--order {
+    max-width: 600px;
+}
+
+.modal__inner--review {
     max-width: 600px;
 }
 

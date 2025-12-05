@@ -27,7 +27,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PICTURE" => "Y",
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => array("",""),
+        "FIELD_CODE" => array("SORT",""),
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => Site::getIblockId(),
@@ -57,7 +57,7 @@ $APPLICATION->IncludeComponent(
         "SORT_BY1" => "SORT",
         "SORT_BY2" => "ID",
         "SORT_ORDER1" => "ASC",
-        "SORT_ORDER2" => "ASC",
+        "SORT_ORDER2" => "DESC",
         "STRICT_SECTION_CHECK" => "N"
     )
 );?>

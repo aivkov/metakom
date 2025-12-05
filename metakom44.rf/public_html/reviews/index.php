@@ -3,7 +3,6 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 ?>
-
     <div class="page">
         <div class="container">
             <h1 class="page__title"><?php $APPLICATION->ShowTitle() ?></h1>

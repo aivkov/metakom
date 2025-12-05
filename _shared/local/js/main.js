@@ -219,7 +219,6 @@ function initCheckboxesPolicy() {
 function initMasks() {
     const initClass = 'initialized-mask'
     const maskFields = document.querySelectorAll(`[data-mask]:not(.${initClass})`)
-    console.log(maskFields)
     maskFields.forEach((el) => {
         el.classList.add(initClass)
         const type = el.dataset.mask
@@ -367,7 +366,7 @@ window.ajaxCallback.afterFormSend = function (data, form) {
         modal.closeAll()
         openModalSuccess(data)
         form.reset()
-    } else if(data.status == 'success') {
+    } else if(data.status == 'error') {
         showFormError(form, data.message)
     }
 }
