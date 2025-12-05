@@ -5,7 +5,8 @@
 .reviews__list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px
+    gap: 56px;
+    margin-bottom: 24px;
 }
 
 .review {
@@ -33,6 +34,10 @@
 
 .review__text {
     line-height: 2;
+}
+
+.reviews__add-btn {
+    margin-left: auto;
 }
 
 .input-block__input.review__add-textarea {

@@ -1,4 +1,4 @@
-<?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) {
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -13,42 +13,44 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var array $templateData */
+
 /** @var \CBitrixComponent $component */
 
 use Ms\Tools;
 
 ?>
 
-<div class="reviews">
-    <?php if($arResult['ITEMS']):?>
+    <div class="reviews">
         <div class="reviews__list">
-            <?php foreach($arResult['ITEMS'] as $arItem):?>
-                <?php
-                if($arItem['PREVIEW_PICTURE']) {
-                    $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 150, 'height' => 150], BX_RESIZE_IMAGE_EXACT);
-                } else {
-                    $arSmallFile['src'] = Tools::getNoPhoto();
-                }
-                ?>
+            <?php if ($arResult['ITEMS']): ?>
+                <?php foreach ($arResult['ITEMS'] as $arItem): ?>
+                    <?php
+                    if ($arItem['PREVIEW_PICTURE']) {
+                        $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 150, 'height' => 150], BX_RESIZE_IMAGE_EXACT);
+                    } else {
+                        $arSmallFile['src'] = Tools::getNoPhoto();
+                    }
+                    ?>
 
-                <div class="reviews__item review">
-                    <div class="review__img">
-                        <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
-                    </div>
+                    <div class="reviews__item review">
+                        <div class="review__img">
+                            <img src="<?= $arSmallFile['src'] ?>" alt="<?= $arItem['NAME'] ?>">
+                        </div>
 
-                    <div class="review__main">
-                        <div class="review__title"><?=$arItem['NAME']?></div>
-                        <div class="review__text">
-                            <?=$arItem['PREVIEW_TEXT']?>
+                        <div class="review__main">
+                            <div class="review__title"><?= $arItem['NAME'] ?></div>
+                            <div class="review__text">
+                                <?= $arItem['PREVIEW_TEXT'] ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach?>
+                <?php endforeach ?>
+            <?php else: ?>
+                <p>Отзывов пока нет. Но вы можете стать первым</p>
+            <?php endif ?>
         </div>
-    <?php else:?>
-        <p>Отзывов пока нет. Но вы можете стать первым</p>
-    <?php endif?>
-    <button class="reviews__add-btn btn" data-modal-open="review">Добавить отзыв</button>
-</div>
 
-<?php $APPLICATION->IncludeFile('/includes/modal/review.php', $arParams)?>
+        <button class="reviews__add-btn btn" data-modal-open="review">Добавить отзыв</button>
+    </div>
+
+<?php $APPLICATION->IncludeFile('/includes/modal/review.php', $arParams) ?>
