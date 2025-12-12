@@ -1,0 +1,1 @@
+<?php echo 'mobis-sb.ru';?>
