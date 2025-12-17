@@ -776,6 +776,7 @@ ul.list, .content ul {
     }
 
     .section__title {
+        text-align: center;
         font-size: 28px;
     }
 
