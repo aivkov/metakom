@@ -765,6 +765,7 @@ ul.list, .content ul {
 
     .page__title {
         text-align: center;
+        font-size: 28px;
     }
 
     .header {
@@ -824,6 +825,10 @@ ul.list, .content ul {
 }
 
 @media (max-width: 576px) {
+    .page__title {
+        font-size: 24px;
+    }
+
     .header__container {
         flex-direction: column;
         gap: 24px;
