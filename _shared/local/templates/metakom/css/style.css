@@ -763,6 +763,10 @@ ul.list, .content ul {
         padding: 0 16px;
     }
 
+    .page__title {
+        text-align: center;
+    }
+
     .header {
         margin-bottom: 32px;
     }
