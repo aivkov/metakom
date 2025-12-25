@@ -5,6 +5,7 @@
 
 /_shared/bitrix/
 /_shared/upload/
+/_shared/local/tools/auth.php
 
 
 /*/public_html/bitrix
@@ -26,3 +27,4 @@ ivkov.php
 /*.public
 /aivkov.ru/
 /portal/
+
