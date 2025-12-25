@@ -1,0 +1,213 @@
+/* Top menu */
+
+.top-menu__list {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.top-menu a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.top-menu a:hover, .top-menu__item.selected a {
+    color: var(--color-accent);
+    transition: var(--transition);
+}
+
+.top-menu__item--parent {
+    position: relative;
+}
+
+.top-menu__list--children {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    padding: 0 16px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 4px #aaa;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.top-menu__list--children .top-menu__item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.top-menu__list--children .top-menu__item:last-child {
+    border: none;
+}
+
+.top-menu__list--children a {
+    font-size: 16px;
+    color: var(--color-menu);
+}
+
+.top-menu__item--parent>a {
+    position: relative;
+    padding-right: 20px;
+}
+
+.top-menu__item--parent>a:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    background: url('/local/img/mobis/chevron-down.svg') left center no-repeat;
+    transform: rotate(0);
+    transition: var(--transition);
+}
+
+.top-menu__item--parent>a:hover:after {
+    background-image: url('/local/img/mobis/chevron-down-accent.svg');
+    transition: var(--transition);
+}
+
+.top-menu__item--parent.is-active>ul {
+    opacity: 1;
+    pointer-events: auto;
+    top: 45px;
+    transition: var(--transition);
+}
+
+.top-menu__item--parent.is-active>a:after {
+    transform: rotate(180deg);
+    transition: var(--transition);
+}
+
+.hamb {
+    position: absolute;
+    top: 70px;
+    margin-top: -11px;
+    right: 32px;
+    width: 24px;
+    height: 22px;
+    display: none;
+    z-index: 2;
+}
+
+.hamb i {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+}
+
+.hamb i {
+    transition: all .5s ease-in-out;
+}
+
+.hamb i:first-child {
+    top: 0;
+}
+
+.hamb i:nth-child(2) {
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+}
+
+.hamb i:last-child {
+    top: unset;
+    bottom: 0;
+}
+
+
+.top-menu.opened .hamb i:first-child {
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.top-menu.opened .hamb i:last-child {
+    transform: rotate(-45deg);
+    bottom: 10px;
+}
+
+.top-menu.opened .hamb i:nth-child(2) {
+    opacity: 0;
+}
+
+@media (max-width: 1280px) {
+    .top-menu__list {
+        gap: 16px
+    }
+
+    .top-menu a {
+        font-size: 18px;
+    }
+
+
+}
+
+@media (max-width: 1024px) {
+    .top-menu__list {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: var(--color-white);
+        top: 0;
+        right: -100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 50px 24px 24px 24px;
+        z-index: 2;
+        transition: var(--transition)
+    }
+
+    .top-menu.opened .top-menu__list {
+        right: 0;
+        transition: var(--transition)
+    }
+
+    .top-menu__list--children {
+        position: static;
+        max-height: 0;
+        padding: 0 0 0 16px;
+    }
+
+    .top-menu__item--parent {
+        overflow: hidden;
+    }
+
+    .top-menu__item--parent>.top-menu__list--children {
+        border: none;
+        border-radius: 0;
+        box-shadow: unset;
+    }
+    
+    .top-menu__item--parent.is-active>.top-menu__list--children {
+        max-height: 200px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .top-menu__list--children .top-menu__item {
+        border: none;
+    }
+
+    .hamb {
+        display: block;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .hamb {
+        right: 16px;
+    }
+}

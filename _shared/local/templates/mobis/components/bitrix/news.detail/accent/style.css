@@ -1,0 +1,60 @@
+.accent-block {
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    min-height: 500px;
+}
+
+.accent-block__wrap {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: 24px 350px 24px 0;
+    z-index: 1;
+}
+
+.accent-block__title {
+    font-size: 36px;
+}
+
+.accent-block__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+}
+.accent-block__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+    z-index: 1;
+}
+
+@media (max-width: 1024px) {
+    .accent-block__wrap {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .accent-block__list .btn {
+        height: auto;
+        border: none;
+        text-align: left;
+    }
+}
+
+@media (max-width: 576px) {
+    .accent-block {
+        min-height: unset;
+    }
+    .accent-block__img {
+        display: none;
+    }
+}

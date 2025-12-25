@@ -1,0 +1,551 @@
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
+
+    --color-text: #000;
+    --color-accent: #12622E;
+    --color-border: #062a36;
+    --color-menu: #1e3f4a;
+    --color-grey: #272727;
+    --color-white: #FFF;
+    --color-bg: #062A36;
+    --color-error: #e71a1a;
+
+    --transition: all .3s ease-in-out;
+/*
+
+    --color-bg: #f2f3f8;
+
+    --color-footer: #bdddde;
+    --color-hover: #33aabb;
+    --color-disabled: #d6d6d6;
+    --color-adv: #134872;
+    --color-grey: #eee;
+    --color-grey2: #ccc;
+    --color-border: #ccc;
+    --color-input: #777;
+    --color-success: green;
+
+    --color-desc: #134772;
+    --color-date: #999;
+    --color-footer: #bdddde;
+    --color-hint: #aaa;*/
+
+
+  /*  --transition: all .3s ease-in-out;
+    --transition-btn: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    --transition-quick: all .15s ease-in-out;
+    --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);*/
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/local/fonts/ubuntu/Ubuntu-Light.woff2') format('woff2'),
+    url('/local/fonts/ubuntu/Ubuntu-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/local/fonts/ubuntu/Ubuntu-Regular.woff2') format('woff2'),
+    url('/local/fonts/ubuntu/Ubuntu-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/local/fonts/ubuntu/Ubuntu-Medium.woff2') format('woff2'),
+    url('/local/fonts/ubuntu/Ubuntu-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('/local/fonts/unbounded/Unbounded-Regular.woff2') format('woff2'),
+    url('/local/fonts/unbounded/Unbounded-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('/local/fonts/unbounded/Unbounded-Medium.woff2') format('woff2'),
+    url('/local/fonts/unbounded/Unbounded-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Unbounded';
+    src: url('/local/fonts/unbounded/Unbounded-Bold.woff2') format('woff2'),
+    url('/local/fonts/unbounded/Unbounded-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: Ubuntu, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+img {
+    display: block;
+}
+
+a {
+    color: var(--color-text);
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.extrafont {
+    font-family: Unbounded, Arial, Helvetica, sans-serif;;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.container--narrow {
+    max-width: 1170px;
+}
+
+.title {
+    font-family: Unbounded, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.accent {
+    color: var(--color-accent);
+}
+
+.center {
+    text-align: center;
+}
+
+.radius {
+    border-radius: 16px
+}
+
+.btn {
+    border-radius: 28px;
+    display: flex;
+    height: 56px;
+    padding: 0 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1;
+}
+
+.btn--transparent {
+    border: 1px solid var(--color-text);
+}
+
+.btn--white {
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+}
+
+.btn--fullwidth {
+    width: 100%;
+}
+
+.btn--accent {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: var(--color-accent);
+}
+
+.section {
+    padding: 24px 0;
+}
+
+.section--bg {
+    background: var(--color-bg);
+    padding: 36px 0;
+}
+
+.section--about {
+    padding-bottom: 50px;
+}
+
+.section--description {
+    padding: 84px 0;
+}
+
+.section--advantages {
+    padding: 80px 0 168px;
+}
+
+.section--contacts {
+    padding: 50px 0 80px;
+}
+
+.section--steps {
+    padding: 88px 0 40px;
+}
+
+.section--accent {
+    position: relative;
+    padding: 0;
+}
+
+.section__title {
+    font-family: Unbounded, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 44px;
+}
+
+.section__title--small {
+    font-size: 32px;
+}
+
+.header {
+    position: relative;
+    padding: 48px 0;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    width: 180px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.header__right {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.header__phone {
+    font-size: 24px;
+    color: var(--color-grey);
+}
+
+.header__feedback-link {
+    font-size: 18px;
+}
+
+
+.link--accent {
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-accent);
+    padding-right: 38px;
+    padding-bottom: 4px;
+    text-decoration: underline;
+    background: url('/local/img/mobis/arrow-link.svg') right center no-repeat;
+}
+
+.footer {
+    padding: 42px 0 36px;
+    background: var(--color-bg);
+    color: var(--color-white);
+    border-top: 1px solid var(--color-white);
+}
+
+.footer__main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.footer__title {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.footer__copy {
+    font-size: 20px;
+    text-align: center;
+}
+
+.contacts-block {
+    display: flex;
+    gap:44px;
+    justify-content: space-between;
+}
+
+.feedback {
+    flex: 527px 0 1;
+    color: var(--color-white);
+}
+
+.feedback__desc {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.contacts {
+    flex: 536px 0 1;
+    background: var(--color-white);
+    border-radius: 26px;
+    padding: 26px 40px;
+}
+
+.contacts__title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.contacts__list {
+    display: grid;
+    gap: 20px;
+}
+
+.contacts__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.social {
+    display: flex;
+    gap: 16px
+}
+
+.social img {
+    width: 50px;
+}
+
+.contacts__social {
+    gap: 20px
+}
+
+.form__fields {
+    display: grid;
+    gap: 40px;
+}
+
+.form__submit {
+    font-size: 24px;
+}
+
+.form__message {
+    font-size: 20px;
+    padding-left: 24px;
+    margin-bottom: 2px;
+}
+.form__message--error {
+    color: var(--color-error);
+}
+
+.input-block__input {
+    height: 40px;
+    width: 100%;
+    padding: 0 16px;
+}
+
+.input-block__input::placeholder {
+    color: var(--color-white);
+}
+
+.feedback .input-block__input {
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-size: 24px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-white);
+}
+
+.feedback .link {
+    color: var(--color-white);
+}
+
+/* Checkbox */
+.checkbox__input {
+    display: none;
+}
+
+.checkbox__label {
+    position: relative;
+    display: block;
+    height: 100%;
+    padding-left: 66px;
+    cursor: pointer;
+}
+
+.checkbox__icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 46px;
+    height: 46px;
+    border: 2px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--color-white);
+}
+
+.checkbox__label--policy .checkbox__icon {
+    top: -4px;
+}
+
+.checkbox__policy-text {
+    display: inline-block;
+}
+
+.checkbox__icon .icon {
+    display: none
+}
+
+.checkbox__input:checked + label .checkbox__icon {
+    background: var(--color-white) url("/local/img/mobis/check.svg") center center no-repeat;
+    background-size: 24px;
+}
+
+.checkbox__input:checked + label .checkbox__icon .icon {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+
+@media (max-width: 1280px) {
+    .link--accent {
+        padding-right: 30px;
+        background-size: 20px;
+    }
+
+    .header__phone {
+        font-size: 18px;
+    }
+
+    .header__feedback-link {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header__right {
+        padding-right: 50px;
+    }
+
+    .footer__left {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .btn {
+        height: 48px;
+        border-radius: 24px;
+        font-size: 20px;
+    }
+
+    .section--advantages {
+        padding: 60px 0 120px;
+    }
+
+    .contacts-block {
+        flex-direction: column;
+        gap: 64px;
+    }
+
+    .contacts, .feedback {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .section__title {
+        margin-bottom: 28px;
+    }
+
+    .btn {
+        font-size: 18px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .footer__social {
+        width: 100%;
+    }
+
+    .section--advantages {
+        padding: 36px 0 64px;
+    }
+
+    .checkbox__icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+
+    .checkbox__input:checked + label .checkbox__icon {
+        background-size: 16px;
+    }
+
+    .checkbox__label {
+        padding-left: 48px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 18px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .header__container {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .header__right {
+        padding-right: 0;
+    }
+
+    .contacts {
+        padding: 16px 24px;
+    }
+}

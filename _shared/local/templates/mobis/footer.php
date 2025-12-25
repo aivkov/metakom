@@ -1,1 +1,15 @@
-<?php echo 'footer';?>
+<?php
+use Ms\Site;
+?>
+
+<?php $APPLICATION->IncludeFile('/includes/mobis/footer.php')?>
+
+<script src="<?=CUtil::GetAdditionalFileURL('/local/js/imask.js')?>"></script>
+<script src="<?=CUtil::GetAdditionalFileURL('/local/js/dadata.js')?>"></script>
+<script src="<?=CUtil::GetAdditionalFileURL('/local/js/main.js')?>"></script>
+<script src="<?=CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . '/js/script.js')?>"></script>
+
+<?=Site::getFooterScripts()?>
+
+</body>
+</html>
