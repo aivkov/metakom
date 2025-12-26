@@ -6,9 +6,9 @@ use Ms\Site;
 
 <header class="header">
     <div class="container header__container">
-        <div class="header__logo logo">
+        <a href="/" class="header__logo logo">
             <img src="<?=SITE_TEMPLATE_PATH?>/img/logo.png" alt="Мобис">
-        </div>
+        </a>
 
         <?php $APPLICATION->IncludeFile('/includes/mobis/menu/top.php')?>
 

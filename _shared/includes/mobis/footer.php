@@ -2,9 +2,9 @@
     <div class="container">
         <div class="footer__main">
             <div class="footer__left">
-                <div class="footer__logo logo">
+                <a href="/" class="footer__logo logo">
                     <img src="<?=SITE_TEMPLATE_PATH?>/img/logo.png" alt="Мобис">
-                </div>
+                </a>
             </div>
             <div class="footer__menu">
                 <div class="footer__title extrafont">Системы безопасности</div>
