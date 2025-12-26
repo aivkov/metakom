@@ -366,7 +366,7 @@ a {
 
 .form__fields {
     display: grid;
-    gap: 40px;
+    gap: 8px;
 }
 
 .form__submit {
@@ -421,6 +421,10 @@ a {
 
 .feedback .link {
     color: var(--color-white);
+}
+
+.feedback__form .form-fields {
+    gap: 40px
 }
 
 /* Checkbox */
