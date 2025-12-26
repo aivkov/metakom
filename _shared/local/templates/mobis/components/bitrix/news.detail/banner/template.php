@@ -23,7 +23,7 @@
             <div class="banner__title title extrafont"><?=$arResult['NAME']?></div>
             <div class="banner__description"><?=$arResult['DETAIL_TEXT']?></div>
         </div>
-        <a class="banner__action extrafont" data-modal-ajax-open="call">Установить</a>
+        <a href="#" class="banner__action extrafont" data-modal-ajax-open="order">Установить</a>
     </div>
 
     <div class="banner__img">

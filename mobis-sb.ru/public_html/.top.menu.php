@@ -2,28 +2,35 @@
 $aMenuLinks = Array(
 	Array(
 		"Системы безпасности",
-		"/services/",
+        "/#services",
 		Array(), 
 		Array(), 
 		"" 
 	),
+    Array(
+        "Услуги",
+        "/services/",
+        Array(),
+        Array(),
+        ""
+    ),
 	Array(
 		"О нас", 
-		"/about/", 
+		"/#about",
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Оформить заявку",
-		"javascript:void(0);",
-		Array(), 
-		Array(), 
+		"#",
+		Array(),
+        Array("modal"=>"order"),
 		"" 
 	),
 	Array(
 		"Контакты", 
-		"/contacts/", 
+		"/#contacts",
 		Array(), 
 		Array(), 
 		"" 

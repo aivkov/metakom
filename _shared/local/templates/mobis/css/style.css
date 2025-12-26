@@ -7,17 +7,17 @@
     --color-border: #062a36;
     --color-menu: #1e3f4a;
     --color-grey: #272727;
+    --color-light-grey: #CCC;
     --color-white: #FFF;
     --color-bg: #062A36;
     --color-error: #e71a1a;
+    --color-hover: #064019;
 
     --transition: all .3s ease-in-out;
 /*
 
     --color-bg: #f2f3f8;
-
     --color-footer: #bdddde;
-    --color-hover: #33aabb;
     --color-disabled: #d6d6d6;
     --color-adv: #134872;
     --color-grey: #eee;
@@ -86,6 +86,10 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Ubuntu, Arial, Helvetica, sans-serif;
     font-size: 22px;
@@ -148,6 +152,7 @@ a {
     align-items: center;
     text-align: center;
     line-height: 1;
+    transition: var(--transition);
 }
 
 .btn--transparent {
@@ -167,6 +172,17 @@ a {
     background: var(--color-accent);
     color: var(--color-white);
     border: var(--color-accent);
+    transition: var(--transition);
+}
+
+.btn--accent:hover {
+    background: var(--color-hover);
+    transition: var(--transition);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    transition: var(--transition);
 }
 
 .section {
@@ -248,6 +264,10 @@ a {
 
 .header__feedback-link {
     font-size: 18px;
+}
+
+.header__logo {
+    flex-shrink: 1;
 }
 
 
@@ -339,6 +359,11 @@ a {
     gap: 20px
 }
 
+.form {
+    display: grid;
+  gap: 32px
+}
+
 .form__fields {
     display: grid;
     gap: 40px;
@@ -346,6 +371,10 @@ a {
 
 .form__submit {
     font-size: 24px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-family: Unbounded, Arial, Helvetica, sans-serif;
+    font-weight: 700;
 }
 
 .form__message {
@@ -361,19 +390,33 @@ a {
     height: 40px;
     width: 100%;
     padding: 0 16px;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-text);
+}
+
+.input-block__label {
+    font-size: 16px;
+}
+
+.input-block__input--textarea {
+    height: 72px;
 }
 
 .input-block__input::placeholder {
     color: var(--color-white);
 }
 
+.input-block__dropdown-item:not(.empty):hover {
+    background: var(--color-light-grey);
+}
+
+
 .feedback .input-block__input {
     background: var(--color-bg);
     color: var(--color-white);
-    font-size: 24px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid var(--color-white);
+    border-bottom-color: var(--color-white);
 }
 
 .feedback .link {
@@ -434,6 +477,26 @@ a {
     z-index: 1;
 }
 
+/* Modals */
+.modal__title {
+    font-family: Unbounded, Arial, Helvetica, sans-serif;
+    font-size: 26px;
+}
+
+.modal__inner {
+    max-width: 600px;
+}
+
+.modal__close {
+    width: 24px;
+    height: 24px;
+    top: 30px;
+    right: 30px;
+}
+
+.modal__close:hover {
+    top: 30px;
+}
 
 @media (max-width: 1280px) {
     .link--accent {

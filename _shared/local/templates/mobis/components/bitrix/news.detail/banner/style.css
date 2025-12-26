@@ -32,7 +32,14 @@
     color: var(--color-white);
     background: var(--color-accent);
     font-size: 20px;
+    transition: var(--transition);
 }
+
+.banner__action:hover {
+    background: var(--color-hover);
+    transition: var(--transition);
+}
+
 
 .banner__img {
     min-width: 200px;

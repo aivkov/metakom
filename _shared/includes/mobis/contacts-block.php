@@ -8,6 +8,8 @@ $addresses = Site::getAddresses();
     <div class="feedback">
         <h2 class="section__title title">Оформить заявку</h2>
         <form class="feedback__form js-ajax-form">
+            <input type="hidden" name="action" value="Form/sendCall">
+            <input type="hidden" name="ajaxCallback" value="afterFormSend">
             <div class="feedback__desc">Оставьте заявку и мы свяжемся с Вами в ближайшее время</div>
             <div class="form__fields">
                 <div class="input-block">
@@ -25,8 +27,8 @@ $addresses = Site::getAddresses();
                 $policy = $_SERVER['DOCUMENT_ROOT'] . '/docs/policy.pdf';?>
                 <div class="form__fields form__fields--policy">
                     <div class="checkbox">
-                        <input type="checkbox" id="call-us-agreement" class="checkbox__input" checked data-checkbox-policy>
-                        <label for="call-us-agreement" class="checkbox__label checkbox__label--policy">
+                        <input type="checkbox" id="call-us-agreement-footer" class="checkbox__input" checked data-checkbox-policy>
+                        <label for="call-us-agreement-footer" class="checkbox__label checkbox__label--policy">
                             <span class="checkbox__policy-text">
                                  <span>Я соглашаюсь с <a href="#" class="link" download>обработкой персональных данных</a></span>
                                 <span>и <a href="#" class="link" download>условиями пользовательких соглашений</a></span>
@@ -38,7 +40,7 @@ $addresses = Site::getAddresses();
 
                 <div class="form__footer">
                     <div class="form__message form__message--error js-form-error"></div>
-                    <button class="form__submit btn btn--fullwidth btn--accent extrafont" type="submit">Отправить</button>
+                    <button class="form__submit btn btn--fullwidth btn--accent" type="submit">Отправить</button>
                 </div>
             </div>
 
