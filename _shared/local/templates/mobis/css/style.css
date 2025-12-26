@@ -423,7 +423,7 @@ a {
     color: var(--color-white);
 }
 
-.feedback__form .form-fields {
+.feedback__form .form__fields {
     gap: 40px
 }
 
