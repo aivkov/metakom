@@ -244,6 +244,7 @@ a {
 }
 
 .logo {
+    display: block;
     width: 180px;
     flex-shrink: 0;
 }
