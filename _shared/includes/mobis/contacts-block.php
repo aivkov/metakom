@@ -46,7 +46,7 @@ $addresses = Site::getAddresses();
 
         </form>
     </div>
-    <div class="contacts">
+    <div id="contacts"  class="contacts">
         <h2 class="title contacts__title">Контакты</h2>
         <div class="contacts__list">
             <?php if($phones = Site::getPhones()):?>

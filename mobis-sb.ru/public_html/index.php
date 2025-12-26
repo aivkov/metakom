@@ -36,7 +36,7 @@ $APPLICATION->SetTitle("");
         </div>
     </div>
 
-    <div id="contacts" class="section section--contacts section--bg">
+    <div class="section section--contacts section--bg">
         <?php $APPLICATION->IncludeFile('/includes/mobis/contacts-block.php') ?>
     </div>
 
