@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initInputsError()
     initDadata()
     initTabs()
+    initHideMenu()
 })
 
 function afterAjax() {
@@ -451,5 +452,19 @@ function initTabs() {
     (new Tab).init()
 }
 
+function initHideMenu() {
+    const menuLinks = document.querySelectorAll('.js-close-menu')
+    if(!menuLinks.length) {
+        return
+    }
+    menuLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            const parent = link.closest('.js-header-menu')
+            if(!!parent) {
+                parent.classList.remove('opened')
+            }
+        })
+    })
+}
 
 

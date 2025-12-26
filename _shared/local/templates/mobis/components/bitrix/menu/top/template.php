@@ -22,6 +22,7 @@
 
             <li class="top-menu__item <?=$extraClass ?>">
                 <a href="<?= $arItem["IS_PARENT"] ? 'javascript:void(0)' : $arItem["LINK"] ?>"
+                   class="<?= $arItem["IS_PARENT"] ? '' : 'js-close-menu' ?>"
                     <?php if($modal):?> data-modal-ajax-open="<?=$modal?>"<?php endif?>><?= $arItem["TEXT"] ?></a>
                 <?php if ($arItem["IS_PARENT"]): ?>
                     <ul class="top-menu__list--children js-popup-children">
