@@ -2,7 +2,7 @@
 /** @var \CMain $APPLICATION */
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-
+LocalRedirect('/');
 $APPLICATION->SetTitle("Установка и облуживание пожарной сигнализации от Метаком Сервис в Брянске");
 ?>
 

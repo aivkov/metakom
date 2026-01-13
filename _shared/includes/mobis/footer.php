@@ -1,3 +1,5 @@
+<?php use Ms\Site;?>
+
 <footer class="footer">
     <div class="container">
         <div class="footer__main">
@@ -10,10 +12,14 @@
                 <div class="footer__title extrafont">Системы безопасности</div>
                 <?php $APPLICATION->IncludeFile('/includes/mobis/menu/footer.php')?>
             </div>
-            <div class="footer__social">
-                <div class="footer__title extrafont">Мы в соцсетях</div>
-                <?php $APPLICATION->IncludeFile('/includes/mobis/social.php')?>
-            </div>
+
+
+            <?php if($socials = Site::getSocial()):?>
+                <div class="footer__social">
+                    <div class="footer__title extrafont">Мы в соцсетях</div>
+                    <?php $APPLICATION->IncludeFile('/includes/mobis/social.php')?>
+                </div>
+            <?php endif?>
 
         </div>
         <div class="footer__copy">

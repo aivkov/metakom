@@ -23,12 +23,12 @@ $aMenuLinks = Array(
 		"" 
 	),
 
-    Array(
+  /*  Array(
         "Пожарная сигнализация",
         "/fire-alarm/",
         Array(),
         Array(),
         ""
-    ),
+    ),*/
 );
 ?>
