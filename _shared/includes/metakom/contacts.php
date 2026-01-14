@@ -23,9 +23,11 @@ $addresses = Site::getAddresses();
                                     <div class="contact__title">Телефон<?php if(count($phones) > 1):?>ы<?php endif?></div>
                                     <?php foreach($phones as $phone):?>
                                         <div class="contact__contact">
-                                            <a href="tel:<?=Tools::phoneToTel($phone)?>"><?=$phone?></a>
+                                            <a href="tel:<?=Tools::phoneToTel($phone['phone'])?>"><?=$phone['phone']?></a>
+                                            <?php if($desc = trim($phone['description'])):?>
+                                                <span class="small"> - <?=$phone['description']?></span>
+                                            <?php endif?>
                                         </div>
-
                                     <?php endforeach?>
                                 </div>
                             </div>

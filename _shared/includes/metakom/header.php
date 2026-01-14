@@ -19,7 +19,7 @@ use Ms\Site;
         <div class="header__right">
             <?php if($phone = Site::getPhones()[0]):?>
                 <div class="header__phones">
-                    <a href="tel:<?=Tools::phoneToTel($phone)?>" class="header__phone"><?=$phone?></a>
+                    <a href="tel:<?=Tools::phoneToTel($phone['phone'])?>" class="header__phone"><?=$phone['phone']?></a>
                 </div>
             <?php endif?>
             <div class="header__feedback">

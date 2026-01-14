@@ -46,7 +46,19 @@ class Site {
     }
 
     public static function getPhones($key = 0) {
-        return static::$info[$key]['PROPERTIES']['PHONES']['VALUE'];
+        $arPhones = [];
+
+        $prop = static::$info[$key]['PROPERTIES']['PHONES'];
+        if(is_array($prop['VALUE'])) {
+            foreach($prop['VALUE'] as $key => $phone) {
+                $description = $prop['DESCRIPTION'][$key];
+                $arPhones[] = [
+                    'phone' => $phone,
+                    'description' => $description
+                ];
+            }
+        }
+        return $arPhones;
     }
 
     public static function getEmails($key = 0) {

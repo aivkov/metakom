@@ -20,6 +20,10 @@ button {
     cursor: pointer;
 }
 
+.small {
+    font-size: 80%;
+}
+
 /* Input block */
 .input-block {
     position: relative;
