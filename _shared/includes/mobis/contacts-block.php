@@ -57,7 +57,7 @@ $addresses = Site::getAddresses();
                         <div>Телефон</div>
                     <?php endif?>
                     <?php foreach($phones as $phone):?>
-                        <div class="extrafont"><a href="tel:<?=Tools::phoneToTel($phone)?>" class="link"><?=$phone?></a></div>
+                        <div class="extrafont"><a href="tel:<?=Tools::phoneToTel($phone['phone'])?>" class="link"><?=$phone['phone']?></a></div>
                     <?php endforeach?>
                 </div>
             <?php endif?>
