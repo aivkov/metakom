@@ -160,7 +160,8 @@ button {
 }
 
 .modal-success__img {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 32px;
 }
 

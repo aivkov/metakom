@@ -382,15 +382,9 @@ function openModalSuccess(data) {
     if(!message) {
         message = 'Ваше сообщение отправлено'
     }
-    const modal = document.querySelector('[data-modal="success"]')
 
-    if(!!modal) {
-        modal.querySelector('.js-title').innerHTML = title
-        modal.querySelector('.js-message').innerHTML = message
-        const obModal = new Modal
-        obModal.open('success', data)
-    }
-
+    const obModal = new Modal
+    obModal.openWithAjax('success', data)
 }
 
 function initDadata() {

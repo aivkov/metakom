@@ -4,10 +4,10 @@
         <div class="modal__close" data-modal-close="success">
             <img src="/local/img/icons/close.svg" alt="">
         </div>
-        <div class="modal__title js-title"></div>
+        <div class="modal__title js-title"><?=$arParams['title'] ?: 'Поздравляем!'?></div>
         <div class="modal-success__img">
             <img src="/local/img/icons/success.svg" alt="">
         </div>
-        <div class="modal__message js-message"></div>
+        <div class="modal__message js-message"><?=$arParams['message']?></div>
     </div>
 </div>
