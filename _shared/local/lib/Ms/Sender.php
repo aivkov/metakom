@@ -41,6 +41,7 @@ class Sender
         $mail = new PHPMailer();
         $mail->setFrom(Site::getEmailFrom(), 'Метаком Севис');
         $mail->addAddress($this->emailTo);
+        //$mail->addAddress('ivkov_alexey@mail.ru');
         $mail->isHTML();
         $mail->CharSet = 'UTF-8';
 
