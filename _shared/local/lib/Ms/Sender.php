@@ -29,10 +29,10 @@ class Sender
     private function getLetterTitle() {
         return $this->title ?: 'Письмо';
     }
+
     public function send()
     {
         $emailsTo = Site::getEmails();
-        //$emailsTo = ['a343147@yandex.ru', 'ivkov_alexey@mail.ru']; //ToDo remove it
         $this->emailTo = implode(',', $emailsTo);
 
         //$headers = $this->getHeaders();
