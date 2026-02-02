@@ -8,6 +8,7 @@
         <form class="form js-ajax-form">
             <input type="hidden" name="action" value="Review/add">
             <input type="hidden" name="ajaxCallback" value="afterFormSend">
+            <input type="hidden" name="form-type" value="review">
             <input type="hidden" name="iblockId" value="<?=$arParams['IBLOCK_ID']?>">
             <input type="hidden" name="sectionCode" value="<?=$arParams['PARENT_SECTION_CODE']?>">
 

@@ -3,10 +3,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Муром");
-$APPLICATION->SetPageProperty("keywords", "Метаком Сервис, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД,  г. Муром");
-$APPLICATION->SetPageProperty("title", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Муром");
-$APPLICATION->SetTitle("Метаком Сервис Муром");
+$APPLICATION->SetPageProperty("description", "ООО «Метаком» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Краснодар");
+$APPLICATION->SetPageProperty("keywords", "Метаком, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД,  г. Краснодар");
+$APPLICATION->SetPageProperty("title", "ООО «Метаком» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД г. Краснодар");
+$APPLICATION->SetTitle("Метаком Краснодар");
 
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>

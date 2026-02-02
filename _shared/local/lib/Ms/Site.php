@@ -167,4 +167,12 @@ class Site {
         }
         return $arAddresses;
     }
+
+    public static function getLogo() {
+        $logoProp = static::$info[0]['PROPERTIES']['LOGO'];
+        return [
+            'src' => $logoProp['VALUE'] ? \CFile::getPath($logoProp['VALUE']) : SITE_TEMPLATE_PATH . '/img/logo.png',
+            'alt' => $logoProp['DESCRIPTION'] ?: 'Метаком Сервис'
+        ];
+    }
 }

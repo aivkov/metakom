@@ -1,6 +1,6 @@
 <?
 $aMenuLinks = Array(
-	Array(
+	/*Array(
 		"Новости", 
 		"/news/", 
 		Array(), 
@@ -13,7 +13,7 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
-	),
+	),*/
 	Array(
 		"Услуги", 
 		"/services/", 
@@ -28,12 +28,26 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
-		"Контакты", 
-		"/contacts/", 
-		Array(), 
-		Array(), 
-		"" 
-	)
+    Array(
+        "Оплата",
+        "https://pay.kk.ru/catalog/6101?hh",
+        Array(),
+        Array('target' => '_blank'),
+        ""
+    ),
+    Array(
+        "Письмо руководителю",
+        "#",
+        Array(),
+        Array('modal' => 'request'),
+        ""
+    ),
+    Array(
+        "Контакты",
+        "/contacts/",
+        Array(),
+        Array(),
+        ""
+    ),
 );
 ?>

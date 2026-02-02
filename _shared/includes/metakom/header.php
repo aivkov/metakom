@@ -2,14 +2,16 @@
 
 use Ms\Tools;
 use Ms\Site;
+
+$arLogo = Site::getLogo();
 ?>
 
 <header class="header">
     <div class="header__container container">
         <div class="header__left">
             <div>
-                <a href="/" class="header__logo logo">
-                    <img src="/local/img/logo.png" alt="Метаком-сервис">
+                <a href="/" class="header__logo logo logo--<?=Site::getLid()?>">
+                    <img src="<?=$arLogo['src']?>" alt="<?=$arLogo['alt']?>">
                 </a>
                 <?php $APPLICATION->IncludeFile('/includes/metakom/header-city.php')?>
             </div>

@@ -7,6 +7,7 @@
         <form class="form js-ajax-form">
             <input type="hidden" name="action" value="Form/sendCall">
             <input type="hidden" name="ajaxCallback" value="afterFormSend">
+            <input type="hidden" name="form-type" value="call">
             <div class="form__fields">
                 <div class="input-block">
                     <label class="input-block__label">Имя <sup>*</sup></label>

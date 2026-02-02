@@ -131,6 +131,7 @@ class Modal {
         }
 
         sendAjax(formData).then((result) => {
+            console.log(result)
             if (result.html) {
                 document.body.insertAdjacentHTML('beforeend', result.html)
                 this.open(id)

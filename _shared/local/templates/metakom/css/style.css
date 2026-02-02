@@ -267,6 +267,10 @@ ul.list, .content ul {
     width: 210px;
 }
 
+.logo--mk {
+    width: 130px; /* Краснодар */
+}
+
 .header__city {
     display: flex;
     align-items: center;
@@ -586,8 +590,12 @@ ul.list, .content ul {
     gap: 24px
 }
 
-.modal__inner--order {
+.modal__inner--request {
     max-width: 600px;
+}
+
+.modal__inner--request {
+    max-width: 750px;
 }
 
 .modal__inner--review {
