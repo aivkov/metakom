@@ -15,7 +15,7 @@ class Form extends \CAjaxRequest
             $message .= '<p>Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b></p>';
         }
 
-        $subject = 'Сообщение с формы Обратной связи';
+        $subject = 'Заказ обратного звонка';
         $title = 'Письмо с сайта';
 
         $obSender = new Sender($subject, $message);
@@ -57,12 +57,11 @@ class Form extends \CAjaxRequest
         $message .= '<p>Адрес: <b>' . $this->arParams['address'] . '</b></p>';
         $message .= '<p>Сообщение: <b>' . $this->arParams['message'] . '</b></p>';
 
-        $subject = 'Сообщение с формы Обратной связи';
+        $subject = 'Письмо руководителю';
         $title = 'Письмо с сайта';
 
         $obSender = new Sender($subject, $message, $formType);
         $obSender->setLetterTitle($title);
-
 
         if($obSender->send()) {
             $this->arResult = ['status' => 'success', 'message' => 'Ваше сообщение отправлено'];
