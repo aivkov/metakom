@@ -99,7 +99,7 @@ class Sender
             'UF_SITE_ID' => Site::getLid(),
             'UF_DOMAIN' => Site::getDomain(),
             'UF_SUBJECT' => $this->subject,
-            'UF_MESSAGE' => $this->message,
+            'UF_MESSAGE' => $this->prepareMessage($this->message),
             'UF_EMAIL_TO' => implode($this->emailTo),
             'UF_DATE_TIME' => new DateTime(),
             'UF_SUCCESS_EXEC' => $result
@@ -112,4 +112,11 @@ class Sender
             return false;
         }
     }
+
+    private function prepareMessage($message) {
+        $message = str_replace('<br>', "\r\n", $message);
+        $message = strip_tags($message);
+        return $message;
+    }
+
 }
