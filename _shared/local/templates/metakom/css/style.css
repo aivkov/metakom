@@ -590,12 +590,12 @@ ul.list, .content ul {
     gap: 24px
 }
 
-.modal__inner--request {
+.modal__inner--order {
     max-width: 600px;
 }
 
 .modal__inner--request {
-    max-width: 750px;
+    max-width: 600px;
 }
 
 .modal__inner--review {
