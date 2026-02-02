@@ -100,7 +100,7 @@ class Sender
             'UF_DOMAIN' => Site::getDomain(),
             'UF_SUBJECT' => $this->subject,
             'UF_MESSAGE' => $this->message,
-            'UF_EMAIL_TO' => $this->emailTo,
+            'UF_EMAIL_TO' => implode($this->emailTo),
             'UF_DATE_TIME' => new DateTime(),
             'UF_SUCCESS_EXEC' => $result
         ];
