@@ -114,7 +114,7 @@ class Sender
     }
 
     private function prepareMessage($message) {
-        $message = str_replace('<br>', "    |    ", $message);
+        $message = str_replace('<br>', "\r\n", $message);
         $message = strip_tags($message);
 
         $message = preg_replace('/(\+7)\s\((\d{3})\)\s(\d{3})\s\-\s(\d{2})\s\-\s(\d{2})/', '$1$2$3$4$5', $message);

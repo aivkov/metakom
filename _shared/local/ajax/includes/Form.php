@@ -13,7 +13,7 @@ class Form extends \CAjaxRequest
         $message = 'Имя: <b>' . htmlspecialchars($this->arParams['name']) . '</b><br>';
         $message .= 'Телефон: <b>' . htmlspecialchars($this->arParams['phone']) . '</b><br>';
         if($this->arParams['message']) {
-            $message .= 'Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b><br>';
+            $message .= 'Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b>';
         }
 
         $subject = 'Заказ обратного звонка';
@@ -31,12 +31,12 @@ class Form extends \CAjaxRequest
 
     public function sendOrder() {
         $formType = $this->arParams['form-type'];
-        $message = '<p>Имя: <b>' . $this->arParams['name'] . '</b></p>';
-        $message .= '<p>Телефон: <b>' . $this->arParams['phone'] . '</b></p>';
-        $message .= '<p>Email: <b>' . $this->arParams['email'] . '</b></p>';
-        $message .= '<p>Адрес: <b>' . $this->arParams['address'] . '</b></p>';
-        $message .= '<p>Подъезд: <b>' . $this->arParams['entrance'] . '</b></p>';
-        $message .= '<p>Сообщение: <b>' . $this->arParams['message'] . '</b></p>';
+        $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
+        $message .= 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
+        $message .= 'Email: <b>' . $this->arParams['email'] . '</b><br>';
+        $message .= 'Адрес: <b>' . $this->arParams['address'] . '</b><br>';
+        $message .= 'Подъезд: <b>' . $this->arParams['entrance'] . '</b><br>';
+        $message .= 'Сообщение: <b>' . $this->arParams['message'] . '</b>';
 
         $subject = 'Сообщение с формы Обратной связи';
         $title = 'Письмо с сайта';
@@ -53,11 +53,11 @@ class Form extends \CAjaxRequest
 
     public function sendRequest() {
         $formType = $this->arParams['form-type'];
-        $message = '<p>Имя: <b>' . $this->arParams['name'] . '</b></p>';
-        $message .= '<p>Телефон: <b>' . $this->arParams['phone'] . '</b></p>';
-        $message .= '<p>Email: <b>' . $this->arParams['email'] . '</b></p>';
-        $message .= '<p>Адрес: <b>' . $this->arParams['address'] . '</b></p>';
-        $message .= '<p>Сообщение: <b>' . $this->arParams['message'] . '</b></p>';
+        $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
+        $message .= 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
+        $message .= 'Email: <b>' . $this->arParams['email'] . '</b><br>';
+        $message .= 'Адрес: <b>' . $this->arParams['address'] . '</b><br>';
+        $message .= 'Сообщение: <b>' . $this->arParams['message'] . '</b>';
 
         $subject = 'Письмо руководителю';
         $title = 'Письмо с сайта';
