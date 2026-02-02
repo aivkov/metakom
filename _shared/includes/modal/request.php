@@ -28,10 +28,10 @@
                            autocomplete="off">
                 </div>
                 <div class="input-block">
-                    <label class="input-block__label">Адрес <sup>*</sup></label>
+                    <label class="input-block__label">Адрес</label>
 
                     <textarea name="address" class="input-block__input input-block__input--textarea" placeholder="Начните вводить адрес"
-                               data-dadata="address" autocomplete="off" data-required=""></textarea>
+                               data-dadata="address" autocomplete="off"></textarea>
                     <div class="input-block__dropdown js-dadata-dropdown">
                         <div class="input-block__dropdown-list js-dadata-dropdown-list"></div>
                     </div>

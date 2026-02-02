@@ -16,10 +16,13 @@ class Sender
 
     private $emailTo;
 
-    public function __construct($subject, $message)
+    private $formType;
+
+    public function __construct($subject, $message, $formType = '')
     {
         $this->subject = $subject;
         $this->message = $message;
+        $this->formType = $formType;
     }
 
     public function setLetterTitle($title) {
@@ -32,15 +35,17 @@ class Sender
 
     public function send()
     {
-        $emailsTo = Site::getEmails();
-        $this->emailTo = implode(',', $emailsTo);
+        $this->emailTo = Site::getEmailTo($this->formType);
 
         //$headers = $this->getHeaders();
         $message = $this->getEmailHeader() . $this->message . $this->getEmailFooter();
 
         $mail = new PHPMailer();
-        $mail->setFrom(Site::getEmailFrom(), 'Метаком Севис');
-        $mail->addAddress($this->emailTo);
+        $mail->setFrom(Site::getEmailFrom($this->formType), Site::getEmailSiteName());
+        foreach($this->emailTo as $email) {
+            $mail->addAddress($email);
+        }
+
         //$mail->addAddress('ivkov_alexey@mail.ru');
         $mail->isHTML();
         $mail->CharSet = 'UTF-8';

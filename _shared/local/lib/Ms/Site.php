@@ -79,7 +79,7 @@ class Site {
     public static function getLid($key = 0) {
         return static::$info[$key]['CODE'];
     }
-    public static function getEmailFrom($key = 0) {
+    public static function getEmailFrom($key = 0, $formType = '') {
         return static::$info[$key]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
     }
 
@@ -174,5 +174,20 @@ class Site {
             'src' => $logoProp['VALUE'] ? \CFile::getPath($logoProp['VALUE']) : SITE_TEMPLATE_PATH . '/img/logo.png',
             'alt' => $logoProp['DESCRIPTION'] ?: 'Метаком Сервис'
         ];
+    }
+
+    public static function getEmailTo($formType) {
+        if($formType) {
+            $entityDataClass = HLBlock::GetEntityDataClass(FORMS_HL_ID);
+            $res = $entityDataClass::getList(['filter' => ['UF_SITE_ID' => SITE_ID, 'UF_FORM_TYPE' => $formType]]);
+            if($row = $res->Fetch()) {
+                return explode(',', $row['UF_EMAIL_TO']);
+            }
+        }
+        return static::getEmails();
+    }
+
+    public static function getEmailSiteName() {
+        return static::$info[0]['PROPERTIES']['EMAIL_SITE_NAME']['VALUE'];
     }
 }
