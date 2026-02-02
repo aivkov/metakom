@@ -9,6 +9,7 @@ use \Ms\Sender;
 class Form extends \CAjaxRequest
 {
     public function sendCall() {
+        $formType = $this->arParams['form-type'];
         $message = 'Имя: <b>' . htmlspecialchars($this->arParams['name']) . '</b><br>';
         $message .= 'Телефон: <b>' . htmlspecialchars($this->arParams['phone']) . '</b><br>';
         if($this->arParams['message']) {
@@ -18,7 +19,7 @@ class Form extends \CAjaxRequest
         $subject = 'Заказ обратного звонка';
         $title = 'Письмо с сайта';
 
-        $obSender = new Sender($subject, $message);
+        $obSender = new Sender($subject, $message, $formType);
         $obSender->setLetterTitle($title);
 
         if($obSender->send()) {
@@ -29,6 +30,7 @@ class Form extends \CAjaxRequest
     }
 
     public function sendOrder() {
+        $formType = $this->arParams['form-type'];
         $message = '<p>Имя: <b>' . $this->arParams['name'] . '</b></p>';
         $message .= '<p>Телефон: <b>' . $this->arParams['phone'] . '</b></p>';
         $message .= '<p>Email: <b>' . $this->arParams['email'] . '</b></p>';
@@ -39,7 +41,7 @@ class Form extends \CAjaxRequest
         $subject = 'Сообщение с формы Обратной связи';
         $title = 'Письмо с сайта';
 
-        $obSender = new Sender($subject, $message);
+        $obSender = new Sender($subject, $message, $formType);
         $obSender->setLetterTitle($title);
 
         if($obSender->send()) {
