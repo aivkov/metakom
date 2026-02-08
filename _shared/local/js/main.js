@@ -374,16 +374,6 @@ window.ajaxCallback.afterFormSend = function (data, form) {
 }
 
 function openModalSuccess(data) {
-
-    let title = data.title
-    let message = data.message
-    if(!title) {
-        title = 'Поздравляем!'
-    }
-    if(!message) {
-        message = 'Ваше сообщение отправлено'
-    }
-
     const obModal = new Modal
     obModal.openWithAjax('success', data)
 }

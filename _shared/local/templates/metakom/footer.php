@@ -9,7 +9,6 @@ use Ms\Site;
 <script src="<?=CUtil::GetAdditionalFileURL('/local/js/main.js')?>"></script>
 <script src="<?=CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . '/js/script.js')?>"></script>
 
-<?php $APPLICATION->IncludeFile('/includes/modal/success.php');?>
 <?=Site::getFooterScripts()?>
 
 </body>
