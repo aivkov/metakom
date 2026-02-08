@@ -29,10 +29,10 @@ $aMenuLinks = Array(
 		"" 
 	),
     Array(
-        "Оплата",
-        "https://pay.kk.ru/catalog/6101?hh",
+        "Где оплатить",
+        "/payment/",
         Array(),
-        Array('target' => '_blank'),
+        Array(),
         ""
     ),
     Array(
