@@ -14,7 +14,7 @@ $arLogo = Site::getLogo();
             <?php $APPLICATION->IncludeFile('/includes/metakom/social.php')?>
         </div>
         <div class="footer__copy">
-            © <?=date('Y')?> Сайт является информационным ресурсом Метаком сервис
+            © <?=date('Y')?> Сайт является информационным ресурсом <?=Site::getSiteName()?>
         </div>
     </div>
 </footer>

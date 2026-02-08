@@ -41,7 +41,7 @@ class Sender
         $message = $this->getEmailHeader() . $this->message . $this->getEmailFooter();
 
         $mail = new PHPMailer();
-        $mail->setFrom(Site::getEmailFrom($this->formType), Site::getEmailSiteName());
+        $mail->setFrom(Site::getEmailFrom($this->formType), Site::getSiteName());
         foreach($this->emailTo as $email) {
             $mail->addAddress($email);
         }

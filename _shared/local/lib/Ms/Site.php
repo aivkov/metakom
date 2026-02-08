@@ -187,7 +187,7 @@ class Site {
         return static::getEmails();
     }
 
-    public static function getEmailSiteName() {
-        return static::$info[0]['PROPERTIES']['EMAIL_SITE_NAME']['VALUE'];
+    public static function getSiteName() {
+        return static::$info[0]['PROPERTIES']['SITE_NAME']['VALUE'];
     }
 }
