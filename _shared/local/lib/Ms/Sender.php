@@ -52,7 +52,7 @@ class Sender
 
         $mail->Subject = $this->subject;
         $mail->Body = $message;
-        if($_FILES['file']['tmp_name']) {
+        if(isset($_FILES['file']) && $_FILES['file']['tmp_name']) {
             $mail->addAttachment($_FILES['file']['tmp_name'], $_FILES['file']['name'], 'base64', $_FILES['file']['type']);
         }
 
