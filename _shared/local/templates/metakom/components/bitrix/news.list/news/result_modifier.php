@@ -22,10 +22,11 @@ if($arParams['PARENT_SECTION_CODE']) {
     $this->__component->setResultCacheKeys(['PARENT_SECTION']);
 }
 
-foreach($arResult['ITEMS'] as $arItem) {
+foreach($arResult['ITEMS'] as &$arItem) {
     if(strpos($arItem['DETAIL_TEXT'], '#DETAIL_PICTURE#') !== false) {
         $picture = '<img src="' . CFile::GetPath($arItem['DETAIL_TEXT']) . '" alt="">';
         str_replace('#DETAIL_PICTURE#', $picture, $arItem['DETAIL_TEXT']);
     }
 }
+unset($arItem);
 
