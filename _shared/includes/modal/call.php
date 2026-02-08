@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <?php $APPLICATION->IncludeFile('/includes/form/policy.php')?>
+            <?php $APPLICATION->IncludeFile('/includes/form/policy.php', ['FORM' => 'call'])?>
 
             <div class="form__footer">
                 <div class="form__message form__message--error js-form-error"></div>
