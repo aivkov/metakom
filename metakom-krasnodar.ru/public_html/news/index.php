@@ -9,7 +9,7 @@ $APPLICATION->SetPageProperty("title", "ООО «Метаком» Краснод
 
     <div class="page">
         <div class="container">
-            <h1 class="page__title"><?php $APPLICATION->ShowTitle() ?></h1>
+            <h1 class="page__title"><?php $APPLICATION->ShowTitle(false) ?></h1>
             <?php $APPLICATION->IncludeFile('/includes/metakom/news.php', ['SECTION_CODE' => 'news']) ?>
         </div>
     </div>
