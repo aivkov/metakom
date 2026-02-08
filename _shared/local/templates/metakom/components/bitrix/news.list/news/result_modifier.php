@@ -24,8 +24,9 @@ if($arParams['PARENT_SECTION_CODE']) {
 
 foreach($arResult['ITEMS'] as &$arItem) {
     if(strpos($arItem['DETAIL_TEXT'], '#DETAIL_PICTURE#') !== false) {
-        $picture = '<img src="' . CFile::GetPath($arItem['DETAIL_TEXT']) . '" alt="">';
-        str_replace('#DETAIL_PICTURE#', $picture, $arItem['DETAIL_TEXT']);
+        $picture = '<img src="' . $arItem['DETAIL_PICTURE']['SRC'] . '" alt="">';
+        $arItem['DETAIL_TEXT'] = str_replace('#DETAIL_PICTURE#', $picture, $arItem['DETAIL_TEXT']);
+        $a = $arItem['DETAIL_TEXT'];
     }
 }
 unset($arItem);
