@@ -52,6 +52,9 @@ class Sender
 
         $mail->Subject = $this->subject;
         $mail->Body = $message;
+        if($_FILES['file']['tmp_name']) {
+            $mail->addAttachment($_FILES['file']['tmp_name']);
+        }
 
         $domain = Site::getDomain();
         $dkimFile = realpath($_SERVER['DOCUMENT_ROOT'] . '/../..') . '/' . $domain . '.private';

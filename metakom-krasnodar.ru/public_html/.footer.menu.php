@@ -7,18 +7,18 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
-		"О нас",
-		"/about/",
-		Array(), 
-		Array(), 
-		"" 
-	),
     Array(
-        "Оформить заявку",
+        "Вызов мастера",
         "#",
         Array(),
+        Array('modal' => 'order'),
+        ""
+    ),
+    Array(
+        "Заявка на ремонт",
+        "#",
         Array(),
+        Array('modal' => 'order'),
         ""
     ),
 	Array(
@@ -27,6 +27,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
-	)
+	),
+    Array(
+        "Карта сайта",
+        "/sitemap/",
+        Array(),
+        Array(),
+        ""
+    )
 );
 ?>

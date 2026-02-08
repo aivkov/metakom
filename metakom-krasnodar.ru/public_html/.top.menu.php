@@ -1,19 +1,19 @@
 <?
 $aMenuLinks = Array(
-	/*Array(
+	Array(
 		"Новости", 
 		"/news/", 
 		Array(), 
 		Array(),
 		"" 
 	),
-	Array(
-		"О нас", 
-		"/about/", 
-		Array(), 
-		Array(), 
-		"" 
-	),*/
+    /*Array(
+        "О нас",
+        "/about/",
+        Array(),
+        Array(),
+        ""
+    ),*/
 	Array(
 		"Услуги", 
 		"/services/", 
@@ -39,7 +39,14 @@ $aMenuLinks = Array(
         "Письмо руководителю",
         "#",
         Array(),
-        Array('modal' => 'request'),
+        Array('modal' => 'director'),
+        ""
+    ),
+    Array(
+        "Поверка счетчиков",
+        "https://poverka-23.ru/",
+        Array(),
+        Array('target' => '_blank'),
         ""
     ),
     Array(

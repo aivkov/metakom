@@ -20,39 +20,8 @@
                            data-mask="phone" autocomplete="off" data-required="">
                 </div>
             </div>
-            <?php $agreement = $_SERVER['DOCUMENT_ROOT'] . '/docs/agreement.pdf';
-                $policy = $_SERVER['DOCUMENT_ROOT'] . '/docs/policy.pdf';?>
 
-            <div class="form__fields form__fields--policy">
-                <?php if(file_exists($agreement)):?>
-                    <div class="checkbox">
-                        <input type="checkbox" id="call-us-agreement" class="checkbox__input" checked data-checkbox-policy>
-                        <label for="call-us-agreement" class="checkbox__label checkbox__label--policy">
-                            <span>Я даю согласие на <a href="/docs/agreement.pdf" download>обработку персональных данных</a></span>
-                            <div class="checkbox__icon"></div>
-                        </label>
-                    </div>
-                <?php else:?>
-                    <div class="checkbox">
-                        <input type="checkbox" id="call-us-agreement" class="checkbox__input" checked data-checkbox-policy>
-                        <label for="call-us-agreement" class="checkbox__label checkbox__label--policy">
-                    <span>Заполняя данную форму, Вы подтверждаете свое совершеннолетие и соглашаетесь
-                    на обработку персональных данных в соответствии с Условиями.</span>
-                            <div class="checkbox__icon"></div>
-                        </label>
-                    </div>
-                <?php endif?>
-
-                <?php if(file_exists($policy)):?>
-                    <div class="checkbox">
-                        <input type="checkbox" id="call-us-policy" class="checkbox__input" checked data-checkbox-policy>
-                        <label for="call-us-policy" class="checkbox__label checkbox__label--policy">
-                            <span>Я ознакомлен(а) с <a href="/docs/policy.pdf" download>политикой конфиденциальности</a></span>
-                            <div class="checkbox__icon"></div>
-                        </label>
-                    </div>
-                <?php endif?>
-            </div>
+            <?php $APPLICATION->IncludeFile('/includes/form/policy.php')?>
 
             <div class="form__footer">
                 <div class="form__message form__message--error js-form-error"></div>

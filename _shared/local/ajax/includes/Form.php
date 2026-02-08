@@ -51,7 +51,7 @@ class Form extends \CAjaxRequest
         }
     }
 
-    public function sendRequest() {
+    public function sendDirector() {
         $formType = $this->arParams['form-type'];
         $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
         $message .= 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
@@ -60,6 +60,29 @@ class Form extends \CAjaxRequest
         $message .= 'Сообщение: <b>' . $this->arParams['message'] . '</b>';
 
         $subject = 'Письмо руководителю';
+        $title = 'Письмо с сайта';
+
+        $obSender = new Sender($subject, $message, $formType);
+        $obSender->setLetterTitle($title);
+
+        if($obSender->send()) {
+            $this->arResult = ['status' => 'success', 'message' => 'Ваше сообщение отправлено'];
+        } else {
+            $this->arResult = ['status' => 'error', 'message' => 'Ошибка отправки сообщения. Повторите попытку позже'];
+        }
+    }
+
+    public function sendRequest() {
+        $formType = $this->arParams['form-type'];
+        if(!$this->arParams['address'] && !$this->arParams['personal-account']) {
+            $this->arResult = ['status' => 'error', 'message' => 'Введите адрес или лицевой счет'];
+            return;
+        }
+        $message = 'Адрес: <b>' . $this->arParams['address'] . '</b><br>';
+        $message .= 'Лицевой счет: <b>' . $this->arParams['personal-account'] . '</b><br>';
+        $message .= 'Email: <b>' . $this->arParams['email'] . '</b><br>';
+
+        $subject = 'Запрос выписки по счету';
         $title = 'Письмо с сайта';
 
         $obSender = new Sender($subject, $message, $formType);

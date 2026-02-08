@@ -594,12 +594,16 @@ ul.list, .content ul {
     max-width: 600px;
 }
 
-.modal__inner--request {
+.modal__inner--director {
     max-width: 600px;
 }
 
 .modal__inner--review {
     max-width: 600px;
+}
+
+.modal__inner--call {
+    max-width: 400px;
 }
 
 @media (max-width: 1024px) {

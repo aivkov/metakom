@@ -1,13 +1,15 @@
-<div class="modal modal-order" data-modal="order" tabindex="-1" role="dialog" on-close="remove">
-    <div class="modal__inner modal__inner--order">
-        <div class="modal__close" data-modal-close="order">
+<div class="modal modal-director" data-modal="director" tabindex="-1" role="dialog" on-close="remove">
+    <div class="modal__inner modal__inner--director">
+        <div class="modal__close" data-modal-close="director">
             <img src="/local/img/icons/close.svg" alt="">
         </div>
         <div class="modal__title">Заполните форму заявки</div>
         <form class="form js-ajax-form">
-            <input type="hidden" name="action" value="Form/sendOrder">
+            <div>Здесь Вы можете обратиться к руководителю организации с любым вопросом: написать заявление, отзыв, жалобу,
+                прислать файл. Обратите внимание, что если вы оставите свой e-mail, руководитель ответит Вам гораздо быстрее.</div>
+            <input type="hidden" name="action" value="Form/sendDirector">
             <input type="hidden" name="ajaxCallback" value="afterFormSend">
-            <input type="hidden" name="form-type" value="order">
+            <input type="hidden" name="form-type" value="director">
             <div class="form__fields">
                 <div class="input-block">
                     <label class="input-block__label">Имя <sup>*</sup></label>
@@ -21,29 +23,27 @@
                 </div>
 
                 <div class="input-block">
-                    <label class="input-block__label">Email <sup>*</sup></label>
+                    <label class="input-block__label">Email</label>
                     <input type="text" name="email" class="input-block__input" placeholder="Ваше Email"
-                           autocomplete="off" data-required="">
+                           autocomplete="off">
                 </div>
                 <div class="input-block">
-                    <label class="input-block__label">Адрес <sup>*</sup></label>
+                    <label class="input-block__label">Адрес</label>
 
                     <textarea name="address" class="input-block__input input-block__input--textarea" placeholder="Начните вводить адрес"
-                               data-dadata="address" autocomplete="off" data-required=""></textarea>
+                               data-dadata="address" autocomplete="off"></textarea>
                     <div class="input-block__dropdown js-dadata-dropdown">
                         <div class="input-block__dropdown-list js-dadata-dropdown-list"></div>
                     </div>
                 </div>
                 <div class="input-block">
-                    <label class="input-block__label">Подъезд <sup>*</sup></label>
-
-                    <input type="number" name="entrance" class="input-block__input" placeholder="Подъезд"
-                           autocomplete="off" data-required="">
+                    <label class="input-block__label">Сообщение <sup>*</sup></label>
+                    <textarea name="message" class="input-block__input input-block__input--textarea" placeholder="Задайте свой вопрос или опишите проблему"
+                              autocomplete="off"></textarea>
                 </div>
                 <div class="input-block">
-                    <label class="input-block__label">Сообщение <sup>*</sup></label>
-                    <textarea name="message" class="input-block__input input-block__input--textarea" placeholder="Опишите, какую услугу вы хотите получить"
-                              autocomplete="off"></textarea>
+                    <input type="file" name="file">
+                    <div class="input-block__hint">Не более 10 Мб</div>
                 </div>
             </div>
 
