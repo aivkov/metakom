@@ -21,9 +21,9 @@
                 </div>
 
                 <div class="input-block">
-                    <label class="input-block__label">Email <sup>*</sup></label>
+                    <label class="input-block__label">Email</label>
                     <input type="text" name="email" class="input-block__input" placeholder="Ваше Email"
-                           autocomplete="off" data-required="">
+                           autocomplete="off">
                 </div>
                 <div class="input-block">
                     <label class="input-block__label">Адрес <sup>*</sup></label>

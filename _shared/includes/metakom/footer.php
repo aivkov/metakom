@@ -18,3 +18,5 @@ $arLogo = Site::getLogo();
         </div>
     </div>
 </footer>
+
+<?php $APPLICATION->IncludeFile('/includes/metakom/menu/mobile.php')?>

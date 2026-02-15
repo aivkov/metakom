@@ -1,33 +1,33 @@
 <?
 $aMenuLinks = Array(
-	Array(
-		"Новости", 
-		"/news/", 
-		Array(), 
-		Array(),
-		"" 
-	),
-    /*Array(
-        "О нас",
-        "/about/",
+    Array(
+        "Контакты",
+        "/contacts/",
         Array(),
         Array(),
         ""
-    ),*/
+    ),
 	Array(
-		"Услуги", 
-		"/services/", 
-		Array(), 
-		Array(), 
+		"Оплатить",
+		"https://pay.kk.bank/catalog/6101?hh",
+		Array(),
+        Array('target' => '_blank'),
 		"" 
 	),
-	Array(
-		"Оформить заявку", 
-		"/order/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+    Array(
+        "Оформить заявку",
+        "/order/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Услуги",
+        "/services/",
+        Array(),
+        Array(),
+        ""
+    ),
     Array(
         "Где оплатить",
         "/payment/",
@@ -43,18 +43,19 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Новости",
+        "/news/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Поверка счетчиков",
         "https://poverka-23.ru/",
         Array(),
         Array('target' => '_blank'),
         ""
     ),
-    Array(
-        "Контакты",
-        "/contacts/",
-        Array(),
-        Array(),
-        ""
-    ),
+
 );
 ?>
