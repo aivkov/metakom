@@ -26,7 +26,7 @@
 .mobile-menu__item a {
     display: block;
     color: var(--color-white);
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.2;
 }
 
@@ -34,6 +34,18 @@
     .mobile-menu {
         display: block;
 
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu__item a {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mobile-menu__item a {
+        font-size: 12px;
     }
 }
 
