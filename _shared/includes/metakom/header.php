@@ -25,7 +25,7 @@ $arLogo = Site::getLogo();
                 </div>
             <?php endif?>
             <div class="header__feedback">
-                <a href="#" data-modal-ajax-open="call" class="header__feedback-link">Оставить заявку</a>
+                <a href="#" data-modal-ajax-open="call" class="header__feedback-link">Обратный звонок</a>
             </div>
             <div class="header__social">
                 <?php $APPLICATION->IncludeFile('/includes/metakom/social.php')?>

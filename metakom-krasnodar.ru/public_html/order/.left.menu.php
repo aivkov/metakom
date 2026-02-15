@@ -1,12 +1,5 @@
 <?
 $aMenuLinks = Array(
-	Array(
-		"Заявка на установку",
-		"",
-		Array(),
-        Array("modal"=>"order"),
-		"" 
-	),
     Array(
         "Вызов мастера",
         "",
@@ -19,6 +12,13 @@ $aMenuLinks = Array(
         "",
         Array(),
         Array("modal"=>"request"),
+        ""
+    ),
+    Array(
+        "Заявка на установку",
+        "",
+        Array(),
+        Array("modal"=>"order"),
         ""
     ),
 );
