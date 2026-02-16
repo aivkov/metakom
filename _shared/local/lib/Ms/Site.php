@@ -177,14 +177,21 @@ class Site {
     }
 
     public static function getEmailTo($formType) {
-        if($formType) {
-            $entityDataClass = HLBlock::GetEntityDataClass(FORMS_HL_ID);
-            $res = $entityDataClass::getList(['filter' => ['UF_SITE_ID' => SITE_ID, 'UF_FORM_TYPE' => $formType]]);
-            if($row = $res->Fetch()) {
-                return explode(',', $row['UF_EMAIL_TO']);
+        $emailToArray = static::$info[0]['PROPERTIES']['EMAIL_TO']['VALUE'];
+        if($emailToArray) {
+            if(count($emailToArray) == 1) {
+                return explode(',', $emailToArray[0]);
             }
+            $emailToForms = static::$info[0]['PROPERTIES']['EMAIL_TO']['DESCRIPTION'];
+            $index = array_search($formType, $emailToForms);
+            if($index === false) {
+                $index = array_search('', $emailToForms);
+            }
+            if($index !== false) {
+                return explode(',', $emailToArray[$index]);
+            }
+            return static::getEmails();
         }
-        return static::getEmails();
     }
 
     public static function getSiteName() {
