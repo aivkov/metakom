@@ -14,13 +14,6 @@ $aMenuLinks = Array(
         Array('modal' => 'order'),
         ""
     ),
-    Array(
-        "Заявка на ремонт",
-        "#",
-        Array(),
-        Array('modal' => 'order'),
-        ""
-    ),
 	Array(
 		"Контакты", 
 		"/contacts/",
