@@ -180,7 +180,7 @@ class Site {
         $emailToArray = static::$info[0]['PROPERTIES']['EMAIL_TO']['VALUE'];
         if($emailToArray) {
             if(count($emailToArray) == 1) {
-                return explode(',', $emailToArray[0]);
+                return $emailToArray[0];
             }
             $emailToForms = static::$info[0]['PROPERTIES']['EMAIL_TO']['DESCRIPTION'];
             $index = array_search($formType, $emailToForms);
@@ -188,10 +188,11 @@ class Site {
                 $index = array_search('', $emailToForms);
             }
             if($index !== false) {
-                return explode(',', $emailToArray[$index]);
+                return $emailToArray[$index];
             }
             return static::getEmails();
         }
+        return static::getEmails();
     }
 
     public static function getSiteName() {

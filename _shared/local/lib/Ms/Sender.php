@@ -36,7 +36,9 @@ class Sender
     public function send()
     {
         $this->emailTo = Site::getEmailTo($this->formType);
-
+        if(is_string($this->emailTo)) {
+            $this->emailTo = explode(',', $this->emailTo);
+        }
         //$headers = $this->getHeaders();
         $message = $this->getEmailHeader() . $this->message . $this->getEmailFooter();
 
