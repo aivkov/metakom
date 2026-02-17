@@ -590,6 +590,21 @@ ul.list, .content ul {
     gap: 24px
 }
 
+.footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 24px
+}
+
+.footer__copy {
+
+}
+
+.footer__disclamer {
+    font-size: 12px;
+    max-width: 700px;
+}
+
 .modal__inner--order {
     max-width: 600px;
 }
@@ -625,6 +640,10 @@ ul.list, .content ul {
 
     .contacts__info {
         padding: 24px;
+    }
+
+    .footer {
+        padding-bottom: 64px;
     }
 }
 
@@ -690,7 +709,7 @@ ul.list, .content ul {
         order: 1;
     }
 
-    .footer__copy {
+    .footer__copy, .footer__disclamer {
         text-align: center;
     }
 }
