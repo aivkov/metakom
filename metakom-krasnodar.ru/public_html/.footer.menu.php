@@ -22,6 +22,13 @@ $aMenuLinks = Array(
 		"" 
 	),
     Array(
+        "СОУТ",
+        "/sout/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Карта сайта",
         "/sitemap/",
         Array(),

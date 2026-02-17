@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("СОУТ");
+$APPLICATION->SetTitle("Специальная оценка условий труда");
 $APPLICATION->SetPageProperty("title", "Специальная оценка условий труда | Краснодар");
 ?>
 
