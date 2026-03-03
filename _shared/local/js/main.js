@@ -5,6 +5,7 @@ if (window.ajaxCallback === undefined) {
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu()
     initAjaxForms()
+    initAjaxLinks()
     initToggleActive()
     initModals()
     initCheckboxesPolicy()
@@ -28,7 +29,11 @@ function initModals() {
 }
 
 function initMobileMenu() {
-    document.querySelector('.js-toggle-menu').addEventListener('click', () => {
+    const mobileMenu =  document.querySelector('.js-toggle-menu')
+    if(!mobileMenu) {
+        return
+    }
+    mobileMenu.addEventListener('click', () => {
         document.querySelector('.js-header-menu').classList.toggle('opened')
     })
 }
@@ -292,6 +297,25 @@ function initAjaxForms() {
     })
 }
 
+function initAjaxLinks() {
+
+    const ajaxLinks = document.querySelectorAll('.js-ajax-link')
+    if(ajaxLinks.length) {
+        ajaxLinks.forEach((ajaxLink) => {
+            ajaxLink.addEventListener('click', (e) => {
+                e.preventDefault()
+                let formData = new FormData()
+                const dataset = ajaxLink.dataset
+                for (let k in dataset) {
+                    formData.append(k, dataset[k])
+                }
+                sendAjax(formData, ajaxLink).then((result) => {})
+            })
+
+        })
+    }
+}
+
 function validate(form) {
     let result = true
     const requiredFields = form.querySelectorAll('[data-required]')
@@ -333,7 +357,9 @@ function showLoader(el) {
     const loaderClass = 'is-loading'
     if (el.tagName == 'FORM') {
         const submitBtn = el.querySelector('[type=submit]')
-        submitBtn.classList.add(loaderClass)
+        if(!!submitBtn) {
+            submitBtn.classList.add(loaderClass)
+        }
     } else {
         el.classList.add(loaderClass)
     }
@@ -379,7 +405,9 @@ function openModalSuccess(data) {
 }
 
 function initDadata() {
-    (new Dadata).init()
+    if(typeof Dadata == 'function') {
+        (new Dadata).init()
+    }
 }
 
 class Tab {

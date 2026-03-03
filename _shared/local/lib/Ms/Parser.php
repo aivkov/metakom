@@ -2,42 +2,137 @@
 
 namespace Ms;
 
+use \Bitrix\Main\Type\DateTime;
+
 class Parser
 {
     private $iblockId = 31;
+
+    private $hlBlockId = 4;
     private $url = 'https://satro-paladin.com/';
     private $data = [];
+
+    private $error = '';
     private $sections = [
-        '/catalog/domofony-i-peregovornye-ustroystva/'
+        '/catalog/domofony-i-peregovornye-ustroystva/monitory-videodomofonov/',
+        '/catalog/domofony-i-peregovornye-ustroystva/videopaneli-individualnye/',
+        '/catalog/domofony-i-peregovornye-ustroystva/audiotrubki/',
+        '/catalog/sistemy-videonablyudeniya/videokamery/',
+        '/catalog/sistemy-ohranno-pozharnoy-signalizacii/',
+        '/catalog/sistemy-videonablyudeniya/monitory-i-televizory/monitory/',
+        '/catalog/zamki-dovodchiki-i-furnitura/dovodchiki-dvernye/'
     ];
     private $sectionCode;
 
-    public function run()
+    private $entityDataClass;
+
+    public function __construct()
     {
-        foreach ($this->sections as $sectionUri) {
-            $this->parseSection($sectionUri);
-        }
+        require($_SERVER['DOCUMENT_ROOT'] . '/local/tools/simple-html-dom.php');
+        $this->entityDataClass = HLBlock::GetEntityDataClass($this->hlBlockId);
     }
 
-    private function parseSection($sectionUri)
+    public function clearTable()
     {
+        global $DB;
+        $query = 'TRUNCATE TABLE ms_catalog_import';
+        $res = $DB->Query($query);
+    }
+
+    public function continue()
+    {
+        $productRow = $this->selectProductRow();
+        $this->parseProduct($productRow);
+        $res = $this->getTotalInfo();
+        $res['error'] = $this->error;
+        $res['status'] = 'success';
+        return $res;
+    }
+
+    private function selectProductRow()
+    {
+        $res = $this->entityDataClass::getList(['filter' => ['UF_IMPORT_DATE_TIME' => false], 'limit' => 1])->Fetch();
+        return $res;
+    }
+
+    private function getTotalInfo()
+    {
+        $arFilter = ['!UF_IMPORT_DATE_TIME' => false];
+        $done = $this->countRowsByFilter($arFilter);
+
+        $arFilter = [];
+        $total = $this->countRowsByFilter($arFilter);
+        $percent = 100;
+        if($total) {
+            $percent = round($done / $total * 100, 2);
+        }
+        return ['count' => (int)$done, 'total' => (int)$total, 'percent' => $percent];
+    }
+
+    private function countRowsByFilter($arFilter) {
+        $res = $this->entityDataClass::getList(
+            [
+                'select' => ['CNT'],
+                'filter' => $arFilter,
+                'runtime' => [
+                    new \Bitrix\Main\Entity\ExpressionField('CNT', 'COUNT(*)'),
+                ]
+            ]
+        )->Fetch();
+        return $res['CNT'];
+    }
+
+    public function scanSection($count)
+    {
+        $sectionUri = $this->sections[$count - 1];
         $url = $this->url . $sectionUri;
         $data = file_get_html($url);
-        $products = $data->find('.good_block_wrapper');
-        foreach ($products as $product) {
-            $link = $product->find('.title', 0);
-            if ($link) {
-                $uri = $link->attr['href'];
-                if ($uri) {
-                    $this->parseProduct($uri);
+        $title = trim($data->find('h1', 0)->plaintext);
+        $lastPage = $this->getLastPage($data);
+        for ($page = 1; $page <= $lastPage; $page++) {
+            if ($page == 1) {
+                $section = $data;
+            } else {
+                $sectionUrl = $url . '?page=' . $page;
+                $section = file_get_html($sectionUrl);
+            }
+            $products = $section->find('.good_block_wrapper');
+            foreach ($products as $product) {
+                $link = $product->find('.title', 0);
+                if ($link) {
+                    $productLink = $link->attr['href'];
+                    $arFields = [
+                        'UF_SECTION_URL' => $sectionUri,
+                        'UF_SECTION_NAME' => $title,
+                        'UF_PRODUCT_LINK' => $productLink
+                    ];
+
+                    $this->entityDataClass::add($arFields);
                 }
             }
         }
-
+        return ['status' => 'success', 'total' => count($this->sections), 'count' => $count];
     }
 
-    private function parseProduct($uri)
+    private function getLastPage($data)
     {
+        $pagination = $data->find('.pagination', 0);
+        if ($pagination) {
+            $paginationLinks = $pagination->find('a.page_number');
+            if ($paginationLinks && count($paginationLinks)) {
+                $lastLink = $paginationLinks[count($paginationLinks) - 2];
+                $lastPage = (int)$lastLink->innertext;
+            }
+        }
+        if ($lastPage) {
+            return $lastPage;
+        }
+        return 1;
+    }
+
+    private function parseProduct($row)
+    {
+        $uri = $row['UF_PRODUCT_LINK'];
         $url = $this->url . $uri;
         $data = file_get_html($url);
         $product = $data->find('.details_content', 0);
@@ -48,8 +143,8 @@ class Parser
 
         $arPictures = $this->selectProductPictures($product);
         $morePhoto = [];
-        foreach($arPictures as $key => $picture) {
-            if(!$key) {
+        foreach ($arPictures as $key => $picture) {
+            if (!$key) {
                 continue;
             }
             $morePhoto[] = \CFile::MakeFileArray($picture);
@@ -63,6 +158,7 @@ class Parser
             'DETAIL_TEXT' => $this->getDescription($about),
             'DETAIL_TEXT_TYPE' => 'html',
             'DETAIL_PICTURE' => $arPictures ? \CFile::MakeFileArray($arPictures[0]) : false,
+            'IBLOCK_SECTION_ID' => $this->getSectionId($row),
             'PROPERTY_VALUES' => [
                 'PRICE' => $this->getPrice($product),
                 'MORE_PHOTO' => $morePhoto,
@@ -72,20 +168,48 @@ class Parser
         ];
 
         $el = new \CIBlockElement;
-        if($id = $this->existProductId($extId)) {
+        if ($id = $this->existProductId($extId)) {
             $res = $el->Update($id, $arFields);
         } else {
             $res = $el->Add($arFields);
         }
+
+        if (!$res) {
+            $arFields = ['UF_IMPORT_ERROR' => $el->LAST_ERROR, 'UF_IMPORT_DATE_TIME' => new DateTime()];
+            $this->error = $el->LAST_ERROR;
+        } else {
+            $arFields = ['UF_IMPORT_ERROR' => '', 'UF_IMPORT_DATE_TIME' => new DateTime()];
+        }
+
+        $this->entityDataClass::update($row['ID'], $arFields);
     }
 
-    private function existProductId($extId) {
+    private function getSectionId($row) {
+        $sectionName = $row['UF_SECTION_NAME'];
+        $parts = explode('/', trim($row['UF_SECTION_URL'], '/'));
+
+        $sectionCode = $parts[count($parts) - 1];
+        $arFilter = ['CODE' => $sectionCode];
+        $arSelect = ['ID'];
+        $checkSection = \CIBlockSection::GetList([], $arFilter, false, $arSelect)->Fetch();
+        if($checkSection) {
+            return $checkSection['ID'];
+        }
+        $arFields = ['IBLOCK_ID' => $this->iblockId, 'NAME' => $sectionName, 'CODE' => $sectionCode];
+        $bs = new \CIBlockSection;
+        $sectionId = $bs->Add($arFields);
+        return $sectionId;
+    }
+
+    private function existProductId($extId)
+    {
         $arFilter = ['IBLOCK_ID' => $this->iblockId, 'XML_ID' => $extId];
         $res = \CIBlockElement::GetList([], $arFilter, false, false, ['ID'])->Fetch();
         return (int)$res['ID'];
     }
 
-    private function getProductTitle($data) {
+    private function getProductTitle($data)
+    {
         $obTitle = $data->find('h1', 0);
         return $obTitle->plaintext;
     }
@@ -149,10 +273,11 @@ class Parser
         ];
     }
 
-    private function getDescription($el) {
+    private function getDescription($el)
+    {
         $description = '';
         $obDescription = $el->find('.description', 0);
-        foreach($obDescription->children() as $children) {
+        foreach ($obDescription->children() as $children) {
             $description .= $children->outertext;
         }
         return $description;
