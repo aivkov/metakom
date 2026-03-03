@@ -11,14 +11,18 @@ window.ajaxCallback.afterParserRun = function (data, btn) {
         let percent
         const progressBar =  document.querySelector('.js-progress-bar')
         const progressBarInfo = document.querySelector('.js-progress-info')
-        const pauseBtn = document.querySelector('.js-pause-btn')
 
         if(data.count < data.total) {
             percent = String(Math.round(Number(data.count) / Number(data.total) * 100))
             for (let attr in data.INPUT) {
+                if(attr == 'begin') {
+                    continue
+                }
                 if(attr !== 'count') {
                     formData.append(attr, data.INPUT[attr])
                 }
+
+
             }
             formData.append('count', Number(data.count) + 1)
         } else {
@@ -31,7 +35,11 @@ window.ajaxCallback.afterParserRun = function (data, btn) {
         progressBar.style.width = `${percent}%`
         progressBarInfo.innerText = `${data.count}/${data.total} (${percent}%)`
 
+
+        title.innerHTML = 'Чтение разделов'
         sendAjax(formData).then((result) => {})
+
+
     }
 }
 
@@ -68,3 +76,4 @@ function startImportProducts() {
     title.innerHTML = 'Импорт товаров'
     pauseBtn.classList.remove('stopped')
 }
+

@@ -9,18 +9,18 @@ class Parser
     private $iblockId = 31;
 
     private $hlBlockId = 4;
-    private $url = 'https://satro-paladin.com/';
+    private $url = 'https://satro-paladin.com';
     private $data = [];
 
     private $error = '';
     private $sections = [
         '/catalog/domofony-i-peregovornye-ustroystva/monitory-videodomofonov/',
-        '/catalog/domofony-i-peregovornye-ustroystva/videopaneli-individualnye/',
+     /*   '/catalog/domofony-i-peregovornye-ustroystva/videopaneli-individualnye/',
         '/catalog/domofony-i-peregovornye-ustroystva/audiotrubki/',
         '/catalog/sistemy-videonablyudeniya/videokamery/',
         '/catalog/sistemy-ohranno-pozharnoy-signalizacii/',
         '/catalog/sistemy-videonablyudeniya/monitory-i-televizory/monitory/',
-        '/catalog/zamki-dovodchiki-i-furnitura/dovodchiki-dvernye/'
+        '/catalog/zamki-dovodchiki-i-furnitura/dovodchiki-dvernye/'*/
     ];
     private $sectionCode;
 
@@ -104,7 +104,8 @@ class Parser
                     $arFields = [
                         'UF_SECTION_URL' => $sectionUri,
                         'UF_SECTION_NAME' => $title,
-                        'UF_PRODUCT_LINK' => $productLink
+                        'UF_PRODUCT_LINK' => $productLink,
+                        'UF_PAGE_NUMBER' => $page
                     ];
 
                     $this->entityDataClass::add($arFields);

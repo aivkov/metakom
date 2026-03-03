@@ -6,7 +6,7 @@ class Parser extends \CAjaxRequest
     public function run() {
         $count = $this->arParams['count'] ?: 1;
         $obParser = new \Ms\Parser();
-        if(!$count) {
+        if($this->arParams['begin']) {
             $obParser->clearTable();
         }
         $this->arResult = $obParser->scanSection($count);
