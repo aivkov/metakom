@@ -15,12 +15,12 @@ class Parser
     private $error = '';
     private $sections = [
         '/catalog/domofony-i-peregovornye-ustroystva/monitory-videodomofonov/',
-     /*   '/catalog/domofony-i-peregovornye-ustroystva/videopaneli-individualnye/',
+        '/catalog/domofony-i-peregovornye-ustroystva/videopaneli-individualnye/',
         '/catalog/domofony-i-peregovornye-ustroystva/audiotrubki/',
         '/catalog/sistemy-videonablyudeniya/videokamery/',
         '/catalog/sistemy-ohranno-pozharnoy-signalizacii/',
         '/catalog/sistemy-videonablyudeniya/monitory-i-televizory/monitory/',
-        '/catalog/zamki-dovodchiki-i-furnitura/dovodchiki-dvernye/'*/
+        '/catalog/zamki-dovodchiki-i-furnitura/dovodchiki-dvernye/'
     ];
     private $sectionCode;
 
