@@ -216,15 +216,19 @@ class Parser
 
     private function selectProductPictures($product)
     {
-        $gallery = $product->find('.image_gallery .web_slider ', 0);
-        $slides = $gallery->find('.slide');
-
         $arPictures = [];
-        foreach ($slides as $slide) {
-            $img = $slide->find('img', 0);
-            $href = $img->attr['original_img'];
-            $arPictures[] = $href;
+        $gallery = $product->find('.image_gallery .web_slider ', 0);
+        if($gallery) {
+            $slides = $gallery->find('.slide');
+            if($slides) {
+                foreach ($slides as $slide) {
+                    $img = $slide->find('img', 0);
+                    $href = $img->attr['original_img'];
+                    $arPictures[] = $href;
+                }
+            }
         }
+
         return $arPictures;
     }
 

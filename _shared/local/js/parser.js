@@ -11,6 +11,7 @@ window.ajaxCallback.afterParserRun = function (data, btn) {
         let percent
         const progressBar =  document.querySelector('.js-progress-bar')
         const progressBarInfo = document.querySelector('.js-progress-info')
+        const pauseBtn = document.querySelector('.js-pause-btn')
 
         if(data.count < data.total) {
             percent = String(Math.round(Number(data.count) / Number(data.total) * 100))
@@ -38,6 +39,7 @@ window.ajaxCallback.afterParserContinue = function (data, btn) {
     if(data.status == 'success') {
         const progressBar =  document.querySelector('.js-progress-bar')
         const progressBarInfo = document.querySelector('.js-progress-info')
+        const pauseBtn = document.querySelector('.js-pause-btn')
         const title =  document.querySelector('.js-parser__title')
 
         const formData = new FormData();
@@ -47,12 +49,22 @@ window.ajaxCallback.afterParserContinue = function (data, btn) {
         progressBar.style.width = `${data.percent}%`
         progressBarInfo.innerText = `${data.count}/${data.total} (${data.percent}%)`
 
-        if(Number(data.count) < Number(data.total)) {
-            sendAjax(formData).then((result) => {})
+        if(pauseBtn.classList.contains('stopped')) {
+            title.innerHTML = 'Импорт приостановлен'
         } else {
-            title.innerHTML = 'Импорт авершен'
+            if(Number(data.count) < Number(data.total)) {
+                sendAjax(formData).then((result) => {})
+            } else {
+                title.innerHTML = 'Импорт завершен'
+            }
         }
-
     }
 
+}
+
+function startImportProducts() {
+    const title =  document.querySelector('.js-parser__title')
+    const pauseBtn = document.querySelector('.js-pause-btn')
+    title.innerHTML = 'Импорт товаров'
+    pauseBtn.classList.remove('stopped')
 }

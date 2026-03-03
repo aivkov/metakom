@@ -46,7 +46,9 @@ $obParser->run();*/
 
         <div class="parser__actions">
             <button class="btn js-ajax-link" data-action="Parser/run" data-ajax-callback="afterParserRun">Начать заново</button>
-            <button class="btn btn--transparent js-ajax-link" data-action="Parser/continue" data-ajax-callback="afterParserContinue">Продолжить</button>
+            <button class="btn btn--transparent js-ajax-link" data-action="Parser/continue" data-ajax-callback="afterParserContinue"
+                    onclick="startImportProducts()">Продолжить</button>
+            <button class="btn js-pause-btn" onclick="this.classList.add('stopped')">Приостановить</button>
         </div>
     </div>
 </div>
