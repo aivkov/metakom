@@ -13,6 +13,8 @@ class Parser
     private $data = [];
 
     private $error = '';
+
+    private $arParams;
     private $sections = [
         '/catalog/domofony-i-peregovornye-ustroystva/monitory-videodomofonov/',
         '/catalog/domofony-i-peregovornye-ustroystva/videopaneli-individualnye/',
@@ -26,10 +28,11 @@ class Parser
 
     private $entityDataClass;
 
-    public function __construct()
+    public function __construct($arParams = [])
     {
         require($_SERVER['DOCUMENT_ROOT'] . '/local/tools/simple-html-dom.php');
         $this->entityDataClass = HLBlock::GetEntityDataClass($this->hlBlockId);
+        $this->arParams = $arParams;
     }
 
     public function clearTable()
@@ -37,6 +40,7 @@ class Parser
         global $DB;
         $query = 'TRUNCATE TABLE ms_catalog_import';
         $res = $DB->Query($query);
+        $a = $res;
     }
 
     public function continue()
@@ -82,37 +86,45 @@ class Parser
         return $res['CNT'];
     }
 
-    public function scanSection($count)
+    public function scanSection()
     {
-        $sectionUri = $this->sections[$count - 1];
-        $url = $this->url . $sectionUri;
-        $data = file_get_html($url);
-        $title = trim($data->find('h1', 0)->plaintext);
-        $lastPage = $this->getLastPage($data);
-        for ($page = 1; $page <= $lastPage; $page++) {
-            if ($page == 1) {
-                $section = $data;
-            } else {
-                $sectionUrl = $url . '?page=' . $page;
-                $section = file_get_html($sectionUrl);
-            }
-            $products = $section->find('.good_block_wrapper');
-            foreach ($products as $product) {
-                $link = $product->find('.title', 0);
-                if ($link) {
-                    $productLink = $link->attr['href'];
-                    $arFields = [
-                        'UF_SECTION_URL' => $sectionUri,
-                        'UF_SECTION_NAME' => $title,
-                        'UF_PRODUCT_LINK' => $productLink,
-                        'UF_PAGE_NUMBER' => $page
-                    ];
+        $count = $this->arParams['count'] ?? 1;
+        $page = $this->arParams['page'] ?? 1;
 
-                    $this->entityDataClass::add($arFields);
-                }
+        $sectionUri = $this->sections[$count - 1];
+        $sectionUrl = $this->url . $sectionUri;
+
+        if($page > 1) {
+            $sectionUrl .= '?page=' . $page;
+        }
+
+        $data = file_get_html($sectionUrl);
+        if($page == 1) {
+            $lastPage = $this->getLastPage($data);
+        } else {
+            $lastPage = $this->arParams['last_page'];
+        }
+
+        $title = trim($data->find('h1', 0)->plaintext);
+
+        $products = $data->find('.good_block_wrapper');
+        foreach ($products as $product) {
+            $link = $product->find('.title', 0);
+            if ($link) {
+                $productLink = $link->attr['href'];
+                $arFields = [
+                    'UF_SECTION_URL' => $sectionUri,
+                    'UF_SECTION_NAME' => $title,
+                    'UF_PRODUCT_LINK' => $productLink,
+                    'UF_PAGE_NUMBER' => $page
+                ];
+
+                $this->entityDataClass::add($arFields);
             }
         }
-        return ['status' => 'success', 'total' => count($this->sections), 'count' => $count];
+        $countSections = count($this->sections);
+        $percent = round(($page / $lastPage / $countSections + ($count - 1) / $countSections) * 100, 1);
+        return ['status' => 'success', 'total' => count($this->sections), 'count' => $count, 'page' => $page, 'last_page' => $lastPage, 'percent' => $percent];
     }
 
     private function getLastPage($data)

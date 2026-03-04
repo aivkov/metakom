@@ -16,9 +16,6 @@ if (!$USER->IsAdmin()) {
     die('not authorized as admin');
 }
 
-/*
-$obParser = new \Ms\Parser();
-$obParser->run();*/
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,11 +41,11 @@ $obParser->run();*/
         </div>
 
 
-        <div class="parser__actions">
-            <button class="btn js-ajax-link" data-action="Parser/run" data-ajax-callback="afterParserRun" data-begin="start">Начать заново</button>
-            <button class="btn btn--transparent js-ajax-link" data-action="Parser/continue" data-ajax-callback="afterParserContinue"
+        <div class="parser__actions js-parser-actions">
+            <button class="btn btn--160 js-ajax-link" data-action="Parser/run" data-ajax-callback="afterParserRun" data-begin="start" onclick="startScanSections()">Начать заново</button>
+            <button class="btn btn--160 btn--transparent js-ajax-link" data-action="Parser/continue" data-ajax-callback="afterParserContinue"
                     onclick="startImportProducts()">Продолжить</button>
-            <button class="btn js-pause-btn" onclick="this.classList.add('stopped')">Приостановить</button>
+            <button class="btn btn--160 js-pause-btn" onclick="toggleParsePause(this)">Приостановить</button>
         </div>
     </div>
 </div>

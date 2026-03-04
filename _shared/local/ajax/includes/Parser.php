@@ -4,12 +4,11 @@ namespace AjaxRequest;
 class Parser extends \CAjaxRequest
 {
     public function run() {
-        $count = $this->arParams['count'] ?: 1;
-        $obParser = new \Ms\Parser();
+        $obParser = new \Ms\Parser($this->arParams);
         if($this->arParams['begin']) {
             $obParser->clearTable();
         }
-        $this->arResult = $obParser->scanSection($count);
+        $this->arResult = $obParser->scanSection();
     }
 
     public function continue() {

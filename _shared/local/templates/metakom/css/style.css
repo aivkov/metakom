@@ -229,6 +229,10 @@ ul.list, .content ul {
     cursor: default;
 }
 
+.btn--160 {
+    width: 160px;
+}
+
 .btn--200 {
     width: 200px;
 }
