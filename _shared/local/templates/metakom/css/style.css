@@ -431,6 +431,10 @@ ul.list, .content ul {
     margin-bottom: 0;
 }
 /* Form */
+.form-block {
+    max-width: 600px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
