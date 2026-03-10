@@ -75,4 +75,37 @@ class Tools
     {
         return '/local/img/no-photo.png';
     }
+
+    public static function formatPrice($price) {
+        if(!$price) {
+            return 'Цена по запросу';
+        }
+        $decimals = 0;
+        if($price - (int)$price) {
+            $decimals = 2;
+        }
+        return number_format($price, $decimals, '.', ' ') . ' ₽';
+    }
+
+    public static function getNavPaginationPath ( $nav, $page )
+    {
+        global $APPLICATION;
+        if ($nav->NavPageNomer == $page)
+        {
+            $url = 'javascript:void(0)';
+        }
+        else
+        {
+            if ((int)$nav->NavNum)
+            {
+                $url = $APPLICATION->getCurPageParam( 'PAGEN_' . $nav->NavNum . '=' . $page, [ 'PAGEN_' . $nav->NavNum, 'bxajaxid' ] );
+            }
+            else
+            {
+                $url = $APPLICATION->getCurPageParam( $nav->NavNum . '=page-' . $page, [ $nav->NavNum, 'bxajaxid' ] );
+            }
+        }
+
+        return $url;
+    }
 }

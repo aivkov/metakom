@@ -1,4 +1,4 @@
-<div class="modal modal-call" data-modal="call" tabindex="-1" role="dialog" on-close="remove">
+<div class="modal modal-call" data-modal="call" tabindex="-1" role="dialog">
     <div class="modal__inner modal__inner--call">
         <div class="modal__close" data-modal-close="call">
             <img src="/local/img/icons/close.svg" alt="">

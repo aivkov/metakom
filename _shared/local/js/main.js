@@ -136,7 +136,6 @@ class Modal {
         }
 
         sendAjax(formData).then((result) => {
-            console.log(result)
             if (result.html) {
                 document.body.insertAdjacentHTML('beforeend', result.html)
                 this.open(id)
@@ -173,7 +172,6 @@ class Modal {
     close(id) {
         if (id) {
             const modal = document.querySelector(`[data-modal=${id}]`)
-
             if (!!modal) {
                 if (!!modal.dataset.onClose && modal.dataset.onClose == 'remove') {
                     modal.remove(this.activeClass);

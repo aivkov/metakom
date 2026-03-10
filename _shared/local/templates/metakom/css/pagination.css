@@ -1,0 +1,30 @@
+.pagination {
+    padding-top: 48px;
+}
+
+.pagination__list {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination .btn {
+    padding: 0;
+    min-width: 40px;
+}
+
+.pagination .btn:not(.is-active) {
+    border: 1px solid var(--color-accent);
+    background: var(--color-white);
+    color: var(--color-accent);
+}
+
+.pagination .btn:not(.is-active):hover {
+    color: var(--color-white);
+}
+
+.pagination__dotted {
+    width: 40px;
+    align-self: flex-end;
+    text-align: center;
+    font-size: 180%;
+}

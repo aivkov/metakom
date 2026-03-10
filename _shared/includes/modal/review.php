@@ -1,5 +1,5 @@
 <?php /** @var array $arParams */?>
-<div class="modal modal-order" data-modal="review" tabindex="-1" role="dialog">
+<div class="modal modal-order" data-modal="review" tabindex="-1" role="dialog" data-on-close="remove">
     <div class="modal__inner modal__inner--review">
         <div class="modal__close" data-modal-close="review">
             <img src="/local/img/icons/close.svg" alt="">

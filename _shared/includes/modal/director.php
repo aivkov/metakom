@@ -1,4 +1,4 @@
-<div class="modal modal-director" data-modal="director" tabindex="-1" role="dialog" on-close="remove">
+<div class="modal modal-director" data-modal="director" tabindex="-1" role="dialog">
     <div class="modal__inner modal__inner--director">
         <div class="modal__close" data-modal-close="director">
             <img src="/local/img/icons/close.svg" alt="">
