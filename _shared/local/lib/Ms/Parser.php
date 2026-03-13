@@ -204,7 +204,7 @@ class Parser
         if ($id = $this->existProductId($extId)) {
             unset($arFields['DETAIL_PICTURE']);
             unset($arFields['PROPERTY_VALUES']['MORE_PHOTO']);
-            unset($arFields['PROPERTY_VALUES']['DOCUMENTS']);
+            //unset($arFields['PROPERTY_VALUES']['DOCUMENTS']);
 
             $res = $el->Update($id, $arFields);
         } else {
