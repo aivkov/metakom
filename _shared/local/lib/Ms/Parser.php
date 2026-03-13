@@ -198,8 +198,8 @@ class Parser
         $el = new \CIBlockElement;
         if ($id = $this->existProductId($extId)) {
             unset($arFields['DETAIL_PICTURE']);
-            unset($arFields['PROPERTIES']['MORE_PHOTO']);
-            unset($arFields['PROPERTIES']['DOCUMENTS']);
+            unset($arFields['PROPERTY_VALUES']['MORE_PHOTO']);
+            unset($arFields['PROPERTY_VALUES']['DOCUMENTS']);
 
             $res = $el->Update($id, $arFields);
         } else {
