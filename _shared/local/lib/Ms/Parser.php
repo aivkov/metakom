@@ -159,7 +159,8 @@ class Parser
         $product = $data->find('.details_content', 0);
         $about = $data->find('.about_content', 0);
         $documentation = $data->find('#documentation .inner', 0);
-        $brand = $data->find('.manufacturer [itemprop="brand"]', 0);
+        $brandEl = $data->find('.manufacturer [itemprop="brand"]', 0);
+        $brand = $this->getBrand($brandEl);
 
         $urlParts = explode('/', trim($uri, '/'));
         $extId = (int)$urlParts[count($urlParts) - 1];
@@ -190,7 +191,7 @@ class Parser
                 'FEATURES' => $this->getFeatures($product),
                 'CHARACTERISTICS' => $this->getCharacteristics($about),
                 'DOCUMENTS' => $this->getDocuments($documentation),
-                'BRAND' => $this->getBrand($brand)
+                'BRAND' => $brand ? $brand['UF_XML_ID'] : false
             ]
         ];
 
@@ -336,8 +337,8 @@ class Parser
             return false;
         }
         $brandName = $brandEl->attr['content'];
-        if($brandId = $this->selectExistBrand($brandName)) {
-            return $brandId;
+        if($brand = $this->selectExistBrand($brandName)) {
+            return $brand;
         }
 
         return $this->createBrand($el);
@@ -346,7 +347,7 @@ class Parser
     private function selectExistBrand($brandName) {
         $entityDataClass = HLBlock::GetEntityDataClass($this->brandsHlBlockId);
         $arFilter = ['UF_XML_ID' => $brandName];
-        $res = $entityDataClass::getList(['filter' => $arFilter, 'select' => ['ID']]);
+        $res = $entityDataClass::getList(['filter' => $arFilter, 'select' => ['ID', 'UF_XML_ID']]);
         return $res->Fetch();
     }
 
