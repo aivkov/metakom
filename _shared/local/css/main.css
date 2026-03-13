@@ -179,6 +179,7 @@ button {
 .img-block {
     display: block;
     position: relative;
+    width: 100%;
 }
 
 .img-block img {

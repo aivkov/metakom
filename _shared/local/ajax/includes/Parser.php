@@ -14,4 +14,8 @@ class Parser extends \CAjaxRequest
     public function continue() {
         $this->arResult = (new \Ms\Parser())->continue();
     }
+
+    public function reset() {
+        $this->arResult = (new \Ms\Parser())->reset();
+    }
 }

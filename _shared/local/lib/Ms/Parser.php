@@ -9,6 +9,8 @@ class Parser
     private $iblockId = 31;
 
     private $hlBlockId = 4;
+
+    private $brandsHlBlockId = 5;
     private $url = 'https://satro-paladin.com';
     private $data = [];
 
@@ -40,7 +42,13 @@ class Parser
         global $DB;
         $query = 'TRUNCATE TABLE ms_catalog_import';
         $res = $DB->Query($query);
-        $a = $res;
+    }
+
+    public function reset() {
+        global $DB;
+        $query = 'UPDATE ms_catalog_import SET UF_IMPORT_DATE_TIME = NULL, UF_IMPORT_ERROR = NULL';
+        $res = $DB->Query($query);
+        return ['status' => 'success'];
     }
 
     public function continue()
@@ -59,14 +67,14 @@ class Parser
         return $res;
     }
 
-    private function getTotalInfo()
+    public function getTotalInfo()
     {
         $arFilter = ['!UF_IMPORT_DATE_TIME' => false];
         $done = $this->countRowsByFilter($arFilter);
 
         $arFilter = [];
         $total = $this->countRowsByFilter($arFilter);
-        $percent = 100;
+        $percent = 0;
         if($total) {
             $percent = round($done / $total * 100, 2);
         }
@@ -146,10 +154,13 @@ class Parser
     private function parseProduct($row)
     {
         $uri = $row['UF_PRODUCT_LINK'];
+        $uri = '/catalog/product/182870/'; //Todo
         $url = $this->url . $uri;
         $data = file_get_html($url);
         $product = $data->find('.details_content', 0);
         $about = $data->find('.about_content', 0);
+        $documentation = $data->find('#documentation .inner', 0);
+        $brand = $data->find('.manufacturer [itemprop="brand"]', 0);
 
         $urlParts = explode('/', trim($uri, '/'));
         $extId = (int)$urlParts[count($urlParts) - 1];
@@ -160,7 +171,10 @@ class Parser
             if (!$key) {
                 continue;
             }
-            $morePhoto[] = \CFile::MakeFileArray($picture);
+            if($picture) {
+                $morePhoto[] = \CFile::MakeFileArray($picture);
+            }
+
         }
 
         $arFields = [
@@ -176,12 +190,18 @@ class Parser
                 'PRICE' => $this->getPrice($product),
                 'MORE_PHOTO' => $morePhoto,
                 'FEATURES' => $this->getFeatures($product),
-                'CHARACTERISTICS' => $this->getCharacteristics($about)
+                'CHARACTERISTICS' => $this->getCharacteristics($about),
+                'DOCUMENTS' => $this->getDocuments($documentation),
+                'BRAND' => $this->getBrand($brand)
             ]
         ];
 
         $el = new \CIBlockElement;
         if ($id = $this->existProductId($extId)) {
+            unset($arFields['DETAIL_PICTURE']);
+            unset($arFields['PROPERTIES']['MORE_PHOTO']);
+            unset($arFields['PROPERTIES']['DOCUMENTS']);
+
             $res = $el->Update($id, $arFields);
         } else {
             $res = $el->Add($arFields);
@@ -278,6 +298,71 @@ class Parser
             $resChar[] = $this->formatFeature($char);
         }
         return $resChar;
+    }
+
+    private function getDocuments($el) {
+        if(!$el) {
+            return [];
+        }
+
+        $links = $el->find('a');
+        if(!count($links)) {
+            return [];
+        }
+        $result = [];
+        foreach($links as $link) {
+            $href = $link->attr['href'];
+            if(!str_starts_with($href, 'https://')) {
+                continue;
+            }
+            $arFile = \CFile::MakeFileArray($href);
+            if(!is_array($arFile) || !$arFile['size']) {
+                continue;
+            }
+            $descEl = $link->find('.desc .name')[0];
+            $desc = '';
+            if($descEl) {
+                $desc = $descEl->plaintext;
+            }
+            $result[] = ['VALUE' => \CFile::MakeFileArray($href), 'DESCRIPTION' => $desc];
+        }
+        return $result;
+    }
+
+    private function getBrand($el) {
+        if(!$el) {
+            return false;
+        }
+        $brandEl = $el->find('[itemprop="name"]', 0);
+        if(!$brandEl) {
+            return false;
+        }
+        $brandName = $brandEl->attr['content'];
+        if($brandId = $this->selectExistBrand($brandName)) {
+            return $brandId;
+        }
+
+        return $this->createBrand($el);
+    }
+
+    private function selectExistBrand($brandName) {
+        $entityDataClass = HLBlock::GetEntityDataClass($this->brandsHlBlockId);
+        $arFilter = ['UF_XML_ID' => $brandName];
+        $res = $entityDataClass::getList(['filter' => $arFilter, 'select' => ['ID']]);
+        return $res->Fetch();
+    }
+
+    private function createBrand($el) {
+        $brandEl = $el->find('[itemprop="name"]', 0);
+        $brandName = $brandEl->content;
+        $imgEl = $el->find('img', 0);
+        if($imgEl) {
+            $arFile = \CFile::MakeFileArray($imgEl->src);
+        }
+        $arFields = ['UF_NAME' => $brandName, 'UF_FILE' => $arFile ?: false, 'UF_XML_ID' => $brandName, 'UF_SORT' => 100];
+        $entityDataClass = HLBlock::GetEntityDataClass($this->brandsHlBlockId);
+        $res = $entityDataClass::Add($arFields);
+        $a = $res;
     }
 
     private function formatFeature($feature)

@@ -7,6 +7,7 @@ use Ms\Site;
 <script src="<?=CUtil::GetAdditionalFileURL('/local/js/imask.js')?>"></script>
 <script src="<?=CUtil::GetAdditionalFileURL('/local/js/dadata.js')?>"></script>
 <script src="<?=CUtil::GetAdditionalFileURL('/local/js/main.js')?>"></script>
+<script src="<?=CUtil::GetAdditionalFileURL('/local/js/swiper.js')?>"></script>
 <script src="<?=CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . '/js/script.js')?>"></script>
 
 <?=Site::getFooterScripts()?>

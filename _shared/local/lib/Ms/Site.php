@@ -73,7 +73,9 @@ class Site {
     }
 
     public static function getDomain($key = 0) {
-        return static::$info[$key]['PROPERTIES']['DOMAIN']['VALUE'];
+        if(static::$info) {
+            return static::$info[$key]['PROPERTIES']['DOMAIN']['VALUE'];
+        }
     }
 
     public static function getLid($key = 0) {

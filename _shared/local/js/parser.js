@@ -77,6 +77,12 @@ window.ajaxCallback.afterParserContinue = function (data, btn) {
     }
 }
 
+window.ajaxCallback.afterParserReset = function (data, btn) {
+    if(data.status == 'success') {
+        location.reload()
+    }
+}
+
 function startImportProducts() {
     const title =  document.querySelector('.js-parser__title')
     title.innerHTML = 'Импорт товаров'
@@ -105,7 +111,6 @@ function disableParserActions() {
     actionsBtn.forEach((btn) => {
         btn.disabled = true
     })
-
 }
 
 

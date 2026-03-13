@@ -3,6 +3,7 @@ ini_set('max_execution_time', 900);
 ini_set('memory_limit', "1026M");
 
 use Bitrix\Main\Page\Asset;
+use Ms\Parser;
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php');
 
@@ -16,6 +17,7 @@ if (!$USER->IsAdmin()) {
     die('not authorized as admin');
 }
 
+$arResult = (new Parser)->getTotalInfo();
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,14 +37,15 @@ if (!$USER->IsAdmin()) {
 
         <div class="progress-bar">
             <div class="progress-bar__progress">
-                <div class="progress-bar__done js-progress-bar" style="width: 0;"></div>
+                <div class="progress-bar__done js-progress-bar" style="width: <?=$arResult['percent']?>%;"></div>
             </div>
-            <div class="progress-bar__info js-progress-info">0%</div>
+            <div class="progress-bar__info js-progress-info"><?=$arResult['count']?>/<?=$arResult['total']?> (<?=$arResult['percent']?>%)</div>
         </div>
 
 
         <div class="parser__actions js-parser-actions">
             <button class="btn btn--160 js-ajax-link" data-action="Parser/run" data-ajax-callback="afterParserRun" data-begin="start" onclick="startScanSections()">Начать заново</button>
+            <button class="btn btn--160 btn--transparent btn--attention js-ajax-link" data-action="Parser/reset" data-ajax-callback="afterParserReset">Сбросить</button>
             <button class="btn btn--160 btn--transparent js-ajax-link" data-action="Parser/continue" data-ajax-callback="afterParserContinue"
                     onclick="startImportProducts()">Продолжить</button>
             <button class="btn btn--160 js-pause-btn" onclick="toggleParsePause(this)">Приостановить</button>
