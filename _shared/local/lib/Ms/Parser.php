@@ -154,7 +154,6 @@ class Parser
     private function parseProduct($row)
     {
         $uri = $row['UF_PRODUCT_LINK'];
-        $uri = '/catalog/product/182870/'; //Todo
         $url = $this->url . $uri;
         $data = file_get_html($url);
         $product = $data->find('.details_content', 0);
@@ -174,7 +173,6 @@ class Parser
             if($picture) {
                 $morePhoto[] = \CFile::MakeFileArray($picture);
             }
-
         }
 
         $arFields = [
