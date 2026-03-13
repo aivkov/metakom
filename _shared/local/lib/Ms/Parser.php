@@ -156,6 +156,11 @@ class Parser
         $uri = $row['UF_PRODUCT_LINK'];
         $url = $this->url . $uri;
         $data = file_get_html($url);
+        if(!$data) {
+            $arFields = ['UF_IMPORT_ERROR' => 'NO DATA', 'UF_IMPORT_DATE_TIME' => new DateTime()];
+            $this->entityDataClass::update($row['ID'], $arFields);
+            return;
+        }
         $product = $data->find('.details_content', 0);
         $about = $data->find('.about_content', 0);
         $documentation = $data->find('#documentation .inner', 0);
