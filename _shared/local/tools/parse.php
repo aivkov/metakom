@@ -14,7 +14,7 @@ $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
 
 global $USER;
 if (!$USER->IsAdmin()) {
-    die('not authorized as admin');
+    //die('not authorized as admin');
 }
 
 $arResult = (new Parser)->getTotalInfo();

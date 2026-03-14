@@ -155,6 +155,19 @@ class Parser
     {
         $uri = $row['UF_PRODUCT_LINK'];
         $url = $this->url . $uri;
+        $urlParts = explode('/', trim($uri, '/'));
+        $extId = (int)$urlParts[count($urlParts) - 1];
+
+        $el = new \CIBlockElement;
+
+        $existProduct = $this->existProduct($extId);
+
+        if($existProduct['PROPERTIES']['DOCUMENTS']['VALUE']) {
+            $arFields = ['UF_IMPORT_ERROR' => 'SKIPED', 'UF_IMPORT_DATE_TIME' => new DateTime()];
+            $this->entityDataClass::update($row['ID'], $arFields);
+            return;
+        }
+
         $data = file_get_html($url);
         if(!$data) {
             $arFields = ['UF_IMPORT_ERROR' => 'NO DATA', 'UF_IMPORT_DATE_TIME' => new DateTime()];
@@ -167,8 +180,8 @@ class Parser
         $brandEl = $data->find('.manufacturer [itemprop="brand"]', 0);
         $brand = $this->getBrand($brandEl);
 
-        $urlParts = explode('/', trim($uri, '/'));
-        $extId = (int)$urlParts[count($urlParts) - 1];
+
+
 
         $arPictures = $this->selectProductPictures($product);
         $morePhoto = [];
@@ -200,13 +213,13 @@ class Parser
             ]
         ];
 
-        $el = new \CIBlockElement;
-        if ($id = $this->existProductId($extId)) {
+
+        if ($existProduct) {
             unset($arFields['DETAIL_PICTURE']);
             unset($arFields['PROPERTY_VALUES']['MORE_PHOTO']);
             //unset($arFields['PROPERTY_VALUES']['DOCUMENTS']);
 
-            $res = $el->Update($id, $arFields);
+            $res = $el->Update($existProduct['ID'], $arFields);
         } else {
             $res = $el->Add($arFields);
         }
@@ -238,11 +251,20 @@ class Parser
         return $sectionId;
     }
 
-    private function existProductId($extId)
+    private function existProduct($extId)
     {
         $arFilter = ['IBLOCK_ID' => $this->iblockId, 'XML_ID' => $extId];
-        $res = \CIBlockElement::GetList([], $arFilter, false, false, ['ID'])->Fetch();
-        return (int)$res['ID'];
+
+        $res = \CIBlockElement::GetList([], $arFilter);
+
+        if($res) {
+            $ob = $res->GetNextElement();
+            $arFields = $ob->getFields();
+            $arFields['PROPERTIES'] = $ob->getProperties();
+            return $arFields;
+        } else {
+            return false;
+        }
     }
 
     private function getProductTitle($data)
