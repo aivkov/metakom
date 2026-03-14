@@ -163,7 +163,7 @@ class Parser
         $existProduct = $this->existProduct($extId);
 
         if($existProduct['PROPERTIES']['DOCUMENTS']['VALUE']) {
-            $arFields = ['UF_IMPORT_ERROR' => 'SKIPED', 'UF_IMPORT_DATE_TIME' => new DateTime()];
+            $arFields = ['UF_IMPORT_ERROR' => 'SKIPPED', 'UF_IMPORT_DATE_TIME' => new DateTime()];
             $this->entityDataClass::update($row['ID'], $arFields);
             return;
         }
