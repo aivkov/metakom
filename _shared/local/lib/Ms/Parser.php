@@ -162,12 +162,6 @@ class Parser
 
         $existProduct = $this->existProduct($extId);
 
-        if($existProduct['PROPERTIES']['DOCUMENTS']['VALUE']) {
-            $arFields = ['UF_IMPORT_ERROR' => 'SKIPPED', 'UF_IMPORT_DATE_TIME' => new DateTime()];
-            $this->entityDataClass::update($row['ID'], $arFields);
-            return;
-        }
-
         $data = file_get_html($url);
         if(!$data) {
             $arFields = ['UF_IMPORT_ERROR' => 'NO DATA', 'UF_IMPORT_DATE_TIME' => new DateTime()];
@@ -180,20 +174,6 @@ class Parser
         $brandEl = $data->find('.manufacturer [itemprop="brand"]', 0);
         $brand = $this->getBrand($brandEl);
 
-
-
-
-        $arPictures = $this->selectProductPictures($product);
-        $morePhoto = [];
-        foreach ($arPictures as $key => $picture) {
-            if (!$key) {
-                continue;
-            }
-            if($picture) {
-                $morePhoto[] = \CFile::MakeFileArray($picture);
-            }
-        }
-
         $arFields = [
             'IBLOCK_ID' => $this->iblockId,
             'ACTIVE' => 'Y',
@@ -201,26 +181,34 @@ class Parser
             'NAME' => $this->getProductTitle($data),
             'DETAIL_TEXT' => $this->getDescription($about),
             'DETAIL_TEXT_TYPE' => 'html',
-            'DETAIL_PICTURE' => $arPictures ? \CFile::MakeFileArray($arPictures[0]) : false,
             'IBLOCK_SECTION_ID' => $this->getSectionId($row),
             'PROPERTY_VALUES' => [
                 'PRICE' => $this->getPrice($product),
-                'MORE_PHOTO' => $morePhoto,
                 'FEATURES' => $this->getFeatures($product),
                 'CHARACTERISTICS' => $this->getCharacteristics($about),
-                'DOCUMENTS' => $this->getDocuments($documentation),
                 'BRAND' => $brand ? $brand['UF_XML_ID'] : false
             ]
         ];
 
 
         if ($existProduct) {
-            unset($arFields['DETAIL_PICTURE']);
-            unset($arFields['PROPERTY_VALUES']['MORE_PHOTO']);
-            //unset($arFields['PROPERTY_VALUES']['DOCUMENTS']);
-
             $res = $el->Update($existProduct['ID'], $arFields);
         } else {
+            $arPictures = $this->selectProductPictures($product);
+            $morePhoto = [];
+            foreach ($arPictures as $key => $picture) {
+                if (!$key) {
+                    continue;
+                }
+                if($picture) {
+                    $morePhoto[] = \CFile::MakeFileArray($picture);
+                }
+            }
+
+            $arFields['DETAIL_PICTURE'] = $arPictures ? \CFile::MakeFileArray($arPictures[0]) : false;
+            $arFields['PROPERTY_VALUES']['MORE_PHOTO'] = $morePhoto;
+            $arFields['PROPERTY_VALUES']['DOCUMENTS'] = $this->getDocuments($documentation);
+
             $res = $el->Add($arFields);
         }
 
