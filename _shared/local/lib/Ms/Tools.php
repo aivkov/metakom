@@ -108,4 +108,24 @@ class Tools
 
         return $url;
     }
+
+    public static function formatFileSize($size) {
+        $a = $size;
+        if(!$size) {
+            return '0 Б';
+        }
+        if($size < 1000) {
+            return $size . ' Б';
+        }
+        $size = round($size / 1024, 0);
+        if($size < 1000) {
+            return $size . ' КБ';
+        }
+        $size = round($size / 1024, 1);
+        if($size < 1000) {
+            return $size . ' МБ';
+        }
+        $size = round($size / 1024, 1);
+        return $size . ' ГБ';
+    }
 }

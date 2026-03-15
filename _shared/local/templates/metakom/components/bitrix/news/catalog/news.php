@@ -32,7 +32,7 @@ while ($section = $res->GetNext()) {
     $arResult['SECTIONS'][] = $section;
 }
 ?>
-
+<h1 class="page__title"><?$APPLICATION->ShowTitle(false)?></h1>
 <div class="catalog-section section section--no-pt">
     <div class="catalog-section__list">
         <?php foreach ($arResult['SECTIONS'] as $arSection): ?>

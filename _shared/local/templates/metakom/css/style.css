@@ -3,6 +3,7 @@
     "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei", "Source Han Sans CN", sans-serif;
 
     --color-accent: #39c3e0;
+    --color-accent2: #00dd50;
     --color-text: #000;
     --color-bg: #f2f3f8;
     --color-white: #FFF;
@@ -12,13 +13,13 @@
     --color-adv: #134872;
     --color-grey: #eee;
     --color-grey2: #ccc;
+    --color-dark-grey: #666;
     --color-border: #ccc;
     --color-input: #777;
     --color-success: green;
     --color-error: #e71a1a;
     --color-desc: #134772;
     --color-date: #999;
-    --color-footer: #bdddde;
     --color-hint: #aaa;
 
 

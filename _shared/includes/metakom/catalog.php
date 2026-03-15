@@ -1,7 +1,6 @@
 <?php $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . '/css/catalog.css'));?>
 
 <div class="container">
-    <h1 class="page__title"><?$APPLICATION->ShowTitle(false)?></h1>
     <? $APPLICATION->IncludeComponent(
         "bitrix:news",
         "catalog",
@@ -44,7 +43,7 @@
             "MESSAGE_404" => "",
             "META_DESCRIPTION" => "-",
             "META_KEYWORDS" => "-",
-            "NEWS_COUNT" => "20",
+            "NEWS_COUNT" => "24",
             "PAGER_BASE_LINK_ENABLE" => "N",
             "PAGER_DESC_NUMBERING" => "N",
             "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
