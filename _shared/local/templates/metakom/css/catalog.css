@@ -266,13 +266,50 @@
     padding: 20px;
 }
 
+.catalog-detail__document-logo {
+    position: relative;
+    flex-shrink: 0;
+    width: 50px;
+}
+
+.catalog-detail__document-ext {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    padding: 2px 4px;
+    color: var(--color-white);
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 4px;
+    background: #f33925;
+}
+
+.catalog-detail__document-ext--jpg {
+    background: #5003c7;
+}
+
+.catalog-detail__document-ext--png {
+    background: #00ab26;
+}
+
+.catalog-detail__document-ext--doc, .catalog-detail__document-ext--docx {
+    background: #ab6000;
+}
+
 .catalog-detail__document-name {
     font-weight: 600;
     color: var(--color-accent);
+    flex-grow: 1;
 }
 
 .catalog-detail__document-size {
     white-space: nowrap;
+    font-weight: 500;
+}
+
+.catalog-detail__document-download {
+    width: 30px;
 }
 
 @media (max-width: 1360px) {

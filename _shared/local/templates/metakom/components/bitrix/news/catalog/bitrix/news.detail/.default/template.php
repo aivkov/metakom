@@ -133,11 +133,19 @@ $price = $arResult['PROPERTIES']['PRICE']['VALUE'];
             <h2 class="catalog-detail__subtitle">Документы</h2>
             <div class="catalog-detail__documents">
                 <?php foreach($arResult['PROPERTIES']['DOCUMENTS']['VALUE'] as $key => $fileId):?>
-                    <?php $arFile = CFile::getFileArray($fileId);?>
+                    <?php $arFile = CFile::getFileArray($fileId);
+                    $fileParts = explode('.', $arFile['SRC']);
+                    $ext = mb_strtoupper($fileParts[count($fileParts) - 1]);
+                    ?>
                     <div class="catalog-detail__document">
+                        <div class="catalog-detail__document-logo">
+                            <div class="catalog-detail__document-ext catalog-detail__document-ext--<?=mb_strtolower($ext)?>"><?=$ext?></div>
+                            <img src="/local/img/icons/empty.svg" alt="">
+                        </div>
+
                         <a href="<?=$arFile['SRC']?>" class="catalog-detail__document-name" target="_blank"><?=$arFile['DESCRIPTION']?></a>
                         <span class="catalog-detail__document-size"><?=Tools::formatFileSize($arFile['FILE_SIZE'])?></span>
-                        <a href="<?=$arFile['SRC']?>" download>
+                        <a class="catalog-detail__document-download" href="<?=$arFile['SRC']?>" download>
                             <img src="/local/img/icons/download.svg" alt="Скачать">
                         </a>
                     </div>
