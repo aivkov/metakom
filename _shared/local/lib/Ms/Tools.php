@@ -71,9 +71,14 @@ class Tools
         return $monthes[$numMonth - 1];
     }
 
+    public static function getNoAvatar()
+    {
+        return '/local/img/no-avatar.png';
+    }
+
     public static function getNoPhoto()
     {
-        return '/local/img/no-photo.png';
+        return '/local/img/no-photo.svg';
     }
 
     public static function formatPrice($price) {

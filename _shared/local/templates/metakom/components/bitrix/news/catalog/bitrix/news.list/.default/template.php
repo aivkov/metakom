@@ -22,8 +22,13 @@ use Ms\Tools;
             <a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="catalog-item">
                 <span>
                       <span class="catalog-item__img img-block">
-                        <?php $smallPicture = CFile::ResizeImageGet($arItem['DETAIL_PICTURE'], ['width' => 300, 'height' => 200], BX_RESIZE_IMAGE_PROPORTIONAL )?>
-                        <img src="<?=$smallPicture['src']?>" alt="<?=$arItem['NAME']?>">
+                          <?php if($arItem['DETAIL_PICTURE']) {
+                              $smallPicture = CFile::ResizeImageGet($arItem['DETAIL_PICTURE'], ['width' => 300, 'height' => 200], BX_RESIZE_IMAGE_PROPORTIONAL );
+                          } else {
+                              $smallPicture['src'] = Tools::getNoPhoto();
+                          }?>
+
+                          <img src="<?=$smallPicture['src']?>" alt="<?=$arItem['NAME']?>">
                     </span>
                     <span class="catalog-item__title"><?=$arItem['NAME']?></span>
                     <?php if($arItem['PROPERTIES']['BRAND']['VALUE']):?>

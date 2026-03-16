@@ -28,7 +28,7 @@ use Ms\Tools;
                     if ($arItem['PREVIEW_PICTURE']) {
                         $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 150, 'height' => 150], BX_RESIZE_IMAGE_EXACT);
                     } else {
-                        $arSmallFile['src'] = Tools::getNoPhoto();
+                        $arSmallFile['src'] = Tools::getNoAvatar();
                     }
                     ?>
 
