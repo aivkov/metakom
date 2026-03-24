@@ -20,25 +20,24 @@ use Ms\Tools;
 ?>
 
 <div class="banner container">
+    <?php if($arResult['PREVIEW_PICTURE']):?>
+        <div class="banner__picture">
+            <div class="banner__img">
+                <img src="<?=$arResult['PREVIEW_PICTURE']['SRC']?>" alt="<?=$arResult['NAME']?>">
+            </div>
+        </div>
+    <?php endif?>
     <div class="banner__info">
-        <h1 class="banner__title"><?=$arResult['NAME']?></h1>
+        <h2 class="banner__title"><?=$arResult['NAME']?></h2>
         <?php if($arResult['PREVIEW_TEXT']):?>
-            <div class="banner__desc medium"><?=$arResult['PREVIEW_TEXT']?></div>
+            <div class="banner__desc banner__desc--accent"><?=$arResult['PREVIEW_TEXT']?></div>
         <?php endif?>
         <?php if($arResult['PROPERTIES']['BUTTON']['VALUE']):?>
             <?php $link = $arResult['PROPERTIES']['BUTTON']['DESCRIPTION']; ?>
-            <a href="<?=Tools::getHref($link)?>" class="banner__action btn" <?=Tools::getLinkAttr($link)?>>
+            <a href="<?=Tools::getHref($link)?>" class="btn btn--200" <?=Tools::getLinkAttr($link)?>>
                 <span><?=$arResult['PROPERTIES']['BUTTON']['VALUE']?></span>
             </a>
         <?php endif?>
     </div>
-    <?php if($arResult['PREVIEW_PICTURE']):?>
-        <div class="banner__picture">
-            <div class="banner__img">
-                <?php $arSmallFile = CFile::ResizeImageGet($arResult['PREVIEW_PICTURE'], ['width' => 600, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL);?>
-                <img src="<?=$arSmallFile['src']?>" alt="<?=$arResult['NAME']?>">
-            </div>
-        </div>
 
-    <?php endif?>
 </div>

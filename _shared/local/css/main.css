@@ -24,6 +24,10 @@ button {
     font-size: 80%;
 }
 
+.center {
+    text-align: center;
+}
+
 /* Input block */
 .input-block {
     position: relative;
@@ -203,7 +207,19 @@ button {
     padding-top: 66.667%;
 }
 
+/* Tabs */
 
+.tab {
+    cursor: pointer;
+}
+
+.tab-block {
+    display: none;
+}
+
+.tab-block.is-active {
+    display: block;
+}
 
 @media (max-width: 576px) {
     .input-block__dropdown {

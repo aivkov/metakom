@@ -33,7 +33,7 @@ $price = $arResult['PROPERTIES']['PRICE']['VALUE'];
                     <?php if($arResult['PICTURES']):?>
                         <?php foreach ($arResult['PICTURES'] as $pictureId): ?>
                             <div class="catalog-detail__thumb swiper-slide">
-                                <?php $smallPicture = CFile::ResizeImageGet($pictureId, ['width' => 120, 'height' => 120], BX_RESIZE_IMAGE_PROPORTIONAL) ?>
+                                <?php $smallPicture = CFile::ResizeImageGet($pictureId, ['width' => 120, 'height' => 120], BX_RESIZE_IMAGE_PROPORTIONAL ) ?>
                                 <img src="<?= $smallPicture['src'] ?>" alt="<?= $arResult['NAME'] ?>">
                             </div>
                         <?php endforeach ?>
