@@ -4,6 +4,7 @@
             <img src="/local/img/icons/close.svg" alt="">
         </div>
         <div class="modal__title">Обратный звонок</div>
+
         <form class="form js-ajax-form">
             <input type="hidden" name="action" value="Form/sendCall">
             <input type="hidden" name="ajaxCallback" value="afterFormSend">

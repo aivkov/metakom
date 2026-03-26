@@ -79,6 +79,10 @@ body {
     padding: 0 32px;
 }
 
+.container--xs {
+    max-width: 500px;
+}
+
 .section {
     padding-top: 64px;
     padding-bottom: 64px;
@@ -210,6 +214,10 @@ p, ul, ol {
 
 .semibold {
     font-weight: 600;
+}
+
+.superbold {
+    font-weight: 900;
 }
 
 .medium {
