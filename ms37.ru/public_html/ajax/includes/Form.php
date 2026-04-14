@@ -12,8 +12,8 @@ class Form extends \CAjaxRequest
         $entrance = htmlspecialchars($this->arParams['entrance']);
         $comment = htmlspecialchars($this->arParams['comment']);
 
-        $message = '<p>Имя: <b>' . $name . '</b></p>';
-        $message .= '<p>Телефон: <b>' . $phone . '</b></p>';
+       // $message = '<p>Имя: <b>' . $name . '</b></p>';
+        $message = '<p>Телефон: <b>' . $phone . '</b></p>';
         $message .= '<p>Email: <b>' . $email . '</b></p>';
         $message .= '<p>Город: <b>' . $city . '</b></p>';
         $message .= '<p>Адрес: <b>' . $address . '</b></p>';
@@ -30,8 +30,8 @@ class Form extends \CAjaxRequest
         $phone = htmlspecialchars($this->arParams['phone']);
         $city = htmlspecialchars($this->arParams['city']);
 
-        $message = '<p>Имя: <b>' . $name . '</b></p>';
-        $message .= '<p>Телефон: <b>' . $phone . '</b></p>';
+        //$message = '<p>Имя: <b>' . $name . '</b></p>';
+        $message = '<p>Телефон: <b>' . $phone . '</b></p>';
         $message .= '<p>Город: <b>' . $city . '</b></p>';
 
         $subject = 'Запрос обратного звонка';

@@ -10,8 +10,8 @@ class Form extends \CAjaxRequest
 {
     public function sendCall() {
         $formType = $this->arParams['form-type'];
-        $message = 'Имя: <b>' . htmlspecialchars($this->arParams['name']) . '</b><br>';
-        $message .= 'Телефон: <b>' . htmlspecialchars($this->arParams['phone']) . '</b><br>';
+        //$message = 'Имя: <b>' . htmlspecialchars($this->arParams['name']) . '</b><br>';
+        $message = 'Телефон: <b>' . htmlspecialchars($this->arParams['phone']) . '</b><br>';
         if($this->arParams['message']) {
             $message .= 'Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b>';
         }
@@ -31,8 +31,8 @@ class Form extends \CAjaxRequest
 
     public function sendOrder() {
         $formType = $this->arParams['form-type'];
-        $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
-        $message .= 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
+       // $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
+        $message = 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
         $message .= 'Email: <b>' . $this->arParams['email'] . '</b><br>';
         $message .= 'Адрес: <b>' . $this->arParams['address'] . '</b><br>';
         $message .= 'Подъезд: <b>' . $this->arParams['entrance'] . '</b><br>';
@@ -53,8 +53,8 @@ class Form extends \CAjaxRequest
 
     public function sendDirector() {
         $formType = $this->arParams['form-type'];
-        $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
-        $message .= 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
+        //$message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
+        $message = 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
         $message .= 'Email: <b>' . $this->arParams['email'] . '</b><br>';
         $message .= 'Адрес: <b>' . $this->arParams['address'] . '</b><br>';
         $message .= 'Сообщение: <b>' . $this->arParams['message'] . '</b>';
