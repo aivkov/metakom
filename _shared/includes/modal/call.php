@@ -10,11 +10,11 @@
             <input type="hidden" name="ajaxCallback" value="afterFormSend">
             <input type="hidden" name="form-type" value="call">
             <div class="form__fields">
-                <div class="input-block">
+                <?php /*<div class="input-block">
                     <label class="input-block__label">Имя <sup>*</sup></label>
                     <input type="text" name="name" class="input-block__input" placeholder="Ваше имя"
                            autocomplete="off" data-required="">
-                </div>
+                </div>*/?>
                 <div class="input-block">
                     <label class="input-block__label">Телефон <sup>*</sup></label>
                     <input type="text" name="phone" class="input-block__input" placeholder="+7 (___) ___-__-__"

@@ -31,11 +31,13 @@
                 </div>
             </div>
             <div class="form__fields">
+                <?php /*
                 <div class="input-block">
                     <label class="input-block__label">Имя <sup>*</sup></label>
                     <input type="text" name="name" class="input-block__input" placeholder="Ваше имя"
                            autocomplete="off" data-required="">
                 </div>
+                */?>
                 <div class="input-block">
                     <label class="input-block__label">Телефон <sup>*</sup></label>
                     <input type="text" name="phone" class="input-block__input" placeholder="+7 (___) ___-__-__"
