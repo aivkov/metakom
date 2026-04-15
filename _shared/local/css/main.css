@@ -221,6 +221,45 @@ button {
     display: block;
 }
 
+.is-loading {
+    position: relative;
+    transition: all var(--transition-quick);
+    pointer-events: none;
+    opacity: .5;
+}
+
+.is-loading:after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: var(--color-error);
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    z-index: 5;
+    animation-name: rotation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 576px) {
     .input-block__dropdown {
         top: 100px;
