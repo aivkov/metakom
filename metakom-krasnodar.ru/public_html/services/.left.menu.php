@@ -17,9 +17,16 @@ $aMenuLinks = Array(
 	Array(
 		"Видеонаблюдение",
 		"/videonabludenie/",
-		Array(), 
-		Array(), 
-		"" 
+		Array(),
+		Array(),
+		""
 	),
+    Array(
+        "Ворота/шлагбаум",
+        "/gates/",
+        Array(),
+        Array(),
+        ""
+    ),
 );
 ?>
