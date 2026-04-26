@@ -217,7 +217,7 @@ class Site {
     }
 
     public static function getEmailTo($formType) {
-        $emailToArray = static::$info[0]['PROPERTIES']['EMAIL_TO']['VALUE'];
+        $emailToArray = static::$info[array_key_first(static::$info)]['PROPERTIES']['EMAIL_TO']['VALUE'];
         if($emailToArray) {
             if(count($emailToArray) == 1) {
                 return $emailToArray[0];
