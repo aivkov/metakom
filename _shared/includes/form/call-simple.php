@@ -1,3 +1,8 @@
+<?php use Ms\Site;
+$arCities = Site::getCities();
+$arCities = array_unique($arCities);
+?>
+
 <form class="form js-ajax-form">
     <input type="hidden" name="action" value="Form/sendCall">
     <input type="hidden" name="ajaxCallback" value="afterFormSend">
@@ -15,6 +20,7 @@
             <input type="text" name="phone" class="input-block__input" placeholder="+7 (___) ___-__-__"
                    data-mask="phone" autocomplete="off" data-required="">
         </div>
+
     </div>
 
     <?php $APPLICATION->IncludeFile('/includes/form/policy.php', ['FORM' => 'call'])?>

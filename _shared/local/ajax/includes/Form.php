@@ -12,8 +12,13 @@ class Form extends \CAjaxRequest
         $formType = $this->arParams['form-type'];
         //$message = 'Имя: <b>' . htmlspecialchars($this->arParams['name']) . '</b><br>';
         $message = 'Телефон: <b>' . htmlspecialchars($this->arParams['phone']) . '</b><br>';
+
         if($this->arParams['message']) {
-            $message .= 'Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b>';
+            $message .= 'Сообщение: <b>' . htmlspecialchars($this->arParams['message']) . '</b><br>';
+        }
+
+        if($this->arParams['city']) {
+            $message .= 'Город: <b>' . htmlspecialchars($this->arParams['city']) . '</b><br>';
         }
 
         $subject = 'Заказ обратного звонка';
@@ -34,6 +39,9 @@ class Form extends \CAjaxRequest
        // $message = 'Имя: <b>' . $this->arParams['name'] . '</b><br>';
         $message = 'Телефон: <b>' . $this->arParams['phone'] . '</b><br>';
         $message .= 'Email: <b>' . $this->arParams['email'] . '</b><br>';
+        if($this->arParams['city']) {
+            $message .= 'Город: <b>' . htmlspecialchars($this->arParams['city']) . '</b><br>';
+        }
         $message .= 'Адрес: <b>' . $this->arParams['address'] . '</b><br>';
         $message .= 'Подъезд: <b>' . $this->arParams['entrance'] . '</b><br>';
         $message .= 'Сообщение: <b>' . $this->arParams['message'] . '</b>';

@@ -375,13 +375,28 @@ function hideLoader(el) {
 }
 
 function initInputsError() {
-    document.addEventListener(('focusin'), (e) => {
-        const input = e.target.closest('input')
+    document.addEventListener(('keyup'), (e) => {
+        const input = e.target.closest('input.is-error')
         if(!!input) {
-            input.classList.remove('is-error')
-            const form = input.closest('form')
-            if(!!form) {
-                hideFormError(form)
+            if(input.value) {
+                input.classList.remove('is-error')
+                const form = input.closest('form')
+                if(!!form) {
+                    hideFormError(form)
+                }
+            }
+        }
+    })
+
+    document.addEventListener(('change'), (e) => {
+        const select = e.target.closest('select.is-error')
+        if(!!select) {
+            if(select.value) {
+                select.classList.remove('is-error')
+                const form = select.closest('form')
+                if(!!form) {
+                    hideFormError(form)
+                }
             }
         }
     })

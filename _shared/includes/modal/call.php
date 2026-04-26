@@ -1,3 +1,8 @@
+<?php use Ms\Site;
+$arCities = Site::getCities();
+$arCities = array_unique($arCities);
+?>
+
 <div class="modal modal-call" data-modal="call" tabindex="-1" role="dialog">
     <div class="modal__inner modal__inner--call">
         <div class="modal__close" data-modal-close="call">
@@ -20,6 +25,17 @@
                     <input type="text" name="phone" class="input-block__input" placeholder="+7 (___) ___-__-__"
                            data-mask="phone" autocomplete="off" data-required="">
                 </div>
+                <?php if(count($arCities) > 1):?>
+                    <div class="input-block">
+                        <label class="input-block__label">Город <sup>*</sup></label>
+                        <select class="input-block__select" name="city" data-required="">
+                            <option value="">---Выберите город---</option>
+                            <?php foreach($arCities as $city):?>
+                                <option value="<?=$city?>"><?=$city?></option>
+                            <?php endforeach?>
+                        </select>
+                    </div>
+                <?php endif?>
             </div>
 
             <?php $APPLICATION->IncludeFile('/includes/form/policy.php', ['FORM' => 'call'])?>
