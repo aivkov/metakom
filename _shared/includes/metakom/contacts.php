@@ -5,16 +5,16 @@ $addresses = Site::getAddresses();
 ?>
 <div class="contacts">
     <?php $APPLICATION->IncludeFile('/includes/metakom/contacts-address.php')?>
-    <?php foreach($addresses as $key => $address):?>
-        <div class="tab-block <?php if(!$key):?> is-active<?php endif?>"
-             data-tab-block="contacts" data-tab-block-id="contact-<?=$key + 1?>">
+    <?php foreach($addresses as $id => $address):?>
+        <div class="tab-block <?php if(array_key_first($addresses) == $id):?> is-active<?php endif?>"
+             data-tab-block="contacts" data-tab-block-id="contacts-<?=$id?>">
             <div class="contacts__main">
                 <div class="contacts__map">
-                    <iframe src="<?=Site::getMap($key)?>" width="100%" height="100%" frameborder="0"></iframe>
+                    <iframe src="<?=Site::getMap($id)?>" width="100%" height="100%" frameborder="0"></iframe>
                 </div>
                 <div class="contacts__info">
                     <div class="contacts__contacts">
-                        <?php if($phones = Site::getPhones($key)):?>
+                        <?php if($phones = Site::getPhones($id)):?>
                             <div class="contacts__item contact">
                                 <div class="contact__img">
                                     <img src="/local/img/icons/phone.svg" alt="">
@@ -33,7 +33,7 @@ $addresses = Site::getAddresses();
                             </div>
                         <?php endif?>
 
-                        <?php if($emails = Site::getEmails($key)):?>
+                        <?php if($emails = Site::getEmails($id)):?>
                             <div class="contacts__item contact">
                                 <div class="contact__img">
                                     <img src="/local/img/icons/email.svg" alt="">
@@ -49,7 +49,7 @@ $addresses = Site::getAddresses();
                             </div>
                         <?php endif?>
 
-                        <?php if($schedule = Site::getSchedule($key)):?>
+                        <?php if($schedule = Site::getSchedule($id)):?>
                             <div class="contacts__item contact">
                                 <div class="contact__img">
                                     <img src="/local/img/icons/clock.svg" alt="">

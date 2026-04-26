@@ -9,9 +9,9 @@ $addresses = Site::getAddresses(); ?>
             <div class="contacts__address-address"><?=$addresses[0]?></div>
         </div>
     <?php else: ?>
-        <?php foreach ($addresses as $key => $address):?>
-            <a href="javascript:void(0)" class="contacts__address tab <?php if(!$key):?> is-active<?php endif?>"
-               data-tab="contacts" data-tab-id="contact-<?=$key + 1?>">
+        <?php foreach ($addresses as $id => $address):?>
+            <a href="javascript:void(0)" class="contacts__address tab <?php if(array_key_first($addresses) == $id):?> is-active<?php endif?>"
+               data-tab="contacts" data-tab-id="contacts-<?=$id?>">
                 <img src="/local/img/icons/pin-2.svg" alt="">
                 <div class="contacts__address-address"><?=$address?></div>
             </a>

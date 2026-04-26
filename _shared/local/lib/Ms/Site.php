@@ -25,7 +25,7 @@ class Site {
         while($ob = $res->GetNextElement()) {
             $arFields = $ob->getFields();
             $arFields['PROPERTIES'] = $ob->getProperties();
-            static::$info[] = $arFields;
+            static::$info[$arFields['ID']] = $arFields;
         }
     }
 
@@ -45,10 +45,12 @@ class Site {
         return static::$iblockId;
     }
 
-    public static function getPhones($key = 0) {
+    public static function getPhones($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
         $arPhones = [];
-
-        $prop = static::$info[$key]['PROPERTIES']['PHONES'];
+        $prop = static::$info[$id]['PROPERTIES']['PHONES'];
         if(is_array($prop['VALUE'])) {
             foreach($prop['VALUE'] as $key => $phone) {
                 $description = $prop['DESCRIPTION'][$key];
@@ -61,32 +63,53 @@ class Site {
         return $arPhones;
     }
 
-    public static function getEmails($key = 0) {
-        return static::$info[$key]['PROPERTIES']['EMAIL']['VALUE'];
+    public static function getEmails($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        return static::$info[$id]['PROPERTIES']['EMAIL']['VALUE'];
     }
 
-    public static function getSchedule($key = 0) {
-        return static::$info[$key]['PROPERTIES']['SCHEDULE']['VALUE'];
+    public static function getSchedule($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        return static::$info[$id]['PROPERTIES']['SCHEDULE']['VALUE'];
     }
-    public static function getMap($key = 0) {
-        return static::$info[$key]['PROPERTIES']['YANDEX_MAP']['~VALUE'] ?: '';
+    public static function getMap($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        return static::$info[$id]['PROPERTIES']['YANDEX_MAP']['~VALUE'] ?: '';
     }
 
-    public static function getDomain($key = 0) {
+    public static function getDomain($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
         if(static::$info) {
-            return static::$info[$key]['PROPERTIES']['DOMAIN']['VALUE'];
+            return static::$info[$id]['PROPERTIES']['DOMAIN']['VALUE'];
         }
     }
 
-    public static function getLid($key = 0) {
-        return static::$info[$key]['CODE'];
+    public static function getLid($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        return static::$info[$id]['CODE'];
     }
-    public static function getEmailFrom($key = 0, $formType = '') {
-        return static::$info[$key]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
+    public static function getEmailFrom($id = 0, $formType = '') {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        return static::$info[$id]['PROPERTIES']['EMAIL_FROM']['VALUE'] ?: 'no-reply@' . $_SERVER['SERVER_NAME'];
     }
 
-    public static function getHeaderScripts($key = 0) {
-        $arScripts = static::$info[$key]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
+    public static function getHeaderScripts($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        $arScripts = static::$info[$id]['PROPERTIES']['HEADER_SCRIPTS']['VALUE'];
         $scriptStr = '';
         if(is_array($arScripts) && !empty($arScripts)) {
             $scriptStr .= "\r\n";
@@ -98,8 +121,11 @@ class Site {
         return $scriptStr;
     }
 
-    public static function getFooterScripts($key = 0) {
-        $arScripts = static::$info[$key]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
+    public static function getFooterScripts($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        $arScripts = static::$info[$id]['PROPERTIES']['FOOTER_SCRIPTS']['VALUE'];
         $scriptStr = '';
         if(is_array($arScripts) && !empty($arScripts)) {
             $scriptStr .= "\r\n";
@@ -111,30 +137,42 @@ class Site {
         return $scriptStr;
     }
 
-    public static function getYandexVerification($key = 0) {
-        if(static::$info[$key]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
+    public static function getYandexVerification($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        if(static::$info[$id]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
             return '<meta name="yandex-verification" content="' . static::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
 
-    public static function getGoogleVerification($key = 0) {
-        if(static::$info[$key]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
+    public static function getGoogleVerification($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        if(static::$info[$id]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
             return '<meta name="google-site-verification" content="' . static::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
 
-    public static function getYandexRaiting($key = 0) {
-        if($iframe = static::$info[$key]['PROPERTIES']['YANDEX_RAITING']['VALUE']) {
+    public static function getYandexRaiting($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
+        if($iframe = static::$info[$id]['PROPERTIES']['YANDEX_RAITING']['VALUE']) {
             return htmlspecialchars_decode($iframe) . "\r\n";
         }
         return '';
     }
 
-    public static function getSocial($key = 0) {
+    public static function getSocial($id = 0) {
+        if(!$id) {
+            $id = array_key_first(static::$info);
+        }
         $arSocial = [];
-        $prop = static::$info[$key]['PROPERTIES']['SOCIAL'];
+        $prop = static::$info[$id]['PROPERTIES']['SOCIAL'];
         if(is_array($prop['VALUE'])) {
             foreach($prop['VALUE'] as $key => $link) {
                 $icon = $prop['DESCRIPTION'][$key];
@@ -154,7 +192,7 @@ class Site {
         $arCities = [];
         foreach(static::$info as $arItem) {
             if($city = trim($arItem['PROPERTIES']['CITY']['VALUE'])) {
-                $arCities[] = $city;
+                $arCities[$arItem['ID']] = $city;
             }
         }
         return $arCities;
@@ -164,7 +202,7 @@ class Site {
         $arAddresses = [];
         foreach(static::$info as $arItem) {
             if($address = trim($arItem['PROPERTIES']['ADDRESS']['VALUE'])) {
-                $arAddresses[] = $address;
+                $arAddresses[$arItem['ID']] = $address;
             }
         }
         return $arAddresses;
@@ -199,5 +237,13 @@ class Site {
 
     public static function getSiteName() {
         return static::$info[0]['PROPERTIES']['SITE_NAME']['VALUE'];
+    }
+
+    public static function count() {
+        return count(static::$info);
+    }
+
+    public static function getIds() {
+        return array_column(static::$info, 'ID');
     }
 }

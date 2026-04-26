@@ -1,0 +1,21 @@
+.section--extra .benefit__item-img {
+    width: 100px;
+    height: 100px;
+}
+.section--extra .benefit__item-img img{
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .section--extra .benefit__item {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 480px) {
+    .section--extra .benefit__item {
+        flex-direction: column;
+        gap: 24px;
+    }
+}

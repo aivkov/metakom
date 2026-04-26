@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDadata()
     initTabs()
     initHideMenu()
+    initSelectCity()
 })
 
 function afterAjax() {
@@ -447,15 +448,17 @@ class Tab {
     }
 
     open(tabName, tabId) {
-        let tab = document.querySelector(`[data-tab="${tabName}"][data-tab-id="${tabId}"]`)
-        tab.classList.add(this.activeClass)
+        let tabs = document.querySelectorAll(`[data-tab="${tabName}"][data-tab-id="${tabId}"]`)
+        tabs.forEach((tab) => {
+            tab.classList.add(this.activeClass)
+            let event = new Event("changeTab", {bubbles: true}); // (2)
+            tab.dispatchEvent(event);
+        })
 
         document.querySelectorAll(`[data-tab-block="${tabName}"][data-tab-block-id="${tabId}"]`).forEach((tabBlock) => {
             tabBlock.classList.add(this.activeClass)
         })
 
-        let event = new Event("changeTab", {bubbles: true}); // (2)
-        tab.dispatchEvent(event);
     }
 }
 
@@ -478,4 +481,30 @@ function initHideMenu() {
     })
 }
 
+function initSelectCity() {
+    const cityLinks = document.querySelectorAll('.js-toggle-city-popup')
 
+    cityLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            const cityBlock = link.closest('.js-city-block')
+            if(!!cityBlock) {
+                const cityPopup = cityBlock.querySelector('.js-city-popup')
+                if(!!cityPopup) {
+                    cityPopup.classList.toggle('is-active')
+                }
+            }
+        })
+    })
+
+    document.addEventListener('changeTab', (e) => {
+        if(e.target.classList.contains('js-select-city')) {
+            const city = e.target.innerText
+            const cityPopup = e.target.closest('.js-city-popup')
+            cityPopup.classList.remove('is-active')
+            const cityBlock = e.target.closest('.js-city-block')
+            const cityLink = cityBlock.querySelector('.js-toggle-city-popup')
+            cityLink.innerText = city
+        }
+    })
+
+}
