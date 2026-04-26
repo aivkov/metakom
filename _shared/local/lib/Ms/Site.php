@@ -142,7 +142,7 @@ class Site {
             $id = array_key_first(static::$info);
         }
         if(static::$info[$id]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE']) {
-            return '<meta name="yandex-verification" content="' . static::$info[0]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
+            return '<meta name="yandex-verification" content="' . static::$info[$id]['PROPERTIES']['YANDEX_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
@@ -152,7 +152,7 @@ class Site {
             $id = array_key_first(static::$info);
         }
         if(static::$info[$id]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE']) {
-            return '<meta name="google-site-verification" content="' . static::$info[0]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
+            return '<meta name="google-site-verification" content="' . static::$info[$id]['PROPERTIES']['GOOGLE_VERIFICATION_META']['VALUE'] . '" />' . "\r\n";
         }
         return '';
     }
@@ -209,7 +209,7 @@ class Site {
     }
 
     public static function getLogo() {
-        $logoProp = static::$info[0]['PROPERTIES']['LOGO'];
+        $logoProp = static::$info[array_key_first(static::$info)]['PROPERTIES']['LOGO'];
         return [
             'src' => $logoProp['VALUE'] ? \CFile::getPath($logoProp['VALUE']) : SITE_TEMPLATE_PATH . '/img/logo.png',
             'alt' => $logoProp['DESCRIPTION'] ?: 'Метаком Сервис'
@@ -220,9 +220,9 @@ class Site {
         $emailToArray = static::$info[array_key_first(static::$info)]['PROPERTIES']['EMAIL_TO']['VALUE'];
         if($emailToArray) {
             if(count($emailToArray) == 1) {
-                return $emailToArray[0];
+                return $emailToArray[array_key_first($emailToArray)];
             }
-            $emailToForms = static::$info[0]['PROPERTIES']['EMAIL_TO']['DESCRIPTION'];
+            $emailToForms = static::$info[array_key_first(static::$info)]['PROPERTIES']['EMAIL_TO']['DESCRIPTION'];
             $index = array_search($formType, $emailToForms);
             if($index === false) {
                 $index = array_search('', $emailToForms);
@@ -236,7 +236,7 @@ class Site {
     }
 
     public static function getSiteName() {
-        return static::$info[0]['PROPERTIES']['SITE_NAME']['VALUE'];
+        return static::$info[array_key_first(static::$info)]['PROPERTIES']['SITE_NAME']['VALUE'];
     }
 
     public static function count() {
