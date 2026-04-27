@@ -98,7 +98,6 @@ button {
     height: 50px;
     font-size: 18px;
     border-radius: 6px;
-    box-shadow: var(--shadow);
     outline: none;
     padding: 0 16px;
 }
