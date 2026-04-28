@@ -30,10 +30,12 @@
                     <div class="services-main__number extrafont">
                         <?php if($key < 9):?>0<?php endif?><?=$key + 1?>
                     </div>
-                    <div class="services-main__img">
-                        <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 280, 'height' => 320], BX_RESIZE_IMAGE_EXACT);?>
-                        <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
-                    </div>
+                    <?php if($arItem['PREVIEW_PICTURE']):?>
+                        <div class="services-main__img">
+                            <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 280, 'height' => 320], BX_RESIZE_IMAGE_EXACT);?>
+                            <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
+                        </div>
+                    <?php endif?>
                     <div class="services-main__info">
                         <div class="services-main__title title"><?=$arItem['NAME']?></div>
                         <div class="services-main__text"><?=$arItem['PREVIEW_TEXT']?></div>
