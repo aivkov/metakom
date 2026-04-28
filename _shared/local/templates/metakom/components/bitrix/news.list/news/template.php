@@ -21,8 +21,12 @@ use Ms\Tools;
 <div class="news">
     <?php if ($arResult['ITEMS']): ?>
         <?php foreach($arResult['ITEMS'] as $arItem):?>
+            <?
+            $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+            $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+            ?>
         <?php $date = $arItem['ACTIVE_FROM'] ?: $arItem['DATE_CREATE']?>
-            <div class="news__item">
+            <div class="news__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                 <div class="news__item-head">
                     <h2 class="news__item-title"><?=$arItem['NAME']?></h2>
                     <div class="news__item-date"><?=Tools::formatDateStr($date)?></div>
