@@ -21,7 +21,11 @@
     <div class="about-main">
         <div class="about-main__list">
             <?php foreach($arResult['ITEMS'] as $key => $arItem):?>
-                <div class="about-main__item">
+                <?php
+                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                ?>
+                <div class="about-main__item"  id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="about-main__text">
                         <div class="about-main__title title"><?=$arItem['NAME']?></div>
                         <?php $propLink = $arItem['PROPERTIES']['LINK'];?>

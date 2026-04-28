@@ -21,7 +21,11 @@
     <div class="clients">
         <div class="clients__list">
             <?php foreach($arResult['ITEMS'] as $key => $arItem):?>
-                <div class="clients__item">
+                <?php
+                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                ?>
+                <div class="clients__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="clients__item-img">
                         <img src="<?=CFile::GetPath($arItem['PROPERTIES']['PICTURE']['VALUE'])?>" alt="">
                     </div>

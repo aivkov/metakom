@@ -20,7 +20,11 @@
 <?php if($arResult['ITEMS']):?>
     <div class="steps">
         <?php foreach($arResult['ITEMS'] as $key => $arItem):?>
-            <div class="steps__item">
+            <?php
+            $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+            $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+            ?>
+            <div class="steps__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                 <div class="steps__number"><?=($key + 1)?></div>
                 <div class="steps__info">
                     <div class="steps__item-title title"><?=$arItem['NAME']?></div>

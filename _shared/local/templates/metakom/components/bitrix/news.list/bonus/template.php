@@ -26,7 +26,11 @@
         <?php endif?>
         <div class="bonus__list">
             <?php foreach($arResult['ITEMS'] as $arItem):?>
-                <div class="bonus__item">
+                <?php
+                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                ?>
+                <div class="bonus__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="bonus__item-img">
                         <?php if($pictureId = $arItem['PROPERTIES']['PICTURE']['VALUE']):?>
                             <img src="<?=CFile::GetPath($pictureId)?>" alt="<?=$arItem['NAME']?>">

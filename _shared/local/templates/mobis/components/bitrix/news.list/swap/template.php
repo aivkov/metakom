@@ -21,7 +21,11 @@
     <div class="swap">
         <div class="swap__list">
             <?php foreach($arResult['ITEMS'] as $arItem):?>
-                <div class="swap__item">
+                <?php
+                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                ?>
+                <div class="swap__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="swap__img">
                         <?php $arSmallFile = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ['width' => 316, 'height' => 800], BX_RESIZE_IMAGE_PROPORTIONAL_ALT);?>
                         <img src="<?=$arSmallFile['src']?>" alt="<?=$arItem['NAME']?>">
