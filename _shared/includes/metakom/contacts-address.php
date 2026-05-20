@@ -4,9 +4,10 @@ $addresses = Site::getAddresses(); ?>
 
 <?php if(is_array($addresses) && !empty($addresses)):?>
     <?php if(count($addresses) == 1):?>
+    <?php $address = array_values($addresses)[0];?>
         <div class="contacts__address">
             <img src="/local/img/icons/pin-2.svg" alt="">
-            <div class="contacts__address-address"><?=$addresses[0]?></div>
+            <div class="contacts__address-address"><?=$address?></div>
         </div>
     <?php else: ?>
         <?php foreach ($addresses as $id => $address):?>
