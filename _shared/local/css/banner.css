@@ -59,6 +59,10 @@ h2.banner__title {
         grid-template-columns: 1fr;
         gap: 48px;
     }
+    
+    .banner__desc {
+        text-align: center;
+    }
 
     .banner__img {
         max-width: 400px;
