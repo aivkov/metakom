@@ -41,7 +41,7 @@ $aMenuLinks = Array(
         "Оформить заявку",
         "javascript:void(0);",
         Array(),
-        Array(),
+        Array("modal"=>"order"),
         ""
     ),
     Array(
