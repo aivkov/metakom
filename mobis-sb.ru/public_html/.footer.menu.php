@@ -45,6 +45,13 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Оферта",
+        "/docs/Форма публичной оферты для реализации МП Ростелеком Ключ.docx",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Контакты",
         "/contacts/",
         Array(),
