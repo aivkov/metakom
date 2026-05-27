@@ -205,7 +205,7 @@ class Site {
                 $arAddresses[$arItem['ID']] = $address;
             }
         }
-        return $arAddresses;
+        return array_unique($arAddresses);
     }
 
     public static function getLogo() {
