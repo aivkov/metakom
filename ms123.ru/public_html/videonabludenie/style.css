@@ -1,0 +1,22 @@
+.advance__img {
+    width: 460px;
+    margin-left: -230px;
+    top: 0;
+    margin-top: -50px;
+}
+
+@media (max-width: 1280px) {
+    .advance__img {
+        width: 400px;
+        margin-left: -200px;
+        top: 100px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .advance__img {
+        width: 100%;
+        max-width: 350px;
+        margin-left: 0;
+    }
+}
