@@ -205,7 +205,7 @@ class Site {
                 $arAddresses[$arItem['ID']] = $address;
             }
         }
-        return array_unique($arAddresses);
+        return $arAddresses;
     }
 
     public static function getLogo() {
@@ -245,5 +245,9 @@ class Site {
 
     public static function getIds() {
         return array_column(static::$info, 'ID');
+    }
+
+    public static function getCitiesInForms() {
+        return static::$info[array_key_first(static::$info)]['PROPERTIES']['CITIES_IN_FORMS']['VALUE'];
     }
 }

@@ -1,7 +1,4 @@
-<?php use Ms\Site;
-$arCities = Site::getCities();
-$arCities = array_unique($arCities);
-?>
+<?php global $APPLICATION; ?>
 
 <form class="form js-ajax-form">
     <input type="hidden" name="action" value="Form/sendOrder">
@@ -26,17 +23,8 @@ $arCities = array_unique($arCities);
             <input type="text" name="email" class="input-block__input" placeholder="Ваше Email"
                    autocomplete="off">
         </div>
-        <?php if(count($arCities) > 1):?>
-            <div class="input-block">
-                <label class="input-block__label">Город <sup>*</sup></label>
-                <select class="input-block__select" name="city" data-required="">
-                    <option value="">---Выберите город---</option>
-                    <?php foreach($arCities as $city):?>
-                        <option value="<?=$city?>"><?=$city?></option>
-                    <?php endforeach?>
-                </select>
-            </div>
-        <?php endif?>
+        <?php $APPLICATION->includeFile('/includes/form/select-city.php');?>
+
         <div class="input-block">
             <label class="input-block__label">Адрес <sup>*</sup></label>
 
