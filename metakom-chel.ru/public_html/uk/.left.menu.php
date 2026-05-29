@@ -9,13 +9,13 @@ $aMenuLinks = Array(
 	),
     Array(
         "Лицензии",
-        "/uk/house-license/",
+        "/uk/license/",
         Array(),
         Array(),
         ""
     ),
     Array(
-        "Обслуживаемые дома",
+        "Список домов",
         "/uk/house-list/",
         Array(),
         Array(),
