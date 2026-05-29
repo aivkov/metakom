@@ -28,6 +28,13 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
+    Array(
+        "Управляющая компания",
+        "/uk/",
+        Array(),
+        Array(),
+        ""
+    ),
 	Array(
 		"Контакты", 
 		"/contacts/", 

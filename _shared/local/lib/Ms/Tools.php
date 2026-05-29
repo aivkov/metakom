@@ -133,4 +133,15 @@ class Tools
         $size = round($size / 1024, 1);
         return $size . ' ГБ';
     }
+
+    public static function extractKeys(&$arr, $key = 'ID') {
+        if(!is_array($arr)) {
+            return;
+        }
+        $result = [];
+        foreach($arr as $item) {
+            $result[$item[$key]] = $item;
+        }
+        $arr = $result;
+    }
 }

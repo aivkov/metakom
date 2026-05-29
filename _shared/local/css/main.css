@@ -28,6 +28,10 @@ button {
     text-align: center;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 /* Input block */
 .input-block {
     position: relative;
@@ -218,6 +222,28 @@ button {
     display: block;
     width: 100%;
     padding-top: 66.667%;
+}
+
+/* Table */
+
+.table-block {
+    overflow-x: auto;
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    font-weight: 500;
+}
+
+.table th, .table td {
+    padding: 8px 16px;
+    border: 1px solid #CCC;
+    background: #FFF;
 }
 
 /* Tabs */
