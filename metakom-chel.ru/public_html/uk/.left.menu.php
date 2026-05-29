@@ -22,13 +22,6 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
-        "Обслуживаемые дома",
-        "/uk/house-list/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
         "Бухгалтерский баланс",
         "/uk/buh/",
         Array(),
