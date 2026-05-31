@@ -29,6 +29,13 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Собрания собственников",
+        "/uk/meeting/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Отчет",
         "/uk/report/",
         Array(),
