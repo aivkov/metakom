@@ -17,7 +17,7 @@
     white-space: nowrap;
 }
 
-.top-menu a:hover, .top-menu__item.selected a, .footer-menu a:hover {
+.top-menu a:hover, .top-menu__item.selected>a, .footer-menu a:hover {
     color: var(--color-accent);
     transition: var(--transition);
 }
