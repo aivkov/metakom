@@ -342,8 +342,8 @@ ul.list, .content ul {
     width: 210px;
 }
 
-.logo--mk {
-    width: 130px; /* Краснодар */
+.logo--mk, .logo-ma {
+    width: 130px; /* Краснодар, Новороссийск/Анапа */
 }
 
 .header__city {
