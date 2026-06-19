@@ -14,9 +14,16 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/fileman/classes/genera
 CMedialib::Init();
 
 $collections = CMedialibCollection::GetList([
-    'arFilter' => ['PARENT_ID' => 3],
+    'arFilter' => ['PARENT_ID' => 3, 'ACTIVE' => 'Y', '!DESCRIPTION' => 'del'],
     'arOrder' => ['NAME' => 'ASC']
 ]);
+
+foreach($collections as $key => $collection) {
+    if(str_starts_with($collection['DESCRIPTION'], 'del')) {
+        unset($collections[$key]);
+    }
+}
+$collections = array_values($collections);
 
 \Ms\Tools::extractKeys($collections);
 
