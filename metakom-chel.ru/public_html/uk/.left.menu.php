@@ -29,6 +29,13 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "План по текущему ремонту",
+        "/uk/plan/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Собрания собственников",
         "/uk/meeting/",
         Array(),
