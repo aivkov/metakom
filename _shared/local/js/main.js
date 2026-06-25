@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabs()
     initHideMenu()
     initSelectCity()
+    initFancybox()
 })
 
 function afterAjax() {
@@ -522,4 +523,8 @@ function initSelectCity() {
         }
     })
 
+}
+
+function initFancybox() {
+    FancyBox('.fancybox').showImage()
 }
