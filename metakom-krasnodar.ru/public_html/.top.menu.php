@@ -29,6 +29,13 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
+        "Типы трубок",
+        "/tubes/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
         "Где оплатить",
         "/payment/",
         Array(),
