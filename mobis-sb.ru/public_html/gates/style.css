@@ -1,0 +1,14 @@
+.swap__img {
+    width: 400px;
+}
+
+.section.section--steps {
+    padding-bottom: 88px;
+}
+
+@media (max-width: 480px) {
+    .swap__img {
+        width: auto;
+    }
+
+}

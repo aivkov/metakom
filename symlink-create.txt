@@ -7,3 +7,9 @@ mklink /d bitrix .\..\..\_shared\bitrix
 mklink /d upload .\..\..\_shared\upload
 mklink /d local .\..\..\_shared\local
 mklink /d includes .\..\..\_shared\includes
+
+Подсчет количества файлов не старше 1 дня (-mtime)
+find /home/c/cw04289/_shared/upload/iblock -type f -mtime -1 | wc -l
+
+Архивирование файлов не старше 1 дня (-mtime)
+find /home/c/cw04289/_shared/upload/iblock -type f -mtime -1 -print0 | tar --null -czvf archive.tar.gz --files-from=-

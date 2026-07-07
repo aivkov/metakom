@@ -22,6 +22,13 @@ $aMenuLinks = Array(
         Array(),
         ""
     ),
+    Array(
+        "Ворота/шлагбаум",
+        "/gates/",
+        Array(),
+        Array(),
+        ""
+    ),
 
   /*  Array(
         "Пожарная сигнализация",

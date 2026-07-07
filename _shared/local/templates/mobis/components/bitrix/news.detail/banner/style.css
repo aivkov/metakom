@@ -1,7 +1,7 @@
 .banner {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 48px;
     max-width: 1238px;
     margin: 0 auto;
     justify-content: space-between;
@@ -40,9 +40,14 @@
     transition: var(--transition);
 }
 
-
 .banner__img {
     min-width: 200px;
+    max-width: 400px;
+    flex-shrink: 0;
+}
+
+.banner__img img {
+    border-radius: 16px;
 }
 
 @media (max-width: 1024px) {
