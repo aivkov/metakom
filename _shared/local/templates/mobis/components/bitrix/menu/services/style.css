@@ -59,9 +59,6 @@
 }
 
 @media (max-width: 480px) {
-    .services-menu__list {
-        padding-right: 100px;
-    }
     .services-menu__feedback {
         right: -30px;
     }
