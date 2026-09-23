@@ -87,7 +87,7 @@ $addresses = Site::getAddresses();
                     <div>Наши соцсети</div>
                     <div class="contacts__social social">
                         <?php foreach($socials as $social):?>
-                            <a href="<?=$social['link']?>">
+                            <a href="<?=$social['link']?>" target="_blank">
                                 <img src="/local/img/mobis/social/accent/<?=$social['icon']?>" alt="">
                             </a>
                         <?php endforeach?>
