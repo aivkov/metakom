@@ -5,7 +5,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->SetTitle("Типы трубок");
 $APPLICATION->SetPageProperty("title", "Типы трубок | Метаком-Новороссийск");
-$APPLICATION->SetPageProperty("description", "Типы трубок Метаком");
+$APPLICATION->SetPageProperty("description", "Типы трубок Метаком-Новороссийск");
 ?>
 
     <div class="page">

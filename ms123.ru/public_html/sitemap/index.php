@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("title", "ООО «Метаком» г. Краснодар | Карта сайта");
+$APPLICATION->SetPageProperty("title", "ООО «Метаком» г. Новороссийск | Карта сайта");
 $APPLICATION->SetTitle("Карта сайта", true);
 ?>
 

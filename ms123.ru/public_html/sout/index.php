@@ -4,7 +4,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->SetTitle("Результаты проведения специальной оценки условий труда");
-$APPLICATION->SetPageProperty("title", "Специальная оценка условий труда | Краснодар");
+$APPLICATION->SetPageProperty("title", "Специальная оценка условий труда | Новороссийск");
 ?>
 
     <div class="page">

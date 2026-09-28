@@ -4,8 +4,8 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->SetTitle("Оплата");
-$APPLICATION->SetPageProperty("title", "Оплата домофона Метаком | Метаком-Краснодар");
-$APPLICATION->SetPageProperty("description", "Способы оплаты за обслуживание домофона Метаком");
+$APPLICATION->SetPageProperty("title", "Оплата домофона Метаком | Метаком-Новороссийск");
+$APPLICATION->SetPageProperty("description", "Способы оплаты за обслуживание домофона Метаком в Новороссийске и Анапе");
 ?>
 
     <div class="page">

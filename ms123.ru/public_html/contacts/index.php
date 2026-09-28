@@ -2,6 +2,7 @@
 /** @var \CMain $APPLICATION */
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+$APPLICATION->SetTitle("Контакты компании «Метаком» в Новороссийске и Анапе");
 
 $APPLICATION->SetTitle("Контакты"); ?>
     <div class="page">
