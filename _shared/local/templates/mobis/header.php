@@ -22,6 +22,9 @@ $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <?php endif?>
+    <?php if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/favicon-120.png')):?>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-120.png">
+    <?php endif?>
     <?php if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/favicon-32.png')):?>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <?php endif?>
