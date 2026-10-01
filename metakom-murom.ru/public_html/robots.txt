@@ -18,4 +18,5 @@ Disallow: /*back_url=*
 Disallow: /*BACK_URL=*
 Disallow: /*back_url_admin=*
 Disallow: /*index.php$
+Clean-param: clear_cache&bitrix_include_areas&utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid /
 Sitemap: https://metakom-murom.ru/sitemap.xml
