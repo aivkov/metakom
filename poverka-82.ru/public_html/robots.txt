@@ -1,4 +1,4 @@
-User-agent: *
+User-Agent: *
 Disallow: /bitrix/
 Disallow: /search/
 Disallow: /auth/
@@ -17,3 +17,4 @@ Disallow: /*back_url=*
 Disallow: /*BACK_URL=*
 Disallow: /*back_url_admin=*
 Disallow: /*index.php$
+Sitemap: https://poverka-82.ru/sitemap.xml
