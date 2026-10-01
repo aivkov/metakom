@@ -2,6 +2,7 @@
 /** @global CMain $APPLICATION */
 
 use Bitrix\Main\Page\Asset;
+use Bitrix\Main\Page\AssetLocation;
 use Ms\Site;
 
 $curPage = $APPLICATION->GetCurPage();
@@ -27,6 +28,16 @@ $assets->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
     <?php if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/favicon-16.png')):?>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     <?php endif?>
+
+    <?php
+    $canonical = Site::getCanonicalLink();
+    if($canonical) {
+        Asset::getInstance()->addString('<link rel="canonical" href="' . htmlspecialcharsbx($canonical) . '">',
+            true,                       // уникальная строка, дубль не добавится
+            AssetLocation::BEFORE_CSS   // место вывода внутри <head>
+        );
+    }
+    ?>
 
     <title><?php $APPLICATION->ShowTitle(); ?></title>
     <?=Site::getGoogleVerification()?>
