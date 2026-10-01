@@ -2,14 +2,14 @@
 $aMenuLinks = Array(
     Array(
         "Для чего нужна поверка",
-        "/dlya_chego_poverka_schetchikov",
+        "/dlya_chego_poverka_schetchikov/",
         Array(),
         Array(),
         ""
     ),
     Array(
         "Как выполнить поверку",
-        "/kak_vipolnit_poverku",
+        "/kak_vipolnit_poverku/",
         Array(),
         Array(),
         ""
