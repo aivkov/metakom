@@ -2,6 +2,8 @@
 namespace Ms;
 
 use \Bitrix\Main\Loader;
+use Bitrix\Main\Context;
+use Bitrix\Main\SiteTable;
 
 class Site {
     private static $info;
@@ -249,5 +251,44 @@ class Site {
 
     public static function getCitiesInForms() {
         return static::$info[array_key_first(static::$info)]['PROPERTIES']['CITIES_IN_FORMS']['VALUE'];
+    }
+
+    public static function getCanonicalLink() {
+        if (!defined('ERROR_404')) {
+            $context = Context::getCurrent();
+            $request = $context->getRequest();
+
+            $site = SiteTable::getById($context->getSite())->fetch();
+            $host = !empty($site['SERVER_NAME']) ? $site['SERVER_NAME'] : $context->getServer()->getHttpHost();
+
+            // Путь без параметров и без index.php
+            $path = preg_replace('~index\.php$~i', '', $request->getRequestedPage());
+            if (substr($path, -1) !== '/' && !preg_match('~\.[a-z0-9]{2,5}$~i', $path)) {
+                $path .= '/';
+            }
+
+            $canonical = 'https://' . $host . $path;
+
+            $query = [];
+            foreach ($request->getQueryList()->toArray() as $key => $value) {
+                if (preg_match('/^PAGEN_\d+$/', $key) && (int)$value > 1) {
+                    $query[$key] = (int)$value;
+                }
+            }
+            if ($query) {
+                $canonical .= '?' . http_build_query($query);
+            }
+
+            // Ручное переопределение через свойство страницы "canonical"
+            $custom = $GLOBALS['APPLICATION']->GetPageProperty('canonical');
+            if ($custom) {
+                $canonical = $custom;
+            }
+            if($path === '/') {
+                $canonical = rtrim($canonical, '/');
+            }
+        }
+
+        return $canonical;
     }
 }
