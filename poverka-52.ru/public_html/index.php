@@ -3,10 +3,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "Компания «Метаком-Сервис» занимается поверкой счетчиков воды в Нижнем Новгороде. Внесение данных в систему «АРШИН»");
+$APPLICATION->SetPageProperty("description", "Поверка счётчиков воды на дому без снятия — 700 ₽, замена со счётчиком — 2 500 ₽. Вносим результаты в ФГИС «Аршин», выдаём документы. Пн–Пт 9:00–18:00, тел. +7 (831) 415-41-20");
 $APPLICATION->SetPageProperty("keywords", "Поверка счетчиков воды, Метаком Сервис Нижний Новгород");
 $APPLICATION->SetPageProperty("title", "Поверка счетчиков воды | Компания Метаком Сервис Нижний Новгород");
-$APPLICATION->SetTitle("Поверка счетчиков воды, Метаком Сервис Нижний Новгород");
+$APPLICATION->SetTitle("Поверка и замена счетчиков воды в Нижнем Новгороде — от 700 ₽ | Метаком Сервис");
 
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
