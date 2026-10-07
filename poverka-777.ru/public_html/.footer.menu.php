@@ -8,7 +8,7 @@ $aMenuLinks = Array(
 		"" 
 	),
     Array(
-        "Как защититься от мошеннников",
+        "Как защититься от мошенников",
         "/kak_izbejat/",
         Array(),
         Array(),
