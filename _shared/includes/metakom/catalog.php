@@ -1,4 +1,5 @@
 <?php $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . '/css/catalog.css'));?>
+<?php $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL(SITE_TEMPLATE_PATH . '/css/pagination.css'));?>
 
 <div class="container">
     <? $APPLICATION->IncludeComponent(
