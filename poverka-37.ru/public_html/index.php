@@ -4,9 +4,9 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 
-$APPLICATION->SetPageProperty("description", "Компания «Метаком-Сервис» занимается поверкой приборов учёта водоснабжения в городе Иваново. Внесение данных в систему «АРШИН»");
+$APPLICATION->SetPageProperty("description", "Поверка счётчиков воды на дому без снятия — 600 ₽, для ТСЖ и ЖСК — от 450 ₽. Вносим результаты в ФГИС «Аршин», выдаём документы. Пн–Пт 9:00–18:00, тел. 8 (4932) 52-80-20");
 $APPLICATION->SetPageProperty("keywords", "Поверка счетчиков воды, Метаком Иваново");
-$APPLICATION->SetPageProperty("title", "Поверка счетчиков воды | Компания Метаком Иваново");
+$APPLICATION->SetPageProperty("title", "Поверка счетчиков воды в Иванове без снятия — 600 ₽ | Метаком Сервис");
 $APPLICATION->SetTitle("Поверка счетчиков воды, Метаком Иваново");
 
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
