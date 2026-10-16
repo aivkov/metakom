@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и облуживание видеонаблюдения от Метаком Сервис в Брянске");
+$APPLICATION->SetTitle("Установка и обслуживание видеонаблюдения от Метаком Сервис в Брянске");
 ?>
 
     <div class="section section--banner">

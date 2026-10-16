@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и облуживание Ip видеокамер от компании «Метаком» в Краснодаре");
+$APPLICATION->SetTitle("Установка и обслуживание Ip видеокамер от компании «Метаком» в Краснодаре");
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
 

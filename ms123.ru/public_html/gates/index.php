@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и облуживание шлагбаумов и ворот от Метаком Сервис в Новороссийске и Анапе");
+$APPLICATION->SetTitle("Установка и обслуживание шлагбаумов и ворот от Метаком Сервис в Новороссийске и Анапе");
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/gates.css'));
 ?>

@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и облуживание умных домофонов от Метаком Сервис в Муроме");
+$APPLICATION->SetTitle("Установка и обслуживание умных домофонов от Метаком Сервис в Муроме");
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
 
