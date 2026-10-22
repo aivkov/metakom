@@ -1,7 +1,7 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Системы безпасности",
+		"Системы безопасности",
         "/#services",
 		Array(), 
 		Array(), 

@@ -23,7 +23,7 @@ $aMenuLinks = Array(
 		"" 
 	),
     Array(
-        "Контроль биснеса",
+        "Контроль бизнеса",
         "javascript:void(0)",
         Array(),
         Array(),

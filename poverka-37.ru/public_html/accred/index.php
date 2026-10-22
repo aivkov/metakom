@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "Метаком Сервис является аккредитованой компанией в области обеспечения единства измерений в г. Иваново");
+$APPLICATION->SetPageProperty("description", "Метаком Сервис является аккредитованной компанией в области обеспечения единства измерений в г. Иваново");
 $APPLICATION->SetPageProperty("keywords", "аттестат аккредитации");
 $APPLICATION->SetPageProperty("title", "Аттестат аккредитации | Метаком Сервис Иваново");
 

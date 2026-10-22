@@ -31,7 +31,7 @@ $addresses = Site::getAddresses();
                         <label for="call-us-agreement-footer" class="checkbox__label checkbox__label--policy">
                             <span class="checkbox__policy-text">
                                  <span>Я соглашаюсь с <a href="#" class="link" download>обработкой персональных данных</a></span>
-                                <span>и <a href="#" class="link" download>условиями пользовательких соглашений</a></span>
+                                <span>и <a href="#" class="link" download>условиями пользовательских соглашений</a></span>
                             </span>
                             <div class="checkbox__icon"></div>
                         </label>
