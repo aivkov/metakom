@@ -3,7 +3,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и обслуживание умных домофонов от Метаком Сервис в Иваново и Кинешме");
+$APPLICATION->SetPageProperty("description", "Заменим домофон в подъезде на умный в рамках абонентской платы: вызов на смартфон, открытие из приложения, коды для гостей. #PHONE#");
+$APPLICATION->SetPageProperty("keywords", "умный домофон, замена старого домофона");
+$APPLICATION->SetPageProperty("title", "Умный домофон #CITY_PC# — замена старого домофона | #SITE_NAME#");
+
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
 

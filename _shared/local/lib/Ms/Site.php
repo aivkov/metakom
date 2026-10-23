@@ -200,6 +200,16 @@ class Site {
         return $arCities;
     }
 
+    public static function getCitiesPC() {
+        $arCities = [];
+        foreach(static::$info as $arItem) {
+            if($city = trim($arItem['PROPERTIES']['CITY_PC']['VALUE'])) {
+                $arCities[$arItem['ID']] = $city;
+            }
+        }
+        return $arCities;
+    }
+
     public static function getAddresses() {
         $arAddresses = [];
         foreach(static::$info as $arItem) {

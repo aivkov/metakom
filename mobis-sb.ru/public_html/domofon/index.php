@@ -3,7 +3,9 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и обслуживание аналоговых домофонов от Метаком Сервис в Брянске");
+$APPLICATION->SetPageProperty("description", "Установка, ремонт и обслуживание домофонов в многоквартирных домах: подключение трубок, ключи, выезд мастера. #PHONE#");
+$APPLICATION->SetPageProperty("keywords", "установка, ремонт и обслуживание домофонов, подключение трубок, выезд мастера");
+$APPLICATION->SetPageProperty("title", "Установка домофона в подъезд #CITY_PC# | #SITE_NAME#");
 ?>
 
     <div class="section section--banner">

@@ -5,7 +5,9 @@ use Ms\Site;
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка ворот и шлагбаумов от Метаком Сервис в Брянске");
+$APPLICATION->SetPageProperty("description", "Устанавливаем шлагбаумы и ворота во двор МКД и берём на обслуживание уже установленные. Открытие с телефона, проезд экстренных служб. #PHONE#");
+$APPLICATION->SetPageProperty("keywords", "шлагбаумы и ворота, установка и обслуживание");
+$APPLICATION->SetPageProperty("title", "Шлагбаумы и ворота во двор #CITY_PC# — под ключ | #SITE_NAME#");
 ?>
 
     <div class="section section--banner">
