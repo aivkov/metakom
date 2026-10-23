@@ -3,7 +3,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и обслуживание Ip видеокамер от компании «Метаком» в Краснодаре");
+$APPLICATION->SetPageProperty("description", "Камеры в подъезде, лифте и во дворе без сбора денег с жильцов — в рамках абонентской платы. Архив в приложении. #PHONE#");
+$APPLICATION->SetPageProperty("keywords", "видеонаблюдение, камеры в подъезде, камеры в лифте");
+$APPLICATION->SetPageProperty("title", "Видеонаблюдение в подъезде и во дворе #CITY_PC# | #SITE_NAME#");
+
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 ?>
 

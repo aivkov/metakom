@@ -3,6 +3,11 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
+$APPLICATION->SetPageProperty("description", "Контакты #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetPageProperty("keywords", "Контакты #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetPageProperty("title", "Контакты #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetTitle("Контакты");
+
 $APPLICATION->SetTitle("Контакты"); ?>
     <div class="page">
         <div class="container">

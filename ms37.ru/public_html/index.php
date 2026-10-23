@@ -4,7 +4,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->SetPageProperty("description", "Установка и обслуживание домофонов, видеонаблюдения, шлагбаумов в многоквартирных домах. Замена домофона на умный #PHONE#");
-$APPLICATION->SetPageProperty("keywords", "Метаком Сервис, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД #CITY_PC#");
+$APPLICATION->SetPageProperty("keywords", "#SITE_NAME#, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД #CITY_PC#");
 $APPLICATION->SetPageProperty("title", "Домофоны, шлагбаумы и видеонаблюдение #CITY_PC# | #SITE_NAME#");
 
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));

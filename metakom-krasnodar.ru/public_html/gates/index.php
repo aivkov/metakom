@@ -3,7 +3,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Установка и обслуживание шлагбаумов и ворот от Метаком Сервис в Краснодаре");
+$APPLICATION->SetPageProperty("description", "Устанавливаем шлагбаумы и ворота во двор МКД и берём на обслуживание уже установленные. Открытие с телефона, проезд экстренных служб. #PHONE#");
+$APPLICATION->SetPageProperty("keywords", "шлагбаумы и ворота, установка и обслуживание");
+$APPLICATION->SetPageProperty("title", "Шлагбаумы и ворота во двор #CITY_PC# — под ключ | #SITE_NAME#");
+
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/banner.css'));
 $APPLICATION->SetAdditionalCss(CUtil::GetAdditionalFileURL('/local/css/gates.css'));
 ?>
