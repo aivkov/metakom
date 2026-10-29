@@ -27,7 +27,12 @@
                 ?>
                 <div class="about-main__item"  id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="about-main__text">
-                        <div class="about-main__title title"><?=$arItem['NAME']?></div>
+                        <?php if(!$key):?>
+                            <h1 class="about-main__title title"><?=$arItem['NAME']?></h1>
+                        <?php else:?>
+                            <div class="about-main__title title"><?=$arItem['NAME']?></div>
+                        <?php endif?>
+
                         <?php $propLink = $arItem['PROPERTIES']['LINK'];?>
                         <?php if($propLink['VALUE']):?>
                             <a href="<?=$propLink['VALUE']?>" class="link--accent"><?=$propLink['DESCRIPTION'] ?: $propLink['VALUE']?></a>
