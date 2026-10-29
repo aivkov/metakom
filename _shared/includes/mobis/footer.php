@@ -23,7 +23,7 @@
 
         </div>
         <div class="footer__copy">
-            &copy; Сайт является информационным ресурсом <?=Site::getSiteName()?>
+            &copy; <?=date('Y')?> «<?=Site::getSiteName()?>». Домофоны, видеонаблюдение и шлагбаумы #CITY_PC#
         </div>
     </div>
 
