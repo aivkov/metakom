@@ -20,7 +20,7 @@
 <div class="banner">
     <div class="banner__text">
         <div>
-            <div class="banner__title title extrafont"><?=$arResult['NAME']?></div>
+            <h1 class="banner__title title extrafont"><?=$arResult['NAME']?></h1>
             <div class="banner__description"><?=$arResult['DETAIL_TEXT']?></div>
         </div>
         <a href="#" class="banner__action extrafont" data-modal-ajax-open="order">Установить</a>
