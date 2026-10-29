@@ -27,7 +27,7 @@
                 ?>
                 <div class="about-main__item"  id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="about-main__text">
-                        <h1 class="about-main__title title"><?=$arItem['NAME']?></h1>
+                        <div class="about-main__title title"><?=$arItem['NAME']?></div>
                         <?php $propLink = $arItem['PROPERTIES']['LINK'];?>
                         <?php if($propLink['VALUE']):?>
                             <a href="<?=$propLink['VALUE']?>" class="link--accent"><?=$propLink['DESCRIPTION'] ?: $propLink['VALUE']?></a>
