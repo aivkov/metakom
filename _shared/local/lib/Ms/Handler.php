@@ -7,6 +7,12 @@ use Ms\Site;
 class Handler
 {
     public static function onEndBufferContent(&$content) {
+        global $APPLICATION;
+        $page = $APPLICATION->GetCurPage();
+        if(str_starts_with($page, '/bitrix/admin/')) {
+            return;
+        }
+
         $phones = Site::getPhones();
         $content = str_replace('#PHONE#', $phones[0]['phone'] ?: '', $content);
 
