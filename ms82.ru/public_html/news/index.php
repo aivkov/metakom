@@ -3,7 +3,11 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetTitle("Новости Метаком Сервис в Крыму");
+$APPLICATION->SetPageProperty("description", "Новости #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetPageProperty("keywords", "Новости #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetPageProperty("title", "Новости #SITE_NAME# #CITY_PC#");
+
+$APPLICATION->SetTitle("Новости #SITE_NAME#");
 ?>
 
     <div class="page">
