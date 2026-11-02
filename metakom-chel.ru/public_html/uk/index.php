@@ -3,11 +3,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД в Челябинске");
-$APPLICATION->SetPageProperty("keywords", "Метаком Сервис, обслуживание, монтаж и ремонт домофонов, систем видеонаблюдения, СКУД в Челябинске");
-$APPLICATION->SetPageProperty("title", "ООО «Метаком Сервис» - Обслуживание, монтаж и ремонт домофонного оборудования, систем видеонаблюдения, СКУД в Челябинске");
-$APPLICATION->SetTitle("Управляющая компания");
-
+$APPLICATION->SetPageProperty("description", "Управляющая компания #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetPageProperty("keywords", "Управляющая компания #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetPageProperty("title", "Управляющая компания #SITE_NAME# #CITY_PC#");
+$APPLICATION->SetTitle("Управляющая компания #SITE_NAME#");
 ?>
     <div class="page">
         <div class="container">
