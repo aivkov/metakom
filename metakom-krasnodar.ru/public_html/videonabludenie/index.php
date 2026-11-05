@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "Камеры в подъезде, лифте и во дворе без сбора денег с жильцов — в рамках абонентской платы. Архив в приложении. #PHONE#");
+$APPLICATION->SetPageProperty("description", "Камеры в подъезде, лифте и во дворе многоквартирного дома: просмотр и архив в приложении. Смета после осмотра. #PHONE#");
 $APPLICATION->SetPageProperty("keywords", "видеонаблюдение, камеры в подъезде, камеры в лифте");
 $APPLICATION->SetPageProperty("title", "Видеонаблюдение в подъезде и во дворе #CITY_PC# | #SITE_NAME#");
 
