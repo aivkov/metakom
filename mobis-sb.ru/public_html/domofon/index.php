@@ -3,7 +3,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$APPLICATION->SetPageProperty("description", "Установка, ремонт и обслуживание домофонов в многоквартирных домах: подключение трубок, ключи, выезд мастера. #PHONE#");
+$APPLICATION->SetPageProperty("description", "Установка домофона в подъезд без сбора средств с жильцов, ремонт и обслуживание: трубки, ключи, выезд мастера. #PHONE#");
 $APPLICATION->SetPageProperty("keywords", "установка, ремонт и обслуживание домофонов, подключение трубок, выезд мастера");
 $APPLICATION->SetPageProperty("title", "Установка домофона в подъезд #CITY_PC# | #SITE_NAME#");
 ?>
