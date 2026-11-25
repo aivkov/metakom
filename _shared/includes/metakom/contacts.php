@@ -62,6 +62,18 @@ $addresses = Site::getAddresses();
                                 </div>
                             </div>
                         <?php endif?>
+
+                        <?php if($qrCode = Site::getQrCode()):?>
+                            <div class="contacts__item contact">
+                                <div class="contact__img">
+                                    <img src="/local/img/icons/qr-code.svg" alt="">
+                                </div>
+                                <div class="contact__qr-code">
+                                    <img src="<?=$qrCode?>" alt="">
+                                </div>
+
+                            </div>
+                        <?php endif?>
                     </div>
                 </div>
             </div>

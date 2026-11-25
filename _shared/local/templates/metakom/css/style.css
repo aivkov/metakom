@@ -524,6 +524,12 @@ ul.list, .content ul {
     width: 36px;
 }
 
+.contact__qr-code img {
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
 .contact__title {
     font-size: 26px;
     font-weight: bold;

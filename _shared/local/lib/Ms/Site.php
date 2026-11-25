@@ -301,4 +301,13 @@ class Site {
 
         return $canonical;
     }
+
+    public static function getQrCode() {
+        $fileId = static::$info[array_key_first(static::$info)]['PROPERTIES']['QR_CODE']['VALUE'];
+        if($fileId) {
+            $arSmallFile = \CFile::ResizeImageGet($fileId, ['width' => 150, 'height' => 150]);
+            return $arSmallFile['src'];
+        }
+        return '';
+    }
 }
