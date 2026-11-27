@@ -31,6 +31,11 @@ use Ms\Tools;
                     <h2 class="news__item-title"><?=$arItem['NAME']?></h2>
                     <div class="news__item-date"><?=Tools::formatDateStr($date)?></div>
                 </div>
+                <?php if($arItem['DETAIL_PICTURE']):?>
+                    <div class="news__item-img">
+                        <img src="<?=$arItem['DETAIL_PICTURE']['SRC']?>" alt="<?=$arItem['NAME']?>">
+                    </div>
+                <?php endif?>
                 <?php if($arItem['PREVIEW_TEXT']):?>
                     <div class="news__item-preview"><?=$arItem['PREVIEW_TEXT']?></div>
                 <?php endif?>
